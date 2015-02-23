@@ -62,7 +62,7 @@ grammar QLMain;
                 |'!' expression                              #Negate
                 | expression op='&&' expression              #And
                 | expression op='||' expression              #Or
-                | expression op=( '!=' | '==' ) expression   #Equality
+                | arithmetic op=( '!=' | '==' ) arithmetic   #Equality
                 | comparison                                 #ExpressionComparison
 
 ;comparison     : '(' comparison ')'                                     #PriorityComparison
@@ -71,6 +71,7 @@ grammar QLMain;
 ;arithmetic     : '(' arithmetic ')'                      #PriorityArithmetic
                 | arithmetic op=( '*' | '/' ) arithmetic  #DivMul
                 | arithmetic op=( '-' | '+' ) arithmetic  #SubAdd
+                | type                                    #ArithmeticType
                 | id                                      #ArithmeticId
                 | num                                     #ArithmeticNum
                 ;
