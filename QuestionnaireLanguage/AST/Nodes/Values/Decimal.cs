@@ -4,26 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Representation;
 
 namespace AST.Nodes.Values
 {
-    public class Decimal //: ITypeNode
+    public class Decimal : INum
     {
-        private IList<IASTNode> children;
+        private string representation;
+        private double value;
+        private Representation.PositionInText position;
 
-        public Decimal()
+        public Decimal(string representation, double value, PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.representation = representation;
+            this.value = value;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

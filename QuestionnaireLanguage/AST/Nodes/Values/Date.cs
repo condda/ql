@@ -4,26 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Representation;
 
 namespace AST.Nodes.Values
 {
-    public class Date //: ITypeNode
+    public class Date : IValue
     {
-        private IList<IASTNode> children;
+        private string representation;
+        private DateTime value;
+        private PositionInText position;
 
-        public Date()
+        public Date(string representation, DateTime value, PositionInText position)
         {
-            children = new List<IASTNode>();
+            // TODO: Complete member initialization
+            this.representation = representation;
+            this.value = value;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public Representation.PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

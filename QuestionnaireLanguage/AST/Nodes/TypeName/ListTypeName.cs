@@ -12,7 +12,7 @@ namespace AST.Nodes.TypeName
     {
         PrimitiveTypeName primitive;
         PositionInText position;
-        public ListTypeName(PositionInText position)
+        public ListTypeName(PositionInText position, PrimitiveTypeName primitive)
         {
             this.position = position;
         }

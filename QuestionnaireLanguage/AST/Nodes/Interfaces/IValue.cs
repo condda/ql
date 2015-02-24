@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AST.Nodes.Values
+namespace AST.Nodes.Interfaces
 {
-    public class Num
+    public interface IValue : IASTNode, IExpressionNode, IArithmeticNode
     {
     }
 }

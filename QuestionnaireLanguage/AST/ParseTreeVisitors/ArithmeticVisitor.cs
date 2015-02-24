@@ -52,7 +52,7 @@ namespace AST.ParseTreeVisitors
 
         public override IArithmeticNode VisitValueArithmetic(QLMainParser.ValueArithmeticContext context)
         {
-            return new Value(Position.PositionFormParserRuleContext(context));
+            return context.type().Accept(new ValueVisitor());
         }
 
         public override IArithmeticNode VisitIdArithmetic(QLMainParser.IdArithmeticContext context)

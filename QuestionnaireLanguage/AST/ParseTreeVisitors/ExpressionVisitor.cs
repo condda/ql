@@ -21,7 +21,7 @@ namespace AST.ParseTreeVisitors
 
         public override IExpressionNode VisitValueExpression(QLMainParser.ValueExpressionContext context)
         {
-            return new Value(Position.PositionFormParserRuleContext(context));
+            return context.type().Accept(new ValueVisitor());
         }
 
         public override IExpressionNode VisitIdExpression(QLMainParser.IdExpressionContext context)

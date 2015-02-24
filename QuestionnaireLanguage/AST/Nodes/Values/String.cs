@@ -4,26 +4,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Representation;
 
 namespace AST.Nodes.Values
 {
-    public class String //: ITypeNode
+    public class String : IValue
     {
-        private IList<IASTNode> children;
+        private string representation;
+        private string value;
+        private PositionInText position;
 
         public String()
+        {}
+
+        public String(string representation, string value, PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.representation = representation;
+            this.value = value;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public Representation.PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

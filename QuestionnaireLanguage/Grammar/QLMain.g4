@@ -25,15 +25,15 @@ grammar QLMain;
                    | date    #DateValue
                    | num     #NumValue
                    | list    #ListValue
-;bool              : 'True'
-                   | 'False'
-;date              : 'date(' year '/' month '/' day ')'
-                   | 'date(' year '/' month')' 
-                   | 'date(' year ')'
+
+;bool              : val= 'True'
+                   | val= 'False'
+
+;date              : 'date(' y = year '/' m = month '/' d = day ')'
 ;num               : int      #NumInt
                    | money    #NumMoney
                    | decimal  #NumDecimal
-;list              : '[' (type (',' type )*)? ']'
+;list              : '[' ( listItems += type (',' listItems += type )*)? ']'
 ;
 
 /* Literal Types*/
@@ -89,7 +89,8 @@ DIV  : '/';
 SUB  : '-';
 ADD  : '+';
 
-
+TRUE : 'True';
+FALSE : 'False';
 
 /*Lexer rules*/
 INT     : '-'?[0-9]+;

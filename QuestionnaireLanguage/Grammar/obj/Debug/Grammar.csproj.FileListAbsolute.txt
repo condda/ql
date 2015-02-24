@@ -21,3 +21,4 @@ C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\QL
 C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
 C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.dll
 C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.pdb
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.csprojResolveAssemblyReference.cache

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Interfaces
 {
-    public interface ITypeName : IASTNode
+    public interface INum : IValue
     {
 
     }

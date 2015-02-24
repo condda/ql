@@ -9,13 +9,17 @@ using AST.Representation;
 
 namespace AST.Nodes.Values
 {
-    public class Bool //: ITypeNode
+    public class Bool : IValue
     {
-        public Bool value;
-        public PositionInText position;
+        private string representation;
+        private bool parsedValue;
+        private PositionInText position;
 
-        public Bool(bool value, PositionInText position)
+        public Bool(string representation, bool parsedValue, PositionInText position)
         {
+            this.representation = representation;
+            this.parsedValue = parsedValue;
+            this.position = position;
         }
 
         public PositionInText GetPositionInText()

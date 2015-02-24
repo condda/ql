@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Values
 {
-    public class List //: ITypeNode
+    public class List :IValue
     {
-        private IList<IASTNode> children;
+        private string representation;
+        private IEnumerable<IValue> children;
+        private PositionInText position;
 
-        public List()
+        public List(string representation, IEnumerable<IValue> children, PositionInText position)
         {
-            children = new List<IASTNode>();
+            // TODO: Complete member initialization
+            this.representation = representation;
+            this.children = children;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public Representation.PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }
