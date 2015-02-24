@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,20 @@ namespace AST.Nodes.KeyValuePair
 {
     public class KeyValuePair : IKeyValuePairNode
     {
-        private IList<IASTNode> children;
+        private string key;
+        private IExpressionNode value;
+        private PositionInText position;
 
-        public KeyValuePair()
+        public KeyValuePair(string key, IExpressionNode value, PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.key = key;
+            this.value = value;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public Representation.PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

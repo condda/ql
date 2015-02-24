@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,21 @@ namespace AST.Nodes.Expression
 {
     public class Negate : IExpressionNode
     {
-        private IList<IASTNode> children;
+        private PositionInText position;
+        private IExpressionNode child;
 
-        public Negate()
+
+        public Negate(IExpressionNode child, PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.child = child;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public Representation.PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }
+
+

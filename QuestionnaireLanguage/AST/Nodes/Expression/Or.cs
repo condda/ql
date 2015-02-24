@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,20 @@ namespace AST.Nodes.Expression
 {
     public class Or : IExpressionNode
     {
-        private IList<IASTNode> children;
+        private IExpressionNode left;
+        private IExpressionNode right;
+        private PositionInText position;
 
-        public Or()
+        public Or(IExpressionNode left, IExpressionNode right, PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.left = left;
+            this.right = right;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

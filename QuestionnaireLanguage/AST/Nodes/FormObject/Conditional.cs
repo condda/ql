@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,22 @@ namespace AST.Nodes.FormObject
 {
     public class Conditional : IFormObjectNode
     {
-        private IList<IASTNode> children;
+        private IList<IFormObjectNode> body;
+        private IExpressionNode condition;
+        private PositionInText positionInText;
 
-        public Conditional()
+        public Conditional(IExpressionNode condition, 
+                           IList<IFormObjectNode> body, 
+                           PositionInText positionInText)
         {
-            children = new List<IASTNode>();
+            this.condition = condition;
+            this.body = body;
+            this.positionInText = positionInText;
         }
 
-        public void AddChild(IASTNode node)
+        public Representation.PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            throw new NotImplementedException();
         }
     }
 }

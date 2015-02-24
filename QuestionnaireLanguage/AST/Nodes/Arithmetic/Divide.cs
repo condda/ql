@@ -9,21 +9,19 @@ namespace AST.Nodes.Arithmetic
 {
     public class Divide : IArithmeticNode
     {
-        private IList<IASTNode> children;
+        private IArithmeticNode left;
+        private IArithmeticNode right;
+        private Representation.PositionInText position;
 
-        public Divide()
+        public Divide(IArithmeticNode left, IArithmeticNode right, Representation.PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.left = left;
+            this.right = right;
+            this.position = position;
         }
-
-        public void AddChild(IASTNode node)
+        public Representation.PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

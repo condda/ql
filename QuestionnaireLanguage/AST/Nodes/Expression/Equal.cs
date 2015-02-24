@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,20 @@ namespace AST.Nodes.Expression
 {
     public class Equal : IExpressionNode
     {
-        private IList<IASTNode> children;
+        private IArithmeticNode left;
+        private IArithmeticNode right;
+        private PositionInText position;
 
-        public Equal()
+        public Equal(IArithmeticNode left, IArithmeticNode right, PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.left = left;
+            this.right = right;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

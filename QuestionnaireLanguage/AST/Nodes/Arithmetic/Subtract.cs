@@ -4,26 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Representation;
 
 namespace AST.Nodes.Arithmetic
 {
     public class Subtract : IArithmeticNode
     {
-        private IList<IASTNode> children;
-
-        public Subtract()
+        private IArithmeticNode left;
+        private IArithmeticNode right;
+        private Representation.PositionInText position;
+        
+        public Subtract(IArithmeticNode left, IArithmeticNode right, PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.left = left;
+            this.right = right;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

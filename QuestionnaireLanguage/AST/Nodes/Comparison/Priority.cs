@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,17 @@ namespace AST.Nodes.Comparison
 {
     public class Priority : IComparisonNode
     {
-        private IList<IASTNode> children;
+        PositionInText position;
+        IComparisonNode child;
 
-        public Priority()
+        public Priority(IComparisonNode child, PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.position = position;
+            this.child = child;
         }
-
-        public void AddChild(IASTNode node)
+        public Representation.PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

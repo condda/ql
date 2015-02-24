@@ -8,6 +8,6 @@ namespace AST.Nodes.Interfaces
 {
     public interface IArithmeticNode : IASTNode
     {
-        //int GetPriority();
+
     }
 }

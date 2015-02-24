@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,17 @@ namespace AST.Nodes.Expression
 {
     public class Priority : IExpressionNode
     {
-        private IList<IASTNode> children;
-
-        public Priority()
+        private IExpressionNode child;
+        private PositionInText position;
+        public Priority(IExpressionNode child, PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.child = child;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }

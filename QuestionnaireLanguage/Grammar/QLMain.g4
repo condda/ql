@@ -11,17 +11,15 @@ grammar QLMain;
 ;
 
 /* Types */ 
- typeName          : genericTypeName
+ typeName          : listTypeName
                    | primitiveTypeName
-;genericTypeName   : 'list[' primitiveTypeName ']'
+;listTypeName	   : 'list[' primitiveTypeName ']'
 ;primitiveTypeName : 'bool'
                    | 'string'
                    | 'date'
                    | 'int'
                    | 'decimal'
                    | 'money'
-;value             : type
-                   | expression
 ;type              : bool    #BoolValue
                    | string  #StringValue
                    | date    #DateValue
@@ -50,30 +48,29 @@ grammar QLMain;
 ;
 
 /* KeyValPairs */   
- keyValuePairs  : '{' keyValuePair (',' keyValuePair)* '}'
-;keyValuePair   : key '=' value
+ keyValuePairs  : '{' kvp+= keyValuePair (',' kvp+= keyValuePair)* '}'
+;keyValuePair   : key '=' expression
 ;key            : ALPHANUMERIC
 ;
 
 /* Expression & arithmetic */
  expression     : '(' expression ')'                         #PriorityExpression
-                | type                                       #ExpressionType
-                | id                                         #ExpressionId
+                | type                                       #ValueExpression
+                | id                                         #IdExpression
                 |'!' expression                              #Negate
                 | expression op='&&' expression              #And
                 | expression op='||' expression              #Or
                 | arithmetic op=( '!=' | '==' ) arithmetic   #Equality
-                | comparison                                 #ExpressionComparison
+                | comparison                                 #ComparisonExpression
 
 ;comparison     : '(' comparison ')'                                     #PriorityComparison
-                | arithmetic op=( '>' | '<' | '>=' | '<=' ) arithmetic   #ArithmeticComparison
+                | arithmetic op=( '>' | '<' | '>=' | '<=' ) arithmetic   #RelationalComparison
 
 ;arithmetic     : '(' arithmetic ')'                      #PriorityArithmetic
                 | arithmetic op=( '*' | '/' ) arithmetic  #DivMul
                 | arithmetic op=( '-' | '+' ) arithmetic  #SubAdd
-                | type                                    #ArithmeticType
-                | id                                      #ArithmeticId
-                | num                                     #ArithmeticNum
+                | type                                    #ValueArithmetic
+                | id                                      #IdArithmetic
                 ;
 
 /*Token Names*/

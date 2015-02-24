@@ -9,21 +9,21 @@ namespace AST.Nodes.Comparison
 {
     public class GreaterThanOrEqual : IComparisonNode
     {
-        private IList<IASTNode> children;
+        private IArithmeticNode left;
+        private IArithmeticNode right;
+        private Representation.PositionInText position;
 
-        public GreaterThanOrEqual()
+        public GreaterThanOrEqual(IArithmeticNode left, IArithmeticNode right, Representation.PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.left = left;
+            this.right = right;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
-        {
-            children.Add(node);
-        }
 
-        public IList<IASTNode> GetChildren()
+        public Representation.PositionInText GetPositionInText()
         {
-            return children;
+            return position;
         }
     }
 }

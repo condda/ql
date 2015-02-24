@@ -40,7 +40,7 @@ namespace AST.Test
             IParseTree tree = parser.form();
 
             Console.WriteLine(tree.ToStringTree(parser));
-            MainVisitor visitor = new MainVisitor();
+            FormVisitor visitor = new FormVisitor();
             IASTNode ast = visitor.Visit(tree);
 
             return ast;

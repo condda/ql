@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,26 @@ namespace AST.Nodes.FormObject
 {
     public class Question : IFormObjectNode
     {
-        private IList<IASTNode> children;
+        private IList<IKeyValuePairNode> properties;
+        private string identifier;
+        private ITypeName typeName;
+        private PositionInText positionInText;
 
-        public Question()
+        public Question(string identifier, 
+                        ITypeName typeName, 
+                        IList<IKeyValuePairNode> properties,
+                        PositionInText positionInText)
         {
-            children = new List<IASTNode>();
+            this.identifier = identifier;
+            this.typeName = typeName;
+            this.properties = properties;
+            this.positionInText = positionInText;
         }
 
-        public void AddChild(IASTNode node)
-        {
-            children.Add(node);
-        }
+        public PositionInText GetPositionInText()
+        { return positionInText; }
 
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
-        }
+        public IList<IKeyValuePairNode> getProperties()
+        { return properties; }
     }
 }

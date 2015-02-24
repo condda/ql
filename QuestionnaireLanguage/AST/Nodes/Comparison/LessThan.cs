@@ -4,26 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Representation;
 
 namespace AST.Nodes.Comparison
 {
     public class LessThan : IComparisonNode
     {
-        private IList<IASTNode> children;
+        private IArithmeticNode left;
+        private IArithmeticNode right;
+        private Representation.PositionInText position;
 
-        public LessThan()
+        public LessThan(IArithmeticNode left, IArithmeticNode right, Representation.PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.left = left;
+            this.right = right;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
-        {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+        public PositionInText GetPositionInText()
+        { 
+            return position; 
         }
     }
 }

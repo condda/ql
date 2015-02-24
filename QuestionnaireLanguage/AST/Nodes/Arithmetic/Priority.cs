@@ -9,21 +9,18 @@ namespace AST.Nodes.Arithmetic
 {
     public class Priority : IArithmeticNode
     {
-        private IList<IASTNode> children;
+        private IArithmeticNode arithmeticNode;
+        private Representation.PositionInText position;
 
-        public Priority()
+        public Priority(IArithmeticNode arithmeticNode, Representation.PositionInText position)
         {
-            children = new List<IASTNode>();
+            this.arithmeticNode = arithmeticNode;
+            this.position = position;
         }
 
-        public void AddChild(IASTNode node)
+        public Representation.PositionInText GetPositionInText()
         {
-            children.Add(node);
-        }
-
-        public IList<IASTNode> GetChildren()
-        {
-            return children;
+            return position;
         }
     }
 }
