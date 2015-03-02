@@ -10,8 +10,8 @@ namespace AST.Nodes.Arithmetic
 {
     public class Divide : ASTNode, IArithmeticNode
     {
-        private IArithmeticNode left { get; private set; }
-        private IArithmeticNode right { get; private set; }
+        public IArithmeticNode left { get; private set; }
+        public IArithmeticNode right { get; private set; }
         private string parsedString;
         
         public Divide(IArithmeticNode left, IArithmeticNode right, string parsedString, PositionInText position)

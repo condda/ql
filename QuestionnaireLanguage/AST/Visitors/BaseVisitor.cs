@@ -38,7 +38,7 @@ namespace AST.Visitors
             throw new NotImplementedException();
         }
 
-        public virtual T Visit(Nodes.Arithmetic.Container<Nodes.Interfaces.IValue> node)
+        public virtual T Visit(Nodes.Arithmetic.Container node)
         {
             throw new NotImplementedException();
         }
@@ -97,6 +97,10 @@ namespace AST.Visitors
         {
             throw new NotImplementedException();
         }
+        public T Visit(Nodes.Expression.Priority priority)
+        {
+            throw new NotImplementedException();
+        }
 
         public virtual T Visit(Nodes.Values.Bool node)
         {
@@ -132,5 +136,6 @@ namespace AST.Visitors
         {
             throw new NotImplementedException();
         }
+
     }
 }

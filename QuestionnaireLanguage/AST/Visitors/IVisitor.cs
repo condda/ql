@@ -24,7 +24,7 @@ namespace AST.Visitors
         void Visit(Arithmetic.Subtract node);
         void Visit(Arithmetic.Divide node);
         void Visit(Arithmetic.Multiply node);
-        void Visit(Arithmetic.Container<IValue> node);
+        void Visit(Arithmetic.Container node);
         void Visit(Arithmetic.Id node);
         
         //Comparison
@@ -40,6 +40,7 @@ namespace AST.Visitors
         void Visit(Expression.NotEqual node);
         void Visit(Expression.Negate node);
         void Visit(Expression.Container<IValue> node);
+        void Visit(Expression.Priority priority);
 
         //Values
         void Visit(Values.Bool node);
@@ -52,7 +53,6 @@ namespace AST.Visitors
         void Visit(KeyVal.KeyExpressionPair node);
         void Visit(KeyVal.KeyValuePair node);
 
-        void Visit(Arithmetic.Container<IValue> container);
     }
     public interface IVisitor<T>
     {
@@ -64,7 +64,7 @@ namespace AST.Visitors
         T Visit(Arithmetic.Subtract node);
         T Visit(Arithmetic.Divide node);
         T Visit(Arithmetic.Multiply node);
-        T Visit(Arithmetic.Container<IValue> node);
+        T Visit(Arithmetic.Container node);
         T Visit(Arithmetic.Id node);
 
         //Comparison
@@ -80,6 +80,7 @@ namespace AST.Visitors
         T Visit(Expression.NotEqual node);
         T Visit(Expression.Negate node);
         T Visit(Expression.Container<IValue> node);
+        T Visit(Expression.Priority priority);
 
         //Values
         T Visit(Values.Bool node);
@@ -91,5 +92,7 @@ namespace AST.Visitors
         T Visit(KeyVal.KeyArithmeticPair node);
         T Visit(KeyVal.KeyExpressionPair node);
         T Visit(KeyVal.KeyValuePair node);
+
+
     }
 }

@@ -56,7 +56,10 @@
     <Compile Include="Nodes\Interfaces\IType.cs" />
     <Compile Include="Nodes\KeyValuePair\KeyExpressionPair.cs" />
     <Compile Include="Nodes\KeyValuePair\KeyValuePair.cs" />
+    <Compile Include="Nodes\Values\Null.cs" />
+    <Compile Include="Nodes\Values\Unknown.cs" />
     <Compile Include="Nodes\Values\ValueNode.cs" />
+    <Compile Include="Evaluation\ArithmeticVisitor.cs" />
     <Compile Include="Visitors\IVisitor.cs" />
     <Compile Include="Notification\Error.cs" />
     <Compile Include="IASTResult.cs" />
@@ -98,7 +101,6 @@
     <Compile Include="Nodes\Interfaces\IFormObjectNode.cs" />
     <Compile Include="Nodes\FormObject\Question.cs" />
     <Compile Include="Nodes\TypeName\TypeName.cs" />
-    <Compile Include="Nodes\Id.cs" />
     <Compile Include="Nodes\Interfaces\IKeyValuePairNode.cs" />
     <Compile Include="Nodes\KeyValuePair\KeyArithmeticPair.cs" />
     <Compile Include="Nodes\Values\Bool.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Storage\SymbolTable.cs" />
     <Compile Include="Test\ParserErrorListener.cs" />
     <Compile Include="Test\TestClass.cs" />
+    <Compile Include="Visitors\BaseVisitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

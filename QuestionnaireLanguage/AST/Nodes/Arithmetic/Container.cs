@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Arithmetic
 {
-    public class Container<V> : ASTNode, IArithmeticNode
-        where V : IValue
+    public class Container : ASTNode, IArithmeticNode
     {
         public IValue value { get; private set; }
         private string parsedString;
 
-        public Container(string parsedString, V value, PositionInText position)
+        public Container(string parsedString, IValue value, PositionInText position)
             : base(position)
         {
             this.value = value;

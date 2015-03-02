@@ -28,8 +28,8 @@ namespace AST.ParseTreeVisitors
 
             switch (context.op.Type)
             {
-                case QLMainParser.DIV: return new Divide(left, right, position);
-                case QLMainParser.MUL: return new Multiply(left, right, position);
+                case QLMainParser.DIV: return new Divide(left, right, context.GetText(), position);
+                case QLMainParser.MUL: return new Multiply(left, right, context.GetText(), position);
                 default: throw new InvalidOperationException("Token does not match any of the valid token options");
             }
         }
@@ -42,8 +42,8 @@ namespace AST.ParseTreeVisitors
 
             switch (context.op.Type)
             {
-                case QLMainParser.SUB: return new Subtract(left, right, position);
-                case QLMainParser.ADD: return new Add(left, right, position);
+                case QLMainParser.SUB: return new Subtract(left, right, context.GetText(), position);
+                case QLMainParser.ADD: return new Add(left, right, context.GetText(), position);
                 default: throw new InvalidOperationException("Token does not match any of the valid token options");
             }
         }

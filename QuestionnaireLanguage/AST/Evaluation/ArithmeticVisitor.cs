@@ -53,13 +53,13 @@ namespace AST.Evaluation
         {
             return Lookup(identifierLookup[node.identifier]);
         }
-        public override int Visit(Container<Int> node)
+        public override int Visit(Container node)
         {
-            return base.Visit(node);
+            throw new NotImplementedException();
+            //return 0 base.Visit(node);
         }
 
-        private IValue retrieveFromContainer()
-        { }
+
 
         //maybe make this into a visitor?
             private int Lookup(Int id)
@@ -73,6 +73,17 @@ namespace AST.Evaluation
                     "identifier should refer to an AST.Nodes.Int, instead it refered to " + 
                     id.ToString()
                 );
+            }
+            private int retrieveFromContainer(Int node)
+            {
+                throw new NotImplementedException();
+            }
+            private IValue retrieveFromContainer(IValue node)
+            {
+                throw new InvalidOperationException(
+                    "identifier should refer to an AST.Nodes.Int, instead it refered to " +
+                    node.ToString()
+                    );
             }
         /////////////////////////////////
 
