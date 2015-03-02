@@ -1,22 +1,22 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AST.Representation;
 
-namespace AST.Nodes.Values
+namespace AST.Nodes.KeyValuePair
 {
-    public class Decimal : INum
+    public class KeyExpressionPair : IKeyValuePairNode
     {
-        private string representation;
-        private double value;
-        private Representation.PositionInText position;
+        private string key;
+        private IExpressionNode value;
+        private PositionInText position;
 
-        public Decimal(string representation, double value, PositionInText position)
+        public KeyExpressionPair(string key, IExpressionNode value, PositionInText position)
         {
-            this.representation = representation;
+            this.key = key;
             this.value = value;
             this.position = position;
         }

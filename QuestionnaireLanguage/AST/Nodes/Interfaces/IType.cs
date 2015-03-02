@@ -1,14 +1,14 @@
-﻿using AST.Representation;
-using AST.Visitors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Resources;
 
 namespace AST.Nodes.Interfaces
 {
-    public interface IASTNode
-    {       
+    public interface IType : IASTNode
+    {
+
     }
 }

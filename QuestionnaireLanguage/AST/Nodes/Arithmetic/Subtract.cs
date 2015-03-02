@@ -8,22 +8,33 @@ using AST.Representation;
 
 namespace AST.Nodes.Arithmetic
 {
-    public class Subtract : IArithmeticNode
+    public class Subtract : ASTNode, IArithmeticNode
     {
-        private IArithmeticNode left;
-        private IArithmeticNode right;
-        private Representation.PositionInText position;
+        private IArithmeticNode left { get; private set; }
+        private IArithmeticNode right { get; private set; }
+        private string parsedString;
         
-        public Subtract(IArithmeticNode left, IArithmeticNode right, PositionInText position)
+        public Subtract(IArithmeticNode left, IArithmeticNode right, string parsedString, PositionInText position)
+            : base(position)
         {
             this.left = left;
             this.right = right;
-            this.position = position;
+            this.parsedString = parsedString;
         }
 
-        public PositionInText GetPositionInText()
+        public override string GetParsedString()
         {
-            return position;
+            return parsedString;
+        }
+
+        public override void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+           return visitor.Visit(this);
         }
     }
 }

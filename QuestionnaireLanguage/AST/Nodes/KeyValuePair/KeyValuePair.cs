@@ -11,10 +11,10 @@ namespace AST.Nodes.KeyValuePair
     public class KeyValuePair : IKeyValuePairNode
     {
         private string key;
-        private IExpressionNode value;
+        private IValue value;
         private PositionInText position;
 
-        public KeyValuePair(string key, IExpressionNode value, PositionInText position)
+        public KeyValuePair(string key, IValue value, PositionInText position)
         {
             this.key = key;
             this.value = value;

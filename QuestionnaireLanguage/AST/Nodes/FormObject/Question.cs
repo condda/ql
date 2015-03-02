@@ -12,11 +12,11 @@ namespace AST.Nodes.FormObject
     {
         private IList<IKeyValuePairNode> properties;
         private string identifier;
-        private ITypeName typeName;
+        private IType typeName;
         private PositionInText positionInText;
 
         public Question(string identifier, 
-                        ITypeName typeName, 
+                        IType typeName, 
                         IList<IKeyValuePairNode> properties,
                         PositionInText positionInText)
         {

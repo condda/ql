@@ -9,18 +9,34 @@ using AST.Representation;
 
 namespace AST.Nodes
 {
-    public class Form : IASTNode
+    public class Form : ASTNode
     {
         private List<IFormObjectNode> body;
-        private PositionInText position;
+        public string parsedString;
 
-        public Form(List<IFormObjectNode> body, PositionInText position)
+        public Form(List<IFormObjectNode> body, string parsedString , PositionInText position)
+            : base(position)
         {
-            this.position = position;
             this.body = body;
+            this.parsedString = parsedString;
+        }
+        public List<IFormObjectNode> getChildren() { return body; }
+
+        public override string GetParsedString()
+        { return parsedString; }
+
+        //Visitor Methods
+        public override void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
 
-        public List<IFormObjectNode> getChildren() { return body; }
-        public PositionInText GetPositionInText(){ return position; }
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
+        }
+
+
     }
+
 }

@@ -5,24 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using AST.Nodes.Interfaces;
 using AST.Representation;
+using AST.Nodes.Values;
 
-
-namespace AST.Nodes
+namespace AST.Nodes.Arithmetic
 {
-    public class Id : IExpressionNode, IArithmeticNode
+    public class Id : IArithmeticNode, IValue
     {
-        private string identifier;
-        private PositionInText position;
+        public string identifier { get; private set; }
+        public PositionInText position {get; private set; }
 
         public Id(string identifier, PositionInText position)
         {
             this.identifier = identifier;
             this.position = position;
-        }
-
-        public PositionInText GetPositionInText()
-        {
-            return position;
         }
     }
 }

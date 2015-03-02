@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace AST.Nodes.Interfaces
+namespace AST.Nodes.Values
 {
-    public interface IValue
+    public class Null
     {
+
     }
 }

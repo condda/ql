@@ -6,14 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AST.Nodes.TypeName
+namespace AST.Nodes.KeyValuePair
 {
-    public class ListTypeName : ITypeName
+    public class KeyArithmeticPair : IKeyValuePairNode
     {
-        PrimitiveTypeName primitive;
-        PositionInText position;
-        public ListTypeName(PositionInText position, PrimitiveTypeName primitive)
+        private string key;
+        private IArithmeticNode value;
+        private PositionInText position;
+
+        public KeyArithmeticPair(string key, IArithmeticNode value, PositionInText position)
         {
+            this.key = key;
+            this.value = value;
             this.position = position;
         }
 

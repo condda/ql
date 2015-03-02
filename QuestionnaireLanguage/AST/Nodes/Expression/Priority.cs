@@ -8,19 +8,27 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Expression
 {
-    public class Priority : IExpressionNode
+    public class Priority : ASTNode, IExpressionNode
     {
         private IExpressionNode child;
-        private PositionInText position;
-        public Priority(IExpressionNode child, PositionInText position)
+        string parsedString;
+        public Priority(IExpressionNode child, string parsedString, PositionInText position)
+            : base(position)
         {
             this.child = child;
-            this.position = position;
+            this.parsedString = parsedString;
         }
 
-        public PositionInText GetPositionInText()
-        {
-            return position;
-        }
+        public override string GetParsedString()
+        { return parsedString; }
+
+        //Visitor methods
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
+        { return visitor.Visit(this); }
+
+        public override void Accept(Visitors.IVisitor visitor)
+        { visitor.Visit(this); }
+
+
     }
 }

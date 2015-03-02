@@ -8,6 +8,5 @@ namespace AST.Nodes.Interfaces
 {
     public interface IArithmeticNode : IASTNode
     {
-
     }
 }

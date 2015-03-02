@@ -20,10 +20,5 @@ namespace AST.Nodes.Expression
             this.right = right;
             this.position = position;
         }
-
-        public PositionInText GetPositionInText()
-        {
-            return position;
-        }
     }
 }

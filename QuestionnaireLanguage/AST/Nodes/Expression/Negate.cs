@@ -19,11 +19,6 @@ namespace AST.Nodes.Expression
             this.child = child;
             this.position = position;
         }
-
-        public Representation.PositionInText GetPositionInText()
-        {
-            return position;
-        }
     }
 }
 

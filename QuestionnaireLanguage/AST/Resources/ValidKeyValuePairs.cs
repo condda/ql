@@ -9,12 +9,17 @@ namespace AST.Resources
 {
     public class ValidKeyValuePairs
     {
-        public Dictionary<string, ObjectType> ValidPairs = new Dictionary<string,ObjectType> {
-            { "label" , ObjectType.String },
-            { "value" , ObjectType.Anything },
-            { "options", ObjectType.List}
+        private static Dictionary<string, Types> ValidPairs = new Dictionary<string,Types> {
+            { "label" , Types.STRING },
+            { "value" , Types.PARENT },
         };
 
+        public bool Exists(string key)
+        { return ValidPairs.Keys.Any(x => x == key);}
 
+        public Types getType(string key, Types type)
+        {
+            return ValidPairs[key];
+        }
     }
 }

@@ -20,10 +20,6 @@ namespace AST.Nodes.Comparison
             this.right = right;
             this.position = position;
         }
-
-        public PositionInText GetPositionInText()
-        { 
-            return position; 
-        }
     }
+
 }

@@ -1,27 +1,27 @@
-﻿using AST.Nodes.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Nodes.Interfaces;
 using AST.Representation;
 
-namespace AST.Nodes.Values
+namespace AST.Nodes.Arithmetic
 {
-    public class Money : INum
+    public class Literal : IArithmeticNode, IValue
     {
+        private int value;
         private string representation;
-        private double value;
         private PositionInText position;
-
-        public Money(string representation, double value, PositionInText position)
+    
+        public Literal(string representation, int value, PositionInText position)
         {
-            this.representation = representation;
             this.value = value;
+            this.representation = representation;
             this.position = position;
         }
 
-        public Representation.PositionInText GetPositionInText()
+        public PositionInText GetPositionInText()
         {
             return position;
         }

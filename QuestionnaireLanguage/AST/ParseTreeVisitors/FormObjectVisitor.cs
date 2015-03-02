@@ -16,7 +16,7 @@ namespace AST.ParseTreeVisitors
         {
 
             string identifier = context.id().GetText();
-            ITypeName typeName = context.typeName().Accept(new TypeNameVisitor());
+            IType typeName = context.type().Accept(new TypeVisitor());
 
             List<IKeyValuePairNode> KeyValuePairs = context.keyValuePairs()
                                                     ._kvp

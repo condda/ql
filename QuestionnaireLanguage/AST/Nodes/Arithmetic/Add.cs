@@ -4,27 +4,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Representation;
 
 namespace AST.Nodes.Arithmetic
 {
-    public class Add : IArithmeticNode
+    public class Add : ASTNode, IArithmeticNode
     {
-        private IArithmeticNode left;
-        private IArithmeticNode right;
+        public IArithmeticNode left {get; private set;}
+        public IArithmeticNode right { get; private set;}
+        private string parsedString;
+
         private Representation.PositionInText position;
 
-
-
-        public Add(IArithmeticNode left, IArithmeticNode right, Representation.PositionInText position)
+        public Add(IArithmeticNode left, IArithmeticNode right, string parsedString, PositionInText position)
+            : base(position) 
         {
-            // TODO: Complete member initialization
             this.left = left;
             this.right = right;
-            this.position = position;
+            this.parsedString = parsedString;
         }
-        public Representation.PositionInText GetPositionInText()
+        public override string GetParsedString()
         {
-            return position;
+            return parsedString;
+        }
+
+        public override void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 }

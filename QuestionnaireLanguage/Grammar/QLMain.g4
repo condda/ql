@@ -6,70 +6,51 @@ grammar QLMain;
 ;formSection    : '{' formObject* '}' 
 ;formObject     : question
                 | conditional
-; question       : 'question' id typeName keyValuePairs
+; question       : 'question' id type keyValuePairs
 ; conditional   : 'enable when' expression formSection
 ;
 
 /* Types */ 
- typeName          : listTypeName
-                   | primitiveTypeName
-;listTypeName	   : 'list[' primitiveTypeName ']'
-;primitiveTypeName : 'bool'
-                   | 'string'
-                   | 'date'
-                   | 'int'
-                   | 'decimal'
-                   | 'money'
-;type              : bool    #BoolValue
+ type              : BOOL    #BoolType
+                   | STRING  #StringType
+                   | INT     #IntType
+;value             : bool    #BoolValue
                    | string  #StringValue
-                   | date    #DateValue
-                   | num     #NumValue
-                   | list    #ListValue
-
-;bool              : val= 'True'
-                   | val= 'False'
-
-;date              : 'date(' y = year '/' m = month '/' d = day ')'
-;num               : int      #NumInt
-                   | money    #NumMoney
-                   | decimal  #NumDecimal
-;list              : '[' ( listItems += type (',' listItems += type )*)? ']'
-;
+                   | int     #IntValue
+;bool              : TRUE    #TrueBool
+                   | FALSE   #FalseBool
 
 /* Literal Types*/
- year           : YEAR 
-;month          : MONTH
-;day            : DAY
-;string         : STRING
-;int            : INT
-;decimal        : DECIMAL
-;money          : MONEY
+;string         : STRINGLITERAL
+;int            : INTLITERAL
 ;id             : ALPHANUMERIC
 ;
 
 /* KeyValPairs */   
  keyValuePairs  : '{' kvp+= keyValuePair (',' kvp+= keyValuePair)* '}'
-;keyValuePair   : key '=' expression
+;keyValuePair   : key '=' expression #KvpExpression
+                | key '=' arithmetic #KvpArithmetic
+                | key '=' value      #KvpLiteral
 ;key            : ALPHANUMERIC
 ;
 
 /* Expression & arithmetic */
  expression     : '(' expression ')'                         #PriorityExpression
-                | type                                       #ValueExpression
+                | bool                                       #BoolExpression
                 | id                                         #IdExpression
                 |'!' expression                              #Negate
-                | expression op='&&' expression              #And
-                | expression op='||' expression              #Or
-                | arithmetic op=( '!=' | '==' ) arithmetic   #Equality
+                | expression op= AND expression              #And
+                | expression op= OR  expression              #Or
+                | arithmetic op=( NEQ | EQ ) arithmetic      #Equality
                 | comparison                                 #ComparisonExpression
 
-;comparison     : '(' comparison ')'                                     #PriorityComparison
-                | arithmetic op=( '>' | '<' | '>=' | '<=' ) arithmetic   #RelationalComparison
+;comparison     : '(' comparison ')'                                 #PriorityComparison
+                | arithmetic op=( GT | LT | GET | LET ) arithmetic   #RelationalComparison
 
 ;arithmetic     : '(' arithmetic ')'                      #PriorityArithmetic
-                | arithmetic op=( '*' | '/' ) arithmetic  #DivMul
-                | arithmetic op=( '-' | '+' ) arithmetic  #SubAdd
-                | type                                    #ValueArithmetic
+                | arithmetic op=( MUL | DIV ) arithmetic  #DivMul
+                | arithmetic op=( SUB | ADD ) arithmetic  #SubAdd
+                | int                                     #IntArithmetic
                 | id                                      #IdArithmetic
                 ;
 
@@ -89,20 +70,23 @@ DIV  : '/';
 SUB  : '-';
 ADD  : '+';
 
-TRUE : 'True';
+TRUE  : 'True';
 FALSE : 'False';
 
+BOOL   : 'bool';
+STRING : 'string'; 
+DATE   : 'date';
+INT    : 'int';
+
 /*Lexer rules*/
-INT     : '-'?[0-9]+;
-DECIMAL : '-'?[0-9]+ '.' [0-9]+;
-MONEY   : '-'?[0-9]+ '.' [0-9][0-9];
+INTLITERAL     : '-'?[0-9]+;
 
 YEAR  : [0-9]+;
 MONTH : [0-9][0-9];
 DAY   : [0-9][0-9];
 
 ALPHANUMERIC : [a-zA-Z0-9]+;
-STRING : '"' .*? '"';
+STRINGLITERAL : '"' .*? '"';
 
 /* White Space & Comments */
  WS             : (' ' | '\r' | '\n') -> channel(HIDDEN)

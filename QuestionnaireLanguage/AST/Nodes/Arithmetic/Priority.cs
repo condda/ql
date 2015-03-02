@@ -1,4 +1,5 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,13 @@ namespace AST.Nodes.Arithmetic
 {
     public class Priority : IArithmeticNode
     {
-        private IArithmeticNode arithmeticNode;
+        private IArithmeticNode child;
         private Representation.PositionInText position;
 
-        public Priority(IArithmeticNode arithmeticNode, Representation.PositionInText position)
+        public Priority(IArithmeticNode child, PositionInText position)
         {
-            this.arithmeticNode = arithmeticNode;
+            this.child = child;
             this.position = position;
-        }
-
-        public Representation.PositionInText GetPositionInText()
-        {
-            return position;
         }
     }
 }

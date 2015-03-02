@@ -5,28 +5,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AST.Representation;
+using AST.Storage;
+using ValueTypes = AST.Resources;
 
 namespace AST.Nodes.Values
 {
-    public class String : IValue
+    public class String : ValueNode<string>
     {
-        private string representation;
-        private string value;
-        private PositionInText position;
-
-        public String()
-        {}
-
-        public String(string representation, string value, PositionInText position)
+        public String(string parsedString, string value, PositionInText position)
+            : base(parsedString, value, position) {}
+        public override ValueTypes.Types GetType(Storage.ISymbolTable lookup)
         {
-            this.representation = representation;
-            this.value = value;
-            this.position = position;
+            return ValueTypes.Types.STRING;
         }
 
-        public Representation.PositionInText GetPositionInText()
+        // Visitor Methods
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
-            return position;
+            return visitor.Visit(this);
+        }
+
+        public override void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

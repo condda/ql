@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Grammar;
-using AST.Nodes;
 using AST.Nodes.Interfaces;
 using AST.Nodes.Arithmetic;
 using AST.Representation;
@@ -23,7 +22,7 @@ namespace AST.ParseTreeVisitors
         public override IArithmeticNode VisitDivMul(QLMainParser.DivMulContext context)
         {
             var ArithmeticVisitor   = new ArithmeticVisitor();
-            IArithmeticNode left    = context.arithmetic(1).Accept(ArithmeticVisitor);
+            IArithmeticNode left    = context.arithmetic(0).Accept(ArithmeticVisitor);
             IArithmeticNode right   = context.arithmetic(1).Accept(ArithmeticVisitor);
             PositionInText position = Position.PositionFormParserRuleContext(context);
 
@@ -34,11 +33,10 @@ namespace AST.ParseTreeVisitors
                 default: throw new InvalidOperationException("Token does not match any of the valid token options");
             }
         }
-
         public override IArithmeticNode VisitSubAdd(QLMainParser.SubAddContext context)
         {
             var ArithmeticVisitor = new ArithmeticVisitor();
-            IArithmeticNode left = context.arithmetic(1).Accept(ArithmeticVisitor);
+            IArithmeticNode left = context.arithmetic(0).Accept(ArithmeticVisitor);
             IArithmeticNode right = context.arithmetic(1).Accept(ArithmeticVisitor);
             PositionInText position = Position.PositionFormParserRuleContext(context);
 
@@ -50,11 +48,13 @@ namespace AST.ParseTreeVisitors
             }
         }
 
-        public override IArithmeticNode VisitValueArithmetic(QLMainParser.ValueArithmeticContext context)
+        public override IArithmeticNode VisitIntArithmetic(QLMainParser.IntArithmeticContext context)
         {
-            return context.type().Accept(new ValueVisitor());
-        }
+            string show = context.@int().GetText();
+            int value = int.Parse(show);
 
+            return new Literal(show, value, Position.PositionFormParserRuleContext(context));
+        }
         public override IArithmeticNode VisitIdArithmetic(QLMainParser.IdArithmeticContext context)
         {
             return new Id(context.id().GetText(), Position.PositionFormParserRuleContext(context));

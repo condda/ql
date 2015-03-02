@@ -6,25 +6,34 @@ using System.Threading.Tasks;
 using AST.Nodes;
 using AST.Nodes.Interfaces;
 using AST.Representation;
+using AST.Resources;
+using ValueTypes = AST.Resources;
 
 namespace AST.Nodes.Values
 {
-    public class Bool : IValue
+    public class Bool : ValueNode<bool>
     {
-        private string representation;
-        private bool parsedValue;
-        private PositionInText position;
-
         public Bool(string representation, bool parsedValue, PositionInText position)
+            :base(representation, parsedValue, position) { }
+
+        public override ValueTypes.Types GetType(Storage.ISymbolTable lookup)
         {
-            this.representation = representation;
-            this.parsedValue = parsedValue;
-            this.position = position;
+            return ValueTypes.Types.STRING;
         }
 
-        public PositionInText GetPositionInText()
+        // Visitor Methods
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
-           return position;
+            return visitor.Visit(this);
         }
+
+        public override void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+
+
+
     }
 }

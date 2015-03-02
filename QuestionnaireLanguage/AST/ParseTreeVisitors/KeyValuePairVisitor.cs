@@ -12,13 +12,33 @@ namespace AST.ParseTreeVisitors
 {
     public class KeyValuePairVisitor : QLMainBaseVisitor<IKeyValuePairNode>
     {
-        public override IKeyValuePairNode VisitKeyValuePair(QLMainParser.KeyValuePairContext context)
+        public override IKeyValuePairNode VisitKvpExpression(QLMainParser.KvpExpressionContext context)
         {
             string key = context.key().GetText();
             IExpressionNode value = context.expression().Accept(new ExpressionVisitor());
 
-            return new KeyValuePair(key, value,
-                                     Position.PositionFormParserRuleContext(context));
+            return new KeyExpressionPair(key, value,
+                                    Position.PositionFormParserRuleContext(context));
+
         }
+
+        public override IKeyValuePairNode VisitKvpArithmetic(QLMainParser.KvpArithmeticContext context)
+        {
+            string key = context.key().GetText();
+            IArithmeticNode value = context.arithmetic().Accept(new ArithmeticVisitor());
+
+            return new KeyArithmeticPair(key, value,
+                                    Position.PositionFormParserRuleContext(context));
+        }
+
+        public override IKeyValuePairNode VisitKvpLiteral(QLMainParser.KvpLiteralContext context)
+        {
+            string key = context.key().GetText();
+            IValue value = context.value().Accept(new ValueVisitor());
+
+            return new KeyValuePair(key, value, 
+                                    Position.PositionFormParserRuleContext(context));
+        }
+
     }
 }

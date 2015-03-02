@@ -18,9 +18,6 @@ namespace AST.Nodes.Comparison
             this.position = position;
             this.child = child;
         }
-        public Representation.PositionInText GetPositionInText()
-        {
-            return position;
-        }
+
     }
 }

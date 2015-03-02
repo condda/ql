@@ -8,32 +8,32 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Arithmetic
 {
-    public class Divide : ASTNode, IArithmeticNode
+    public class Container<V> : ASTNode, IArithmeticNode
+        where V : IValue
     {
-        private IArithmeticNode left { get; private set; }
-        private IArithmeticNode right { get; private set; }
+        public IValue value { get; private set; }
         private string parsedString;
-        
-        public Divide(IArithmeticNode left, IArithmeticNode right, string parsedString, PositionInText position)
+
+        public Container(string parsedString, V value, PositionInText position)
             : base(position)
         {
-            this.left = left;
-            this.right = right;
+            this.value = value;
             this.parsedString = parsedString;
         }
-
         public override string GetParsedString()
         {
             return parsedString;
         }
 
+        //Visitor Methods
         public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
-        public override T Accept<T>(Visitors.IVisitor<T> visitor) 
+
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
-           return visitor.Visit(this);
+            return visitor.Visit(this);
         }
     }
 }

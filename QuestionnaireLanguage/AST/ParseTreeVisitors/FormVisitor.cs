@@ -25,6 +25,7 @@ namespace AST.ParseTreeVisitors
                                                        .ToList();
 
             return new Form(formObjects,
+                            context.GetText(),
                             Position.PositionFormParserRuleContext(context)
                             );
         }

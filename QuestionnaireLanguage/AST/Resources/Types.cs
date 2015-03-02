@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AST.Nodes.Interfaces
+namespace AST.Resources
 {
-    public interface ITypeName : IASTNode
+    public enum Types
     {
-
+        BOOL,
+        STRING,
+        INT,
+        PARENT,
+        UNDEFINED
     }
 }
