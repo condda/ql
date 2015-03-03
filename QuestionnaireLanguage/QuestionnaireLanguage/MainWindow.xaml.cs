@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.IO;
 using AST;
 using AST.Test;
+using QuestionnaireLanguage.Controller;
 
 namespace QuestionnaireLanguage
 {
@@ -25,14 +26,22 @@ namespace QuestionnaireLanguage
     {
         public MainWindow()
         {
-            
             InitializeComponent();
+            
 
             string path =  @"C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\many-ql\FelipezConde\testsamples\";
-            string fileName = "test6.txt";
+            string fileName = "test11.txt";
 
             TestClass test = new TestClass();
-            test.GetAST(path + fileName);
+            ASTResult ast = test.GetAST(path + fileName);
+
+            Processor proc = new Processor(ast);
+            UIElement element = proc.ProcessAST();
+            //this.AddChild(element);
+            this._stack.Children.Add(element);
+
+            //create GUI (ast, window)
+            
 
             /*FormVisitor visitor = new FormVisitor();
             Console.WriteLine(visitor.Visit(tree));*/

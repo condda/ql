@@ -36,9 +36,8 @@ namespace AST.Evaluation
         }
         public bool Visit(Expression.Negate node)
         {
-            return !node;
+            return true;
         }
         public bool Visit(Expression.Container node) { }
-        public bool Visit(Expression.Priority priority) { }
     }
 }

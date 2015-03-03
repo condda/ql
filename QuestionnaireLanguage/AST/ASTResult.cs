@@ -26,32 +26,32 @@ namespace AST
 
         }
 
-        public void setValue(Identifier key, ObjectValue value)
+        public void SetValue(Identifier key, ObjectValue value)
         {
             table.SetObjectValue(key, value);   
         }
 
-        public ObjectValue getValue(Identifier key)
+        public ObjectValue GetValue(Identifier key)
         {
             return table.GetObjectValue(key);
         }
 
-        public bool isTypeCorrect()
+        public bool IsTypeCorrect()
         {
             throw new NotImplementedException();
         }
 
-        public bool hasDuplicateIdentifiers()
+        public bool HasDuplicateIdentifiers()
         {
             throw new NotImplementedException();
         }
 
-        public bool isCorrect()
+        public bool IsCorrect()
         {
             throw new NotImplementedException();
         }
 
-        public void setValue(string key, ObjectValue value)
+        public void SetValue(string key, ObjectValue value)
         {
             throw new NotImplementedException();
         }

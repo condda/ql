@@ -9,11 +9,11 @@ namespace AST
 {
     public interface IASTResult
     {
-        void setValue(string key, ObjectValue value);
-        ObjectValue getValue(Identifier key);
-        bool isTypeCorrect();
+        void SetValue(string key, ObjectValue value);
+        ObjectValue GetValue(Identifier key);
+        bool IsTypeCorrect();
 
-        bool hasDuplicateIdentifiers();
-        bool isCorrect();
+        bool HasDuplicateIdentifiers();
+        bool IsCorrect();
     }
 }

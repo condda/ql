@@ -49,7 +49,7 @@
     <Compile Include="ASTResult.cs" />
     <Compile Include="IVisitable.cs" />
     <Compile Include="Nodes\Arithmetic\Container.cs" />
-    <Compile Include="Nodes\Arithmetic\Id.cs" />
+    <Compile Include="Nodes\Expression\Id.cs" />
     <Compile Include="Nodes\Arithmetic\Literal.cs" />
     <Compile Include="Nodes\ASTNode.cs" />
     <Compile Include="Nodes\Computation\Arithmetic.cs" />
@@ -66,8 +66,10 @@
     <Compile Include="Nodes\Values\Unknown.cs" />
     <Compile Include="Nodes\Values\ValueNode.cs" />
     <Compile Include="Evaluation\ArithmeticVisitor.cs" />
+    <Compile Include="ParseTreeVisitors\AssociativeVisitor.cs" />
     <Compile Include="ParseTreeVisitors\ComputationVisitor.cs" />
     <Compile Include="ParseTreeVisitors\LabelVisitor.cs" />
+    <Compile Include="ParseTreeVisitors\UnaryVisitor.cs" />
     <Compile Include="Visitors\IVisitor.cs" />
     <Compile Include="Notification\Error.cs" />
     <Compile Include="IASTResult.cs" />

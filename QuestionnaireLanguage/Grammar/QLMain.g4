@@ -36,23 +36,21 @@ grammar QLMain;
              
 /* Expression */
 
-;expression      : binary  #BinaryExpression
-                 | unary   #UnaryExpression 
+;expression      : associative
+                 | nonAssociative
                  ;
 
-unary           : '!' expression      #Negate
+unary           : '!' expression      #NegateUnary
                 | '(' expression ')'  #PriorityUnary
-                ;
-
-binary          : associative
-                | nonAssociative
                 ;
 
 associative     : associative op= AND associative #AND
                 | associative op= OR associative  #OR
                 | associative op= MUL associative #MUL
+                | associative op= DIV associative #DIV
                 | associative op= SUB associative #SUB
                 | associative op= ADD associative #ADD
+                | unary                           #UnaryAssociative
                 | '(' expression ')'              #PriorityAssociative
                 | value                           #AssociativeValue
                 | id                              #AssociativeId
