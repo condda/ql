@@ -31,29 +31,46 @@ grammar QLMain;
 ;computed : 'computed' ':' computation
 
 ;computation : id            #ComputationId
-             | expression    #ComputationExpression
-             | arithmetic    #ComputationArithmetic
              | value         #ComputationValue
+             | expression    #ComputationExpression
+             
+/* Expression */
 
-/* Expression & arithmetic */
-;expression     : '(' expression ')'                         #PriorityExpression
-                | bool                                       #BoolExpression
-                | id                                         #IdExpression
-                |'!' expression                              #Negate
-                | expression op= AND expression              #And
-                | expression op= OR  expression              #Or
-                | arithmetic op=( NEQ | EQ ) arithmetic      #Equality
-                | comparison                                 #ComparisonExpression
+;expression      : binary  #BinaryExpression
+                 | unary   #UnaryExpression 
+                 ;
 
-;comparison     : '(' comparison ')'                                 #PriorityComparison
-                | arithmetic op=( GT | LT | GET | LET ) arithmetic   #RelationalComparison
-
-;arithmetic     : '(' arithmetic ')'                      #PriorityArithmetic
-                | arithmetic op=( MUL | DIV ) arithmetic  #DivMul
-                | arithmetic op=( SUB | ADD ) arithmetic  #SubAdd
-                | int                                     #IntArithmetic
-                | id                                      #IdArithmetic
+unary           : '!' expression      #Negate
+                | '(' expression ')'  #PriorityUnary
                 ;
+
+binary          : associative
+                | nonAssociative
+                ;
+
+associative     : associative op= AND associative #AND
+                | associative op= OR associative  #OR
+                | associative op= MUL associative #MUL
+                | associative op= SUB associative #SUB
+                | associative op= ADD associative #ADD
+                | '(' expression ')'              #PriorityAssociative
+                | value                           #AssociativeValue
+                | id                              #AssociativeId
+                ;
+
+nonAssociative  : associative EQ associative      #EQ
+                | associative NEQ associative     #NEQ
+                | associative GT associative      #GT
+                | associative GET associative     #GET
+                | associative LT associative      #LT
+                | associative LET associative     #LET
+                | '(' expression ')'              #NonAssociativePriority
+                | value                           #NonAssociativeValue
+                | id                              #NonAssociativeId
+                ;
+
+
+
 
 /*Token Names*/
 GT   : '>';
