@@ -5,31 +5,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Nodes.Labels;
 
 namespace AST.Nodes.FormObject
 {
-    public class Question : IFormObjectNode
+    public class Question : IFormObject
     {
-        private IList<IKeyValuePairNode> properties;
-        private string identifier;
+        public ILabel Label {get; private set;}
+        public IComputation Computation {get; private set;}
+        public string Identifier {get; private set;}
         private IType typeName;
         private PositionInText positionInText;
 
         public Question(string identifier, 
                         IType typeName, 
-                        IList<IKeyValuePairNode> properties,
+                        ILabel label,
+                        IComputation computation,
                         PositionInText positionInText)
         {
-            this.identifier = identifier;
+            this.Identifier = identifier;
             this.typeName = typeName;
-            this.properties = properties;
+            this.Label = label;
+            this.Computation = computation;
             this.positionInText = positionInText;
         }
 
         public PositionInText GetPositionInText()
         { return positionInText; }
 
-        public IList<IKeyValuePairNode> getProperties()
-        { return properties; }
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 }

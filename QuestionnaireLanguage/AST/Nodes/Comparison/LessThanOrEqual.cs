@@ -7,18 +7,28 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Comparison
 {
-    public class LessThanOrEqual : IComparisonNode
+    public class LessThanOrEqual : IComparison
     {
-        private IArithmeticNode left;
-        private IArithmeticNode right;
+        private IArithmetic left;
+        private IArithmetic right;
         private Representation.PositionInText position;
 
-        public LessThanOrEqual(IArithmeticNode left, IArithmeticNode right, Representation.PositionInText position)
+        public LessThanOrEqual(IArithmetic left, IArithmetic right, Representation.PositionInText position)
         {
             this.left = left;
             this.right = right;
             this.position = position;
         }
 
+
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 }

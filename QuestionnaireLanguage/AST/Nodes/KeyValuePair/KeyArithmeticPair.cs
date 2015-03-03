@@ -11,10 +11,10 @@ namespace AST.Nodes.KeyValuePair
     public class KeyArithmeticPair : IKeyValuePairNode
     {
         private string key;
-        private IArithmeticNode value;
+        private IArithmetic value;
         private PositionInText position;
 
-        public KeyArithmeticPair(string key, IArithmeticNode value, PositionInText position)
+        public KeyArithmeticPair(string key, IArithmetic value, PositionInText position)
         {
             this.key = key;
             this.value = value;

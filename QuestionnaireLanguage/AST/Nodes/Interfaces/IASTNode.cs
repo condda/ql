@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Interfaces
 {
-    public interface IASTNode
+    public interface IASTNode : IVisitable
     {       
     }
 }

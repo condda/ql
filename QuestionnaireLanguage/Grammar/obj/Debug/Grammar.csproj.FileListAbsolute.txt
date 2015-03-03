@@ -22,3 +22,15 @@ C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\Gr
 C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.dll
 C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.pdb
 C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\bin\Debug\Grammar.dll
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\bin\Debug\Grammar.pdb
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\bin\Debug\Antlr4.Runtime.net45.dll
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\bin\Debug\Antlr4.Runtime.net45.xml
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\QLMainLexer.cs
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\QLMainParser.cs
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\QLMainVisitor.cs
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\QLMainBaseVisitor.cs
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.dll
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.pdb

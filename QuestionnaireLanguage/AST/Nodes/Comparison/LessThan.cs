@@ -8,17 +8,27 @@ using AST.Representation;
 
 namespace AST.Nodes.Comparison
 {
-    public class LessThan : IComparisonNode
+    public class LessThan : IComparison
     {
-        private IArithmeticNode left;
-        private IArithmeticNode right;
+        private IArithmetic left;
+        private IArithmetic right;
         private Representation.PositionInText position;
 
-        public LessThan(IArithmeticNode left, IArithmeticNode right, Representation.PositionInText position)
+        public LessThan(IArithmetic left, IArithmetic right, Representation.PositionInText position)
         {
             this.left = left;
             this.right = right;
             this.position = position;
+        }
+
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 

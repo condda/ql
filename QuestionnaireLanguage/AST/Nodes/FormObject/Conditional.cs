@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.FormObject
 {
-    public class Conditional : IFormObjectNode
+    public class Conditional : IFormObject
     {
-        private IList<IFormObjectNode> body;
-        private IExpressionNode condition;
+        private IList<IFormObject> body;
+        private IExpression condition;
         private PositionInText positionInText;
 
-        public Conditional(IExpressionNode condition, 
-                           IList<IFormObjectNode> body, 
+        public Conditional(IExpression condition, 
+                           IList<IFormObject> body, 
                            PositionInText positionInText)
         {
             this.condition = condition;
@@ -23,9 +23,19 @@ namespace AST.Nodes.FormObject
             this.positionInText = positionInText;
         }
 
-        public Representation.PositionInText GetPositionInText()
+        public PositionInText GetPositionInText()
         {
-            throw new NotImplementedException();
+            return positionInText;
+        }
+
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 }

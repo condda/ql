@@ -93,7 +93,7 @@ namespace AST.Visitors
             throw new NotImplementedException();
         }
 
-        public virtual T Visit(Nodes.Expression.Container<Nodes.Interfaces.IValue> node)
+        public virtual T Visit(Nodes.Expression.Container node)
         {
             throw new NotImplementedException();
         }
@@ -122,20 +122,75 @@ namespace AST.Visitors
             throw new NotImplementedException();
         }
 
-        public virtual T Visit(Nodes.KeyValuePair.KeyArithmeticPair node)
+
+
+        public virtual T Visit(Nodes.Labels.Label node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual T Visit(Nodes.KeyValuePair.KeyExpressionPair node)
+        public virtual T Visit(Nodes.Computation.Id node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual T Visit(Nodes.KeyValuePair.KeyValuePair node)
+        public virtual T Visit(Nodes.Computation.Value node)
         {
             throw new NotImplementedException();
         }
 
+        public virtual T Visit(Nodes.Computation.Arithmetic node)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual T Visit(Nodes.Computation.Expression node)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public object Visit(Nodes.Arithmetic.Literal literal)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public object Visit(Nodes.Arithmetic.Priority priority)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public object Visit(Nodes.Comparison.Priority priority)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        T IVisitor<T>.Visit(Nodes.Arithmetic.Literal literal)
+        {
+            throw new NotImplementedException();
+        }
+
+        T IVisitor<T>.Visit(Nodes.Arithmetic.Priority priority)
+        {
+            throw new NotImplementedException();
+        }
+
+        T IVisitor<T>.Visit(Nodes.Comparison.Priority priority)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T Visit(Nodes.FormObject.Conditional conditional)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T Visit(Nodes.TypeName.TypeName typeName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

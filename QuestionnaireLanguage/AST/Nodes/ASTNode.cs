@@ -19,9 +19,14 @@ namespace AST.Nodes
         }
         public abstract string GetParsedString();
 
-        //Visitor methods
-        public abstract void Accept(IVisitor visitor);
-        public abstract T Accept<T>(IVisitor<T> visitor);
+        public virtual void Accept(IVisitor visitor)
+        {
+            throw new NotImplementedException();
+        }
 
+        public virtual T Accept<T>(IVisitor<T> visitor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

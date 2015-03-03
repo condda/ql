@@ -8,16 +8,26 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Comparison
 {
-    public class Priority : IComparisonNode
+    public class Priority : IComparison
     {
         PositionInText position;
-        IComparisonNode child;
+        IComparison child;
 
-        public Priority(IComparisonNode child, PositionInText position)
+        public Priority(IComparison child, PositionInText position)
         {
             this.position = position;
             this.child = child;
         }
 
+
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 }

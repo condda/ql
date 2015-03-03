@@ -8,7 +8,7 @@ using AST.Representation;
 
 namespace AST.Nodes.Arithmetic
 {
-    public class Literal : IArithmeticNode, IValue
+    public class Literal : IArithmetic, IValue
     {
         private int value;
         private string representation;
@@ -24,6 +24,16 @@ namespace AST.Nodes.Arithmetic
         public PositionInText GetPositionInText()
         {
             return position;
+        }
+
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 }

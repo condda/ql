@@ -8,15 +8,15 @@ using AST.Representation;
 
 namespace AST.Nodes.Arithmetic
 {
-    public class Add : ASTNode, IArithmeticNode
+    public class Add : ASTNode, IArithmetic
     {
-        public IArithmeticNode left {get; private set;}
-        public IArithmeticNode right { get; private set;}
+        public IArithmetic left {get; private set;}
+        public IArithmetic right { get; private set;}
         private string parsedString;
 
         private Representation.PositionInText position;
 
-        public Add(IArithmeticNode left, IArithmeticNode right, string parsedString, PositionInText position)
+        public Add(IArithmetic left, IArithmetic right, string parsedString, PositionInText position)
             : base(position) 
         {
             this.left = left;
@@ -28,12 +28,12 @@ namespace AST.Nodes.Arithmetic
             return parsedString;
         }
 
-        public override void Accept(Visitors.IVisitor visitor)
+        public void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public override T Accept<T>(Visitors.IVisitor<T> visitor)
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }

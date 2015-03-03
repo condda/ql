@@ -19,7 +19,7 @@ namespace AST.Test
 
         }
 
-        public IASTNode GetAST(string path)
+        public ASTResult GetAST(string path)
         {
             string program = File.ReadAllText(path);
 
@@ -43,7 +43,7 @@ namespace AST.Test
             FormVisitor visitor = new FormVisitor();
             IASTNode ast = visitor.Visit(tree);
 
-            return ast;
+            return new ASTResult(ast);
         }
     }
 }

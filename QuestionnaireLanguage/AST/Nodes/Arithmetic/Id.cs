@@ -9,7 +9,7 @@ using AST.Nodes.Values;
 
 namespace AST.Nodes.Arithmetic
 {
-    public class Id : IArithmeticNode, IValue
+    public class Id : IArithmetic, IValue
     {
         public string identifier { get; private set; }
         public PositionInText position {get; private set; }
@@ -18,6 +18,16 @@ namespace AST.Nodes.Arithmetic
         {
             this.identifier = identifier;
             this.position = position;
+        }
+
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 }

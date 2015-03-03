@@ -26,5 +26,15 @@ namespace AST.Nodes.TypeName
         {
             return position;
         }
+
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 }

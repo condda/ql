@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\QLMain.g4 by ANTLR 4.3
+// Generated from C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\QLMain.g4 by ANTLR 4.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -37,14 +37,6 @@ public interface IQLMainVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitBoolType([NotNull] QLMainParser.BoolTypeContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>KvpLiteral</c>
-	/// labeled alternative in <see cref="QLMainParser.keyValuePair"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitKvpLiteral([NotNull] QLMainParser.KvpLiteralContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="QLMainParser.formObject"/>.
@@ -76,6 +68,13 @@ public interface IQLMainVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitString([NotNull] QLMainParser.StringContext context);
 
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="QLMainParser.computed"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitComputed([NotNull] QLMainParser.ComputedContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by the <c>StringType</c>
 	/// labeled alternative in <see cref="QLMainParser.type"/>.
 	/// </summary>
@@ -92,20 +91,20 @@ public interface IQLMainVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitTrueBool([NotNull] QLMainParser.TrueBoolContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>KvpArithmetic</c>
-	/// labeled alternative in <see cref="QLMainParser.keyValuePair"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitKvpArithmetic([NotNull] QLMainParser.KvpArithmeticContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by the <c>BoolValue</c>
 	/// labeled alternative in <see cref="QLMainParser.value"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitBoolValue([NotNull] QLMainParser.BoolValueContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ComputationValue</c>
+	/// labeled alternative in <see cref="QLMainParser.computation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitComputationValue([NotNull] QLMainParser.ComputationValueContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>PriorityArithmetic</c>
@@ -132,19 +131,20 @@ public interface IQLMainVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitBoolExpression([NotNull] QLMainParser.BoolExpressionContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="QLMainParser.keyValuePairs"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitKeyValuePairs([NotNull] QLMainParser.KeyValuePairsContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by the <c>FalseBool</c>
 	/// labeled alternative in <see cref="QLMainParser.bool"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitFalseBool([NotNull] QLMainParser.FalseBoolContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ComputationExpression</c>
+	/// labeled alternative in <see cref="QLMainParser.computation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitComputationExpression([NotNull] QLMainParser.ComputationExpressionContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="QLMainParser.id"/>.
@@ -186,27 +186,20 @@ public interface IQLMainVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitIntValue([NotNull] QLMainParser.IntValueContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>KvpExpression</c>
-	/// labeled alternative in <see cref="QLMainParser.keyValuePair"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitKvpExpression([NotNull] QLMainParser.KvpExpressionContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="QLMainParser.key"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitKey([NotNull] QLMainParser.KeyContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by the <c>IntArithmetic</c>
 	/// labeled alternative in <see cref="QLMainParser.arithmetic"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitIntArithmetic([NotNull] QLMainParser.IntArithmeticContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ComputationArithmetic</c>
+	/// labeled alternative in <see cref="QLMainParser.computation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitComputationArithmetic([NotNull] QLMainParser.ComputationArithmeticContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>SubAdd</c>
@@ -240,11 +233,26 @@ public interface IQLMainVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitPriorityComparison([NotNull] QLMainParser.PriorityComparisonContext context);
 
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="QLMainParser.label"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitLabel([NotNull] QLMainParser.LabelContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="QLMainParser.int"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitInt([NotNull] QLMainParser.IntContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ComputationId</c>
+	/// labeled alternative in <see cref="QLMainParser.computation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitComputationId([NotNull] QLMainParser.ComputationIdContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>ComparisonExpression</c>

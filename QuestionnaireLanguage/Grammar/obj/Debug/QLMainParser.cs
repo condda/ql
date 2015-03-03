@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\QLMain.g4 by ANTLR 4.3
+// Generated from C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\QLMain.g4 by ANTLR 4.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -29,27 +29,28 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 [System.CLSCompliant(false)]
 public partial class QLMainParser : Parser {
 	public const int
-		T__8=1, T__7=2, T__6=3, T__5=4, T__4=5, T__3=6, T__2=7, T__1=8, T__0=9, 
-		GT=10, LT=11, EQ=12, NEQ=13, GET=14, LET=15, AND=16, OR=17, NOT=18, MUL=19, 
-		DIV=20, SUB=21, ADD=22, TRUE=23, FALSE=24, BOOL=25, STRING=26, DATE=27, 
-		INT=28, INTLITERAL=29, YEAR=30, MONTH=31, DAY=32, ALPHANUMERIC=33, STRINGLITERAL=34, 
-		WS=35, BLOCK_COMMENT=36, LINE_COMMENT=37;
+		T__9=1, T__8=2, T__7=3, T__6=4, T__5=5, T__4=6, T__3=7, T__2=8, T__1=9, 
+		T__0=10, GT=11, LT=12, EQ=13, NEQ=14, GET=15, LET=16, AND=17, OR=18, NOT=19, 
+		MUL=20, DIV=21, SUB=22, ADD=23, TRUE=24, FALSE=25, BOOL=26, STRING=27, 
+		DATE=28, INT=29, INTLITERAL=30, YEAR=31, MONTH=32, DAY=33, ALPHANUMERIC=34, 
+		STRINGLITERAL=35, WS=36, BLOCK_COMMENT=37, LINE_COMMENT=38;
 	public static readonly string[] tokenNames = {
-		"<INVALID>", "'question'", "'('", "')'", "'enable when'", "'{'", "','", 
-		"'form'", "'='", "'}'", "'>'", "'<'", "'=='", "'!='", "'>='", "'<='", 
-		"'&&'", "'||'", "'!'", "'*'", "'/'", "'-'", "'+'", "'True'", "'False'", 
-		"'bool'", "'string'", "'date'", "'int'", "INTLITERAL", "YEAR", "MONTH", 
-		"DAY", "ALPHANUMERIC", "STRINGLITERAL", "WS", "BLOCK_COMMENT", "LINE_COMMENT"
+		"<INVALID>", "'question'", "'label'", "'('", "')'", "'computed'", "':'", 
+		"'enable when'", "'{'", "'form'", "'}'", "'>'", "'<'", "'=='", "'!='", 
+		"'>='", "'<='", "'&&'", "'||'", "'!'", "'*'", "'/'", "'-'", "'+'", "'True'", 
+		"'False'", "'bool'", "'string'", "'date'", "'int'", "INTLITERAL", "YEAR", 
+		"MONTH", "DAY", "ALPHANUMERIC", "STRINGLITERAL", "WS", "BLOCK_COMMENT", 
+		"LINE_COMMENT"
 	};
 	public const int
 		RULE_form = 0, RULE_formSection = 1, RULE_formObject = 2, RULE_question = 3, 
 		RULE_conditional = 4, RULE_type = 5, RULE_value = 6, RULE_bool = 7, RULE_string = 8, 
-		RULE_int = 9, RULE_id = 10, RULE_keyValuePairs = 11, RULE_keyValuePair = 12, 
-		RULE_key = 13, RULE_expression = 14, RULE_comparison = 15, RULE_arithmetic = 16;
+		RULE_int = 9, RULE_id = 10, RULE_label = 11, RULE_computed = 12, RULE_computation = 13, 
+		RULE_expression = 14, RULE_comparison = 15, RULE_arithmetic = 16;
 	public static readonly string[] ruleNames = {
 		"form", "formSection", "formObject", "question", "conditional", "type", 
-		"value", "bool", "string", "int", "id", "keyValuePairs", "keyValuePair", 
-		"key", "expression", "comparison", "arithmetic"
+		"value", "bool", "string", "int", "id", "label", "computed", "computation", 
+		"expression", "comparison", "arithmetic"
 	};
 
 	public override string GrammarFileName { get { return "QLMain.g4"; } }
@@ -88,7 +89,7 @@ public partial class QLMainParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 34; Match(T__2);
+			State = 34; Match(T__1);
 			State = 35; formSection();
 			}
 		}
@@ -130,11 +131,11 @@ public partial class QLMainParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 37; Match(T__4);
+			State = 37; Match(T__2);
 			State = 41;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
-			while (_la==T__8 || _la==T__5) {
+			while (_la==T__9 || _la==T__3) {
 				{
 				{
 				State = 38; formObject();
@@ -184,13 +185,13 @@ public partial class QLMainParser : Parser {
 		try {
 			State = 48;
 			switch (_input.La(1)) {
-			case T__8:
+			case T__9:
 				EnterOuterAlt(_localctx, 1);
 				{
 				State = 46; question();
 				}
 				break;
-			case T__5:
+			case T__3:
 				EnterOuterAlt(_localctx, 2);
 				{
 				State = 47; conditional();
@@ -212,11 +213,14 @@ public partial class QLMainParser : Parser {
 	}
 
 	public partial class QuestionContext : ParserRuleContext {
-		public KeyValuePairsContext keyValuePairs() {
-			return GetRuleContext<KeyValuePairsContext>(0);
+		public LabelContext label() {
+			return GetRuleContext<LabelContext>(0);
 		}
 		public IdContext id() {
 			return GetRuleContext<IdContext>(0);
+		}
+		public ComputedContext computed() {
+			return GetRuleContext<ComputedContext>(0);
 		}
 		public TypeContext type() {
 			return GetRuleContext<TypeContext>(0);
@@ -237,13 +241,22 @@ public partial class QLMainParser : Parser {
 	public QuestionContext question() {
 		QuestionContext _localctx = new QuestionContext(_ctx, State);
 		EnterRule(_localctx, 6, RULE_question);
+		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 50; Match(T__8);
+			State = 50; Match(T__9);
 			State = 51; id();
 			State = 52; type();
-			State = 53; keyValuePairs();
+			State = 53; label();
+			State = 55;
+			_la = _input.La(1);
+			if (_la==T__5) {
+				{
+				State = 54; computed();
+				}
+			}
+
 			}
 		}
 		catch (RecognitionException re) {
@@ -283,9 +296,9 @@ public partial class QLMainParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 55; Match(T__5);
-			State = 56; expression(0);
-			State = 57; formSection();
+			State = 57; Match(T__3);
+			State = 58; expression(0);
+			State = 59; formSection();
 			}
 		}
 		catch (RecognitionException re) {
@@ -344,27 +357,27 @@ public partial class QLMainParser : Parser {
 		TypeContext _localctx = new TypeContext(_ctx, State);
 		EnterRule(_localctx, 10, RULE_type);
 		try {
-			State = 62;
+			State = 64;
 			switch (_input.La(1)) {
 			case BOOL:
 				_localctx = new BoolTypeContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 59; Match(BOOL);
+				State = 61; Match(BOOL);
 				}
 				break;
 			case STRING:
 				_localctx = new StringTypeContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 60; Match(STRING);
+				State = 62; Match(STRING);
 				}
 				break;
 			case INT:
 				_localctx = new IntTypeContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 61; Match(INT);
+				State = 63; Match(INT);
 				}
 				break;
 			default:
@@ -433,28 +446,28 @@ public partial class QLMainParser : Parser {
 		ValueContext _localctx = new ValueContext(_ctx, State);
 		EnterRule(_localctx, 12, RULE_value);
 		try {
-			State = 67;
+			State = 69;
 			switch (_input.La(1)) {
 			case TRUE:
 			case FALSE:
 				_localctx = new BoolValueContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 64; @bool();
+				State = 66; @bool();
 				}
 				break;
 			case STRINGLITERAL:
 				_localctx = new StringValueContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 65; @string();
+				State = 67; @string();
 				}
 				break;
 			case INTLITERAL:
 				_localctx = new IntValueContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 66; @int();
+				State = 68; @int();
 				}
 				break;
 			default:
@@ -508,20 +521,20 @@ public partial class QLMainParser : Parser {
 		BoolContext _localctx = new BoolContext(_ctx, State);
 		EnterRule(_localctx, 14, RULE_bool);
 		try {
-			State = 71;
+			State = 73;
 			switch (_input.La(1)) {
 			case TRUE:
 				_localctx = new TrueBoolContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 69; Match(TRUE);
+				State = 71; Match(TRUE);
 				}
 				break;
 			case FALSE:
 				_localctx = new FalseBoolContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 70; Match(FALSE);
+				State = 72; Match(FALSE);
 				}
 				break;
 			default:
@@ -560,7 +573,7 @@ public partial class QLMainParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 73; Match(STRINGLITERAL);
+			State = 75; Match(STRINGLITERAL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -595,7 +608,7 @@ public partial class QLMainParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 75; Match(INTLITERAL);
+			State = 77; Match(INTLITERAL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -630,7 +643,7 @@ public partial class QLMainParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 77; Match(ALPHANUMERIC);
+			State = 79; Match(ALPHANUMERIC);
 			}
 		}
 		catch (RecognitionException re) {
@@ -644,54 +657,30 @@ public partial class QLMainParser : Parser {
 		return _localctx;
 	}
 
-	public partial class KeyValuePairsContext : ParserRuleContext {
-		public KeyValuePairContext _keyValuePair;
-		public IList<KeyValuePairContext> _kvp = new List<KeyValuePairContext>();
-		public IReadOnlyList<KeyValuePairContext> keyValuePair() {
-			return GetRuleContexts<KeyValuePairContext>();
-		}
-		public KeyValuePairContext keyValuePair(int i) {
-			return GetRuleContext<KeyValuePairContext>(i);
-		}
-		public KeyValuePairsContext(ParserRuleContext parent, int invokingState)
+	public partial class LabelContext : ParserRuleContext {
+		public ITerminalNode STRING() { return GetToken(QLMainParser.STRING, 0); }
+		public LabelContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_keyValuePairs; } }
+		public override int RuleIndex { get { return RULE_label; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IQLMainVisitor<TResult> typedVisitor = visitor as IQLMainVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitKeyValuePairs(this);
+			if (typedVisitor != null) return typedVisitor.VisitLabel(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public KeyValuePairsContext keyValuePairs() {
-		KeyValuePairsContext _localctx = new KeyValuePairsContext(_ctx, State);
-		EnterRule(_localctx, 22, RULE_keyValuePairs);
-		int _la;
+	public LabelContext label() {
+		LabelContext _localctx = new LabelContext(_ctx, State);
+		EnterRule(_localctx, 22, RULE_label);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 79; Match(T__4);
-			State = 80; _localctx._keyValuePair = keyValuePair();
-			_localctx._kvp.Add(_localctx._keyValuePair);
-			State = 85;
-			_errHandler.Sync(this);
-			_la = _input.La(1);
-			while (_la==T__3) {
-				{
-				{
-				State = 81; Match(T__3);
-				State = 82; _localctx._keyValuePair = keyValuePair();
-				_localctx._kvp.Add(_localctx._keyValuePair);
-				}
-				}
-				State = 87;
-				_errHandler.Sync(this);
-				_la = _input.La(1);
-			}
-			State = 88; Match(T__0);
+			State = 81; Match(T__8);
+			State = 82; Match(T__4);
+			State = 83; Match(STRING);
 			}
 		}
 		catch (RecognitionException re) {
@@ -705,132 +694,140 @@ public partial class QLMainParser : Parser {
 		return _localctx;
 	}
 
-	public partial class KeyValuePairContext : ParserRuleContext {
-		public KeyValuePairContext(ParserRuleContext parent, int invokingState)
+	public partial class ComputedContext : ParserRuleContext {
+		public ComputationContext computation() {
+			return GetRuleContext<ComputationContext>(0);
+		}
+		public ComputedContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_keyValuePair; } }
-	 
-		public KeyValuePairContext() { }
-		public virtual void CopyFrom(KeyValuePairContext context) {
-			base.CopyFrom(context);
-		}
-	}
-	public partial class KvpLiteralContext : KeyValuePairContext {
-		public ValueContext value() {
-			return GetRuleContext<ValueContext>(0);
-		}
-		public KeyContext key() {
-			return GetRuleContext<KeyContext>(0);
-		}
-		public KvpLiteralContext(KeyValuePairContext context) { CopyFrom(context); }
+		public override int RuleIndex { get { return RULE_computed; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IQLMainVisitor<TResult> typedVisitor = visitor as IQLMainVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitKvpLiteral(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class KvpArithmeticContext : KeyValuePairContext {
-		public KeyContext key() {
-			return GetRuleContext<KeyContext>(0);
-		}
-		public ArithmeticContext arithmetic() {
-			return GetRuleContext<ArithmeticContext>(0);
-		}
-		public KvpArithmeticContext(KeyValuePairContext context) { CopyFrom(context); }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IQLMainVisitor<TResult> typedVisitor = visitor as IQLMainVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitKvpArithmetic(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class KvpExpressionContext : KeyValuePairContext {
-		public KeyContext key() {
-			return GetRuleContext<KeyContext>(0);
-		}
-		public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		public KvpExpressionContext(KeyValuePairContext context) { CopyFrom(context); }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IQLMainVisitor<TResult> typedVisitor = visitor as IQLMainVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitKvpExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitComputed(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public KeyValuePairContext keyValuePair() {
-		KeyValuePairContext _localctx = new KeyValuePairContext(_ctx, State);
-		EnterRule(_localctx, 24, RULE_keyValuePair);
+	public ComputedContext computed() {
+		ComputedContext _localctx = new ComputedContext(_ctx, State);
+		EnterRule(_localctx, 24, RULE_computed);
 		try {
-			State = 102;
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 85; Match(T__5);
+			State = 86; Match(T__4);
+			State = 87; computation();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.ReportError(this, re);
+			_errHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ComputationContext : ParserRuleContext {
+		public ComputationContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_computation; } }
+	 
+		public ComputationContext() { }
+		public virtual void CopyFrom(ComputationContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ComputationExpressionContext : ComputationContext {
+		public ExpressionContext expression() {
+			return GetRuleContext<ExpressionContext>(0);
+		}
+		public ComputationExpressionContext(ComputationContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IQLMainVisitor<TResult> typedVisitor = visitor as IQLMainVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitComputationExpression(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ComputationValueContext : ComputationContext {
+		public ValueContext value() {
+			return GetRuleContext<ValueContext>(0);
+		}
+		public ComputationValueContext(ComputationContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IQLMainVisitor<TResult> typedVisitor = visitor as IQLMainVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitComputationValue(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ComputationIdContext : ComputationContext {
+		public IdContext id() {
+			return GetRuleContext<IdContext>(0);
+		}
+		public ComputationIdContext(ComputationContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IQLMainVisitor<TResult> typedVisitor = visitor as IQLMainVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitComputationId(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ComputationArithmeticContext : ComputationContext {
+		public ArithmeticContext arithmetic() {
+			return GetRuleContext<ArithmeticContext>(0);
+		}
+		public ComputationArithmeticContext(ComputationContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IQLMainVisitor<TResult> typedVisitor = visitor as IQLMainVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitComputationArithmetic(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ComputationContext computation() {
+		ComputationContext _localctx = new ComputationContext(_ctx, State);
+		EnterRule(_localctx, 26, RULE_computation);
+		try {
+			State = 93;
 			switch ( Interpreter.AdaptivePredict(_input,6,_ctx) ) {
 			case 1:
-				_localctx = new KvpExpressionContext(_localctx);
+				_localctx = new ComputationIdContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 90; key();
-				State = 91; Match(T__1);
-				State = 92; expression(0);
+				State = 89; id();
 				}
 				break;
 
 			case 2:
-				_localctx = new KvpArithmeticContext(_localctx);
+				_localctx = new ComputationExpressionContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 94; key();
-				State = 95; Match(T__1);
-				State = 96; arithmetic(0);
+				State = 90; expression(0);
 				}
 				break;
 
 			case 3:
-				_localctx = new KvpLiteralContext(_localctx);
+				_localctx = new ComputationArithmeticContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 98; key();
-				State = 99; Match(T__1);
-				State = 100; value();
+				State = 91; arithmetic(0);
 				}
 				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.ReportError(this, re);
-			_errHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
 
-	public partial class KeyContext : ParserRuleContext {
-		public ITerminalNode ALPHANUMERIC() { return GetToken(QLMainParser.ALPHANUMERIC, 0); }
-		public KeyContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_key; } }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IQLMainVisitor<TResult> typedVisitor = visitor as IQLMainVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitKey(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public KeyContext key() {
-		KeyContext _localctx = new KeyContext(_ctx, State);
-		EnterRule(_localctx, 26, RULE_key);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 104; Match(ALPHANUMERIC);
+			case 4:
+				_localctx = new ComputationValueContext(_localctx);
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 92; value();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -978,7 +975,7 @@ public partial class QLMainParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 120;
+			State = 109;
 			switch ( Interpreter.AdaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				{
@@ -986,8 +983,8 @@ public partial class QLMainParser : Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				State = 107; Match(NOT);
-				State = 108; expression(5);
+				State = 96; Match(NOT);
+				State = 97; expression(5);
 				}
 				break;
 
@@ -996,9 +993,9 @@ public partial class QLMainParser : Parser {
 				_localctx = new PriorityExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 109; Match(T__7);
-				State = 110; expression(0);
-				State = 111; Match(T__6);
+				State = 98; Match(T__7);
+				State = 99; expression(0);
+				State = 100; Match(T__6);
 				}
 				break;
 
@@ -1007,7 +1004,7 @@ public partial class QLMainParser : Parser {
 				_localctx = new BoolExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 113; @bool();
+				State = 102; @bool();
 				}
 				break;
 
@@ -1016,7 +1013,7 @@ public partial class QLMainParser : Parser {
 				_localctx = new IdExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 114; id();
+				State = 103; id();
 				}
 				break;
 
@@ -1025,15 +1022,15 @@ public partial class QLMainParser : Parser {
 				_localctx = new EqualityContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 115; arithmetic(0);
-				State = 116;
+				State = 104; arithmetic(0);
+				State = 105;
 				((EqualityContext)_localctx).op = _input.Lt(1);
 				_la = _input.La(1);
 				if ( !(_la==EQ || _la==NEQ) ) {
 					((EqualityContext)_localctx).op = _errHandler.RecoverInline(this);
 				}
 				Consume();
-				State = 117; arithmetic(0);
+				State = 106; arithmetic(0);
 				}
 				break;
 
@@ -1042,12 +1039,12 @@ public partial class QLMainParser : Parser {
 				_localctx = new ComparisonExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 119; comparison();
+				State = 108; comparison();
 				}
 				break;
 			}
 			_ctx.stop = _input.Lt(-1);
-			State = 130;
+			State = 119;
 			_errHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(_input,9,_ctx);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
@@ -1055,16 +1052,16 @@ public partial class QLMainParser : Parser {
 					if ( _parseListeners!=null ) TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 128;
+					State = 117;
 					switch ( Interpreter.AdaptivePredict(_input,8,_ctx) ) {
 					case 1:
 						{
 						_localctx = new AndContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 122;
+						State = 111;
 						if (!(Precpred(_ctx, 4))) throw new FailedPredicateException(this, "Precpred(_ctx, 4)");
-						State = 123; ((AndContext)_localctx).op = Match(AND);
-						State = 124; expression(5);
+						State = 112; ((AndContext)_localctx).op = Match(AND);
+						State = 113; expression(5);
 						}
 						break;
 
@@ -1072,16 +1069,16 @@ public partial class QLMainParser : Parser {
 						{
 						_localctx = new OrContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 125;
+						State = 114;
 						if (!(Precpred(_ctx, 3))) throw new FailedPredicateException(this, "Precpred(_ctx, 3)");
-						State = 126; ((OrContext)_localctx).op = Match(OR);
-						State = 127; expression(4);
+						State = 115; ((OrContext)_localctx).op = Match(OR);
+						State = 116; expression(4);
 						}
 						break;
 					}
 					} 
 				}
-				State = 132;
+				State = 121;
 				_errHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(_input,9,_ctx);
 			}
@@ -1147,15 +1144,15 @@ public partial class QLMainParser : Parser {
 		EnterRule(_localctx, 30, RULE_comparison);
 		int _la;
 		try {
-			State = 141;
+			State = 130;
 			switch ( Interpreter.AdaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				_localctx = new PriorityComparisonContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 133; Match(T__7);
-				State = 134; comparison();
-				State = 135; Match(T__6);
+				State = 122; Match(T__7);
+				State = 123; comparison();
+				State = 124; Match(T__6);
 				}
 				break;
 
@@ -1163,15 +1160,15 @@ public partial class QLMainParser : Parser {
 				_localctx = new RelationalComparisonContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 137; arithmetic(0);
-				State = 138;
+				State = 126; arithmetic(0);
+				State = 127;
 				((RelationalComparisonContext)_localctx).op = _input.Lt(1);
 				_la = _input.La(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << GT) | (1L << LT) | (1L << GET) | (1L << LET))) != 0)) ) {
 					((RelationalComparisonContext)_localctx).op = _errHandler.RecoverInline(this);
 				}
 				Consume();
-				State = 139; arithmetic(0);
+				State = 128; arithmetic(0);
 				}
 				break;
 			}
@@ -1284,7 +1281,7 @@ public partial class QLMainParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 150;
+			State = 139;
 			switch (_input.La(1)) {
 			case T__7:
 				{
@@ -1292,9 +1289,9 @@ public partial class QLMainParser : Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				State = 144; Match(T__7);
-				State = 145; arithmetic(0);
-				State = 146; Match(T__6);
+				State = 133; Match(T__7);
+				State = 134; arithmetic(0);
+				State = 135; Match(T__6);
 				}
 				break;
 			case INTLITERAL:
@@ -1302,7 +1299,7 @@ public partial class QLMainParser : Parser {
 				_localctx = new IntArithmeticContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 148; @int();
+				State = 137; @int();
 				}
 				break;
 			case ALPHANUMERIC:
@@ -1310,14 +1307,14 @@ public partial class QLMainParser : Parser {
 				_localctx = new IdArithmeticContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 149; id();
+				State = 138; id();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.Lt(-1);
-			State = 160;
+			State = 149;
 			_errHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(_input,13,_ctx);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
@@ -1325,22 +1322,22 @@ public partial class QLMainParser : Parser {
 					if ( _parseListeners!=null ) TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 158;
+					State = 147;
 					switch ( Interpreter.AdaptivePredict(_input,12,_ctx) ) {
 					case 1:
 						{
 						_localctx = new DivMulContext(new ArithmeticContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_arithmetic);
-						State = 152;
+						State = 141;
 						if (!(Precpred(_ctx, 4))) throw new FailedPredicateException(this, "Precpred(_ctx, 4)");
-						State = 153;
+						State = 142;
 						((DivMulContext)_localctx).op = _input.Lt(1);
 						_la = _input.La(1);
 						if ( !(_la==MUL || _la==DIV) ) {
 							((DivMulContext)_localctx).op = _errHandler.RecoverInline(this);
 						}
 						Consume();
-						State = 154; arithmetic(5);
+						State = 143; arithmetic(5);
 						}
 						break;
 
@@ -1348,22 +1345,22 @@ public partial class QLMainParser : Parser {
 						{
 						_localctx = new SubAddContext(new ArithmeticContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_arithmetic);
-						State = 155;
+						State = 144;
 						if (!(Precpred(_ctx, 3))) throw new FailedPredicateException(this, "Precpred(_ctx, 3)");
-						State = 156;
+						State = 145;
 						((SubAddContext)_localctx).op = _input.Lt(1);
 						_la = _input.La(1);
 						if ( !(_la==SUB || _la==ADD) ) {
 							((SubAddContext)_localctx).op = _errHandler.RecoverInline(this);
 						}
 						Consume();
-						State = 157; arithmetic(4);
+						State = 146; arithmetic(4);
 						}
 						break;
 					}
 					} 
 				}
-				State = 162;
+				State = 151;
 				_errHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(_input,13,_ctx);
 			}
@@ -1406,65 +1403,61 @@ public partial class QLMainParser : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\'\xA6\x4\x2\t\x2"+
+		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3(\x9B\x4\x2\t\x2"+
 		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t"+
 		"\t\x4\n\t\n\x4\v\t\v\x4\f\t\f\x4\r\t\r\x4\xE\t\xE\x4\xF\t\xF\x4\x10\t"+
 		"\x10\x4\x11\t\x11\x4\x12\t\x12\x3\x2\x3\x2\x3\x2\x3\x3\x3\x3\a\x3*\n\x3"+
 		"\f\x3\xE\x3-\v\x3\x3\x3\x3\x3\x3\x4\x3\x4\x5\x4\x33\n\x4\x3\x5\x3\x5\x3"+
-		"\x5\x3\x5\x3\x5\x3\x6\x3\x6\x3\x6\x3\x6\x3\a\x3\a\x3\a\x5\a\x41\n\a\x3"+
-		"\b\x3\b\x3\b\x5\b\x46\n\b\x3\t\x3\t\x5\tJ\n\t\x3\n\x3\n\x3\v\x3\v\x3\f"+
-		"\x3\f\x3\r\x3\r\x3\r\x3\r\a\rV\n\r\f\r\xE\rY\v\r\x3\r\x3\r\x3\xE\x3\xE"+
-		"\x3\xE\x3\xE\x3\xE\x3\xE\x3\xE\x3\xE\x3\xE\x3\xE\x3\xE\x3\xE\x5\xEi\n"+
-		"\xE\x3\xF\x3\xF\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10"+
-		"\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x5\x10{\n\x10\x3\x10\x3\x10"+
-		"\x3\x10\x3\x10\x3\x10\x3\x10\a\x10\x83\n\x10\f\x10\xE\x10\x86\v\x10\x3"+
-		"\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x5\x11\x90\n\x11"+
-		"\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\x5\x12\x99\n\x12\x3"+
-		"\x12\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\a\x12\xA1\n\x12\f\x12\xE\x12\xA4"+
-		"\v\x12\x3\x12\x2\x2\x4\x1E\"\x13\x2\x2\x4\x2\x6\x2\b\x2\n\x2\f\x2\xE\x2"+
-		"\x10\x2\x12\x2\x14\x2\x16\x2\x18\x2\x1A\x2\x1C\x2\x1E\x2 \x2\"\x2\x2\x6"+
-		"\x3\x2\xE\xF\x4\x2\f\r\x10\x11\x3\x2\x15\x16\x3\x2\x17\x18\xAA\x2$\x3"+
-		"\x2\x2\x2\x4\'\x3\x2\x2\x2\x6\x32\x3\x2\x2\x2\b\x34\x3\x2\x2\x2\n\x39"+
-		"\x3\x2\x2\x2\f@\x3\x2\x2\x2\xE\x45\x3\x2\x2\x2\x10I\x3\x2\x2\x2\x12K\x3"+
-		"\x2\x2\x2\x14M\x3\x2\x2\x2\x16O\x3\x2\x2\x2\x18Q\x3\x2\x2\x2\x1Ah\x3\x2"+
-		"\x2\x2\x1Cj\x3\x2\x2\x2\x1Ez\x3\x2\x2\x2 \x8F\x3\x2\x2\x2\"\x98\x3\x2"+
-		"\x2\x2$%\a\t\x2\x2%&\x5\x4\x3\x2&\x3\x3\x2\x2\x2\'+\a\a\x2\x2(*\x5\x6"+
-		"\x4\x2)(\x3\x2\x2\x2*-\x3\x2\x2\x2+)\x3\x2\x2\x2+,\x3\x2\x2\x2,.\x3\x2"+
-		"\x2\x2-+\x3\x2\x2\x2./\a\v\x2\x2/\x5\x3\x2\x2\x2\x30\x33\x5\b\x5\x2\x31"+
-		"\x33\x5\n\x6\x2\x32\x30\x3\x2\x2\x2\x32\x31\x3\x2\x2\x2\x33\a\x3\x2\x2"+
-		"\x2\x34\x35\a\x3\x2\x2\x35\x36\x5\x16\f\x2\x36\x37\x5\f\a\x2\x37\x38\x5"+
-		"\x18\r\x2\x38\t\x3\x2\x2\x2\x39:\a\x6\x2\x2:;\x5\x1E\x10\x2;<\x5\x4\x3"+
-		"\x2<\v\x3\x2\x2\x2=\x41\a\x1B\x2\x2>\x41\a\x1C\x2\x2?\x41\a\x1E\x2\x2"+
-		"@=\x3\x2\x2\x2@>\x3\x2\x2\x2@?\x3\x2\x2\x2\x41\r\x3\x2\x2\x2\x42\x46\x5"+
-		"\x10\t\x2\x43\x46\x5\x12\n\x2\x44\x46\x5\x14\v\x2\x45\x42\x3\x2\x2\x2"+
-		"\x45\x43\x3\x2\x2\x2\x45\x44\x3\x2\x2\x2\x46\xF\x3\x2\x2\x2GJ\a\x19\x2"+
-		"\x2HJ\a\x1A\x2\x2IG\x3\x2\x2\x2IH\x3\x2\x2\x2J\x11\x3\x2\x2\x2KL\a$\x2"+
-		"\x2L\x13\x3\x2\x2\x2MN\a\x1F\x2\x2N\x15\x3\x2\x2\x2OP\a#\x2\x2P\x17\x3"+
-		"\x2\x2\x2QR\a\a\x2\x2RW\x5\x1A\xE\x2ST\a\b\x2\x2TV\x5\x1A\xE\x2US\x3\x2"+
-		"\x2\x2VY\x3\x2\x2\x2WU\x3\x2\x2\x2WX\x3\x2\x2\x2XZ\x3\x2\x2\x2YW\x3\x2"+
-		"\x2\x2Z[\a\v\x2\x2[\x19\x3\x2\x2\x2\\]\x5\x1C\xF\x2]^\a\n\x2\x2^_\x5\x1E"+
-		"\x10\x2_i\x3\x2\x2\x2`\x61\x5\x1C\xF\x2\x61\x62\a\n\x2\x2\x62\x63\x5\""+
-		"\x12\x2\x63i\x3\x2\x2\x2\x64\x65\x5\x1C\xF\x2\x65\x66\a\n\x2\x2\x66g\x5"+
-		"\xE\b\x2gi\x3\x2\x2\x2h\\\x3\x2\x2\x2h`\x3\x2\x2\x2h\x64\x3\x2\x2\x2i"+
-		"\x1B\x3\x2\x2\x2jk\a#\x2\x2k\x1D\x3\x2\x2\x2lm\b\x10\x1\x2mn\a\x14\x2"+
-		"\x2n{\x5\x1E\x10\aop\a\x4\x2\x2pq\x5\x1E\x10\x2qr\a\x5\x2\x2r{\x3\x2\x2"+
-		"\x2s{\x5\x10\t\x2t{\x5\x16\f\x2uv\x5\"\x12\x2vw\t\x2\x2\x2wx\x5\"\x12"+
-		"\x2x{\x3\x2\x2\x2y{\x5 \x11\x2zl\x3\x2\x2\x2zo\x3\x2\x2\x2zs\x3\x2\x2"+
-		"\x2zt\x3\x2\x2\x2zu\x3\x2\x2\x2zy\x3\x2\x2\x2{\x84\x3\x2\x2\x2|}\f\x6"+
-		"\x2\x2}~\a\x12\x2\x2~\x83\x5\x1E\x10\a\x7F\x80\f\x5\x2\x2\x80\x81\a\x13"+
-		"\x2\x2\x81\x83\x5\x1E\x10\x6\x82|\x3\x2\x2\x2\x82\x7F\x3\x2\x2\x2\x83"+
-		"\x86\x3\x2\x2\x2\x84\x82\x3\x2\x2\x2\x84\x85\x3\x2\x2\x2\x85\x1F\x3\x2"+
-		"\x2\x2\x86\x84\x3\x2\x2\x2\x87\x88\a\x4\x2\x2\x88\x89\x5 \x11\x2\x89\x8A"+
-		"\a\x5\x2\x2\x8A\x90\x3\x2\x2\x2\x8B\x8C\x5\"\x12\x2\x8C\x8D\t\x3\x2\x2"+
-		"\x8D\x8E\x5\"\x12\x2\x8E\x90\x3\x2\x2\x2\x8F\x87\x3\x2\x2\x2\x8F\x8B\x3"+
-		"\x2\x2\x2\x90!\x3\x2\x2\x2\x91\x92\b\x12\x1\x2\x92\x93\a\x4\x2\x2\x93"+
-		"\x94\x5\"\x12\x2\x94\x95\a\x5\x2\x2\x95\x99\x3\x2\x2\x2\x96\x99\x5\x14"+
-		"\v\x2\x97\x99\x5\x16\f\x2\x98\x91\x3\x2\x2\x2\x98\x96\x3\x2\x2\x2\x98"+
-		"\x97\x3\x2\x2\x2\x99\xA2\x3\x2\x2\x2\x9A\x9B\f\x6\x2\x2\x9B\x9C\t\x4\x2"+
-		"\x2\x9C\xA1\x5\"\x12\a\x9D\x9E\f\x5\x2\x2\x9E\x9F\t\x5\x2\x2\x9F\xA1\x5"+
-		"\"\x12\x6\xA0\x9A\x3\x2\x2\x2\xA0\x9D\x3\x2\x2\x2\xA1\xA4\x3\x2\x2\x2"+
-		"\xA2\xA0\x3\x2\x2\x2\xA2\xA3\x3\x2\x2\x2\xA3#\x3\x2\x2\x2\xA4\xA2\x3\x2"+
-		"\x2\x2\x10+\x32@\x45IWhz\x82\x84\x8F\x98\xA0\xA2";
+		"\x5\x3\x5\x3\x5\x5\x5:\n\x5\x3\x6\x3\x6\x3\x6\x3\x6\x3\a\x3\a\x3\a\x5"+
+		"\a\x43\n\a\x3\b\x3\b\x3\b\x5\bH\n\b\x3\t\x3\t\x5\tL\n\t\x3\n\x3\n\x3\v"+
+		"\x3\v\x3\f\x3\f\x3\r\x3\r\x3\r\x3\r\x3\xE\x3\xE\x3\xE\x3\xE\x3\xF\x3\xF"+
+		"\x3\xF\x3\xF\x5\xF`\n\xF\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3"+
+		"\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\x5\x10p\n\x10\x3"+
+		"\x10\x3\x10\x3\x10\x3\x10\x3\x10\x3\x10\a\x10x\n\x10\f\x10\xE\x10{\v\x10"+
+		"\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x5\x11\x85\n"+
+		"\x11\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\x5\x12\x8E\n\x12"+
+		"\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\a\x12\x96\n\x12\f\x12\xE\x12"+
+		"\x99\v\x12\x3\x12\x2\x2\x4\x1E\"\x13\x2\x2\x4\x2\x6\x2\b\x2\n\x2\f\x2"+
+		"\xE\x2\x10\x2\x12\x2\x14\x2\x16\x2\x18\x2\x1A\x2\x1C\x2\x1E\x2 \x2\"\x2"+
+		"\x2\x6\x3\x2\xF\x10\x4\x2\r\xE\x11\x12\x3\x2\x16\x17\x3\x2\x18\x19\xA0"+
+		"\x2$\x3\x2\x2\x2\x4\'\x3\x2\x2\x2\x6\x32\x3\x2\x2\x2\b\x34\x3\x2\x2\x2"+
+		"\n;\x3\x2\x2\x2\f\x42\x3\x2\x2\x2\xEG\x3\x2\x2\x2\x10K\x3\x2\x2\x2\x12"+
+		"M\x3\x2\x2\x2\x14O\x3\x2\x2\x2\x16Q\x3\x2\x2\x2\x18S\x3\x2\x2\x2\x1AW"+
+		"\x3\x2\x2\x2\x1C_\x3\x2\x2\x2\x1Eo\x3\x2\x2\x2 \x84\x3\x2\x2\x2\"\x8D"+
+		"\x3\x2\x2\x2$%\a\v\x2\x2%&\x5\x4\x3\x2&\x3\x3\x2\x2\x2\'+\a\n\x2\x2(*"+
+		"\x5\x6\x4\x2)(\x3\x2\x2\x2*-\x3\x2\x2\x2+)\x3\x2\x2\x2+,\x3\x2\x2\x2,"+
+		".\x3\x2\x2\x2-+\x3\x2\x2\x2./\a\f\x2\x2/\x5\x3\x2\x2\x2\x30\x33\x5\b\x5"+
+		"\x2\x31\x33\x5\n\x6\x2\x32\x30\x3\x2\x2\x2\x32\x31\x3\x2\x2\x2\x33\a\x3"+
+		"\x2\x2\x2\x34\x35\a\x3\x2\x2\x35\x36\x5\x16\f\x2\x36\x37\x5\f\a\x2\x37"+
+		"\x39\x5\x18\r\x2\x38:\x5\x1A\xE\x2\x39\x38\x3\x2\x2\x2\x39:\x3\x2\x2\x2"+
+		":\t\x3\x2\x2\x2;<\a\t\x2\x2<=\x5\x1E\x10\x2=>\x5\x4\x3\x2>\v\x3\x2\x2"+
+		"\x2?\x43\a\x1C\x2\x2@\x43\a\x1D\x2\x2\x41\x43\a\x1F\x2\x2\x42?\x3\x2\x2"+
+		"\x2\x42@\x3\x2\x2\x2\x42\x41\x3\x2\x2\x2\x43\r\x3\x2\x2\x2\x44H\x5\x10"+
+		"\t\x2\x45H\x5\x12\n\x2\x46H\x5\x14\v\x2G\x44\x3\x2\x2\x2G\x45\x3\x2\x2"+
+		"\x2G\x46\x3\x2\x2\x2H\xF\x3\x2\x2\x2IL\a\x1A\x2\x2JL\a\x1B\x2\x2KI\x3"+
+		"\x2\x2\x2KJ\x3\x2\x2\x2L\x11\x3\x2\x2\x2MN\a%\x2\x2N\x13\x3\x2\x2\x2O"+
+		"P\a \x2\x2P\x15\x3\x2\x2\x2QR\a$\x2\x2R\x17\x3\x2\x2\x2ST\a\x4\x2\x2T"+
+		"U\a\b\x2\x2UV\a\x1D\x2\x2V\x19\x3\x2\x2\x2WX\a\a\x2\x2XY\a\b\x2\x2YZ\x5"+
+		"\x1C\xF\x2Z\x1B\x3\x2\x2\x2[`\x5\x16\f\x2\\`\x5\x1E\x10\x2]`\x5\"\x12"+
+		"\x2^`\x5\xE\b\x2_[\x3\x2\x2\x2_\\\x3\x2\x2\x2_]\x3\x2\x2\x2_^\x3\x2\x2"+
+		"\x2`\x1D\x3\x2\x2\x2\x61\x62\b\x10\x1\x2\x62\x63\a\x15\x2\x2\x63p\x5\x1E"+
+		"\x10\a\x64\x65\a\x5\x2\x2\x65\x66\x5\x1E\x10\x2\x66g\a\x6\x2\x2gp\x3\x2"+
+		"\x2\x2hp\x5\x10\t\x2ip\x5\x16\f\x2jk\x5\"\x12\x2kl\t\x2\x2\x2lm\x5\"\x12"+
+		"\x2mp\x3\x2\x2\x2np\x5 \x11\x2o\x61\x3\x2\x2\x2o\x64\x3\x2\x2\x2oh\x3"+
+		"\x2\x2\x2oi\x3\x2\x2\x2oj\x3\x2\x2\x2on\x3\x2\x2\x2py\x3\x2\x2\x2qr\f"+
+		"\x6\x2\x2rs\a\x13\x2\x2sx\x5\x1E\x10\atu\f\x5\x2\x2uv\a\x14\x2\x2vx\x5"+
+		"\x1E\x10\x6wq\x3\x2\x2\x2wt\x3\x2\x2\x2x{\x3\x2\x2\x2yw\x3\x2\x2\x2yz"+
+		"\x3\x2\x2\x2z\x1F\x3\x2\x2\x2{y\x3\x2\x2\x2|}\a\x5\x2\x2}~\x5 \x11\x2"+
+		"~\x7F\a\x6\x2\x2\x7F\x85\x3\x2\x2\x2\x80\x81\x5\"\x12\x2\x81\x82\t\x3"+
+		"\x2\x2\x82\x83\x5\"\x12\x2\x83\x85\x3\x2\x2\x2\x84|\x3\x2\x2\x2\x84\x80"+
+		"\x3\x2\x2\x2\x85!\x3\x2\x2\x2\x86\x87\b\x12\x1\x2\x87\x88\a\x5\x2\x2\x88"+
+		"\x89\x5\"\x12\x2\x89\x8A\a\x6\x2\x2\x8A\x8E\x3\x2\x2\x2\x8B\x8E\x5\x14"+
+		"\v\x2\x8C\x8E\x5\x16\f\x2\x8D\x86\x3\x2\x2\x2\x8D\x8B\x3\x2\x2\x2\x8D"+
+		"\x8C\x3\x2\x2\x2\x8E\x97\x3\x2\x2\x2\x8F\x90\f\x6\x2\x2\x90\x91\t\x4\x2"+
+		"\x2\x91\x96\x5\"\x12\a\x92\x93\f\x5\x2\x2\x93\x94\t\x5\x2\x2\x94\x96\x5"+
+		"\"\x12\x6\x95\x8F\x3\x2\x2\x2\x95\x92\x3\x2\x2\x2\x96\x99\x3\x2\x2\x2"+
+		"\x97\x95\x3\x2\x2\x2\x97\x98\x3\x2\x2\x2\x98#\x3\x2\x2\x2\x99\x97\x3\x2"+
+		"\x2\x2\x10+\x32\x39\x42GK_owy\x84\x8D\x95\x97";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Interfaces
 {
-    public interface IFormObjectNode : IASTNode
+    public interface IArithmetic : IASTNode
     {
     }
 }

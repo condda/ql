@@ -8,15 +8,25 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Arithmetic
 {
-    public class Priority : IArithmeticNode
+    public class Priority : IArithmetic
     {
-        private IArithmeticNode child;
+        private IArithmetic child;
         private Representation.PositionInText position;
 
-        public Priority(IArithmeticNode child, PositionInText position)
+        public Priority(IArithmetic child, PositionInText position)
         {
             this.child = child;
             this.position = position;
+        }
+
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 }

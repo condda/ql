@@ -19,7 +19,7 @@ namespace AST.ParseTreeVisitors
     {
         public override Form VisitForm(QLMainParser.FormContext context)
         {
-            List<IFormObjectNode> formObjects = context.formSection()
+            List<IFormObject> formObjects = context.formSection()
                                                        .formObject()
                                                        .Select(child => child.Accept(new FormObjectVisitor()))
                                                        .ToList();

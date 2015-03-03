@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Arithmetic
 {
-    public class Container : ASTNode, IArithmeticNode
+    public class Container : ASTNode, IArithmetic
     {
         public IValue value { get; private set; }
         private string parsedString;
@@ -25,12 +25,12 @@ namespace AST.Nodes.Arithmetic
         }
 
         //Visitor Methods
-        public override void Accept(Visitors.IVisitor visitor)
+        public void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public override T Accept<T>(Visitors.IVisitor<T> visitor)
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }

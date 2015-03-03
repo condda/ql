@@ -12,39 +12,39 @@ using AST.Nodes.Values;
 
 namespace AST.ParseTreeVisitors
 {
-    public class ExpressionVisitor : QLMainBaseVisitor<IExpressionNode>
+    public class ExpressionVisitor : QLMainBaseVisitor<IExpression>
     {
-        public override IExpressionNode VisitPriorityExpression(QLMainParser.PriorityExpressionContext context)
+        public override IExpression VisitPriorityExpression(QLMainParser.PriorityExpressionContext context)
         {
             return new Priority(context.expression().Accept(this),
                                 context.GetText(),
                                 Position.PositionFormParserRuleContext(context));
         }
 
-        public override IExpressionNode VisitBoolExpression(QLMainParser.BoolExpressionContext context)
+        public override IExpression VisitBoolExpression(QLMainParser.BoolExpressionContext context)
         {
             var boolContext = context.@bool();
 
-            return new Container<IValue>(boolContext.GetText(), 
+            return new Container(boolContext.GetText(), 
                                        boolContext.Accept(new ValueVisitor()), 
                                        Position.PositionFormParserRuleContext(context));
         }
 
-        public override IExpressionNode VisitIdExpression(QLMainParser.IdExpressionContext context)
+        public override IExpression VisitIdExpression(QLMainParser.IdExpressionContext context)
         {
             var IdContext = context.id();
-            return new Container<IValue>(IdContext.GetText(), 
+            return new Container(IdContext.GetText(), 
                                          IdContext.Accept(new ValueVisitor()),
                                          Position.PositionFormParserRuleContext(context));
         }
 
-        public override IExpressionNode VisitNegate(QLMainParser.NegateContext context)
+        public override IExpression VisitNegate(QLMainParser.NegateContext context)
         {
             return new Negate(context.expression().Accept(this),
                               Position.PositionFormParserRuleContext(context));
         }
 
-        public override IExpressionNode VisitAnd(QLMainParser.AndContext context)
+        public override IExpression VisitAnd(QLMainParser.AndContext context)
         {
             return new And(
                     context.expression(0).Accept(this),
@@ -53,7 +53,7 @@ namespace AST.ParseTreeVisitors
                 );
         }
 
-        public override IExpressionNode VisitOr(QLMainParser.OrContext context)
+        public override IExpression VisitOr(QLMainParser.OrContext context)
         {
             return new Or(
                     context.expression(0).Accept(this),
@@ -62,11 +62,11 @@ namespace AST.ParseTreeVisitors
                 );
         }
 
-        public override IExpressionNode VisitEquality(QLMainParser.EqualityContext context)
+        public override IExpression VisitEquality(QLMainParser.EqualityContext context)
         {
 
-            IArithmeticNode left     = context.arithmetic(0).Accept(new ArithmeticVisitor());
-            IArithmeticNode right    = context.arithmetic(1).Accept(new ArithmeticVisitor());
+            IArithmetic left     = context.arithmetic(0).Accept(new ArithmeticVisitor());
+            IArithmetic right    = context.arithmetic(1).Accept(new ArithmeticVisitor());
             PositionInText  position = Position.PositionFormParserRuleContext(context);
 
             switch(context.op.Type)
@@ -77,7 +77,7 @@ namespace AST.ParseTreeVisitors
             }
         }
 
-        public override IExpressionNode VisitComparisonExpression(QLMainParser.ComparisonExpressionContext context)
+        public override IExpression VisitComparisonExpression(QLMainParser.ComparisonExpressionContext context)
         {
             return context.comparison().Accept(new ComparisonVisitor());
         }

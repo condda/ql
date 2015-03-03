@@ -6,7 +6,7 @@ grammar QLMain;
 ;formSection    : '{' formObject* '}' 
 ;formObject     : question
                 | conditional
-; question       : 'question' id type keyValuePairs
+; question       : 'question' id type label computed?
 ; conditional   : 'enable when' expression formSection
 ;
 
@@ -24,18 +24,19 @@ grammar QLMain;
 ;string         : STRINGLITERAL
 ;int            : INTLITERAL
 ;id             : ALPHANUMERIC
-;
 
-/* KeyValPairs */   
- keyValuePairs  : '{' kvp+= keyValuePair (',' kvp+= keyValuePair)* '}'
-;keyValuePair   : key '=' expression #KvpExpression
-                | key '=' arithmetic #KvpArithmetic
-                | key '=' value      #KvpLiteral
-;key            : ALPHANUMERIC
-;
+
+;label : 'label' ':' STRING
+
+;computed : 'computed' ':' computation
+
+;computation : id            #ComputationId
+             | expression    #ComputationExpression
+             | arithmetic    #ComputationArithmetic
+             | value         #ComputationValue
 
 /* Expression & arithmetic */
- expression     : '(' expression ')'                         #PriorityExpression
+;expression     : '(' expression ')'                         #PriorityExpression
                 | bool                                       #BoolExpression
                 | id                                         #IdExpression
                 |'!' expression                              #Negate

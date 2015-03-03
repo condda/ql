@@ -9,6 +9,7 @@ using AST.Storage;
 using AST.Resources;
 using AST.Nodes.Values;
 using AST.Nodes.Arithmetic;
+using Values = AST.Nodes.Values;
 
 namespace AST.Evaluation
 {
@@ -23,29 +24,29 @@ namespace AST.Evaluation
         }
         public override int Visit(Add node)
         {
-            int left = node.Accept(this);
-            int right = node.Accept(this);
+            int left = node.left.Accept(this);
+            int right = node.right.Accept(this);
 
             return left + right;
         }
         public override int Visit(Subtract node)
         {
-            int left = node.Accept(this);
-            int right = node.Accept(this);
+            int left = node.left.Accept(this);
+            int right = node.right.Accept(this);
 
             return left - right;
         }
         public override int Visit(Divide node)
         {
-            int left = node.Accept(this);
-            int right = node.Accept(this);
+            int left = node.left.Accept(this);
+            int right = node.right.Accept(this);
 
             return base.Visit(node);
         }
         public override int Visit(Multiply node)
         {
-            int left = node.Accept(this);
-            int right = node.Accept(this);
+            int left = node.left.Accept(this);
+            int right = node.right.Accept(this);
 
             return left * right;
         }
@@ -55,8 +56,7 @@ namespace AST.Evaluation
         }
         public override int Visit(Container node)
         {
-            throw new NotImplementedException();
-            //return 0 base.Visit(node);
+            return ((Values.Int)node.value).Value;
         }
 
 

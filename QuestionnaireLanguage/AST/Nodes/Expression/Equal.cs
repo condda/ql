@@ -8,18 +8,28 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Expression
 {
-    public class Equal : IExpressionNode
+    public class Equal : IExpression
     {
-        private IArithmeticNode left;
-        private IArithmeticNode right;
+        public IArithmetic Left { get; private set; }
+        public IArithmetic Right { get; private set; }
         private PositionInText position;
 
-        public Equal(IArithmeticNode left, IArithmeticNode right, PositionInText position)
+        public Equal(IArithmetic left, IArithmetic right, PositionInText position)
         {
-            this.left = left;
-            this.right = right;
+            this.Left = left;
+            this.Right = right;
             this.position = position;
         }
 
+
+        public void Accept(Visitors.IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 }

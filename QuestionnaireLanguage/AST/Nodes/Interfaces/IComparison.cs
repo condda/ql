@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Interfaces
 {
-    public interface IExpressionNode : IASTNode
+    public interface IComparison : IExpression
     {
+
     }
 }

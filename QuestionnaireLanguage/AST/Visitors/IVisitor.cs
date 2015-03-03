@@ -9,7 +9,8 @@ using Arithmetic = AST.Nodes.Arithmetic;
 using Expression = AST.Nodes.Expression;
 using Comparison = AST.Nodes.Comparison;
 using Values     = AST.Nodes.Values;
-using KeyVal     = AST.Nodes.KeyValuePair;
+using Label      = AST.Nodes.Labels;
+using Computation = AST.Nodes.Computation;
 
 
 namespace AST.Visitors
@@ -39,7 +40,7 @@ namespace AST.Visitors
         void Visit(Expression.Equal node);
         void Visit(Expression.NotEqual node);
         void Visit(Expression.Negate node);
-        void Visit(Expression.Container<IValue> node);
+        void Visit(Expression.Container node);
         void Visit(Expression.Priority priority);
 
         //Values
@@ -48,11 +49,26 @@ namespace AST.Visitors
         void Visit(Values.String node);
         void Visit(Values.Unknown node);
         
-        //KeyValuePair
-        void Visit(KeyVal.KeyArithmeticPair node);
-        void Visit(KeyVal.KeyExpressionPair node);
-        void Visit(KeyVal.KeyValuePair node);
+        //Label
+        void Visit(Label.Label node);
 
+        //Computation
+
+        void Visit(Computation.Id node);
+        void Visit(Computation.Value node);
+        void Visit(Computation.Expression node);
+        void Visit(Computation.Arithmetic node);
+
+
+        void Visit(Arithmetic.Literal literal);
+
+        void Visit(Arithmetic.Priority priority);
+
+        void Visit(Comparison.Priority priority);
+
+        void Visit(Conditional conditional);
+
+        void Visit(Nodes.TypeName.TypeName typeName);
     }
     public interface IVisitor<T>
     {
@@ -79,7 +95,7 @@ namespace AST.Visitors
         T Visit(Expression.Equal node);
         T Visit(Expression.NotEqual node);
         T Visit(Expression.Negate node);
-        T Visit(Expression.Container<IValue> node);
+        T Visit(Expression.Container node);
         T Visit(Expression.Priority priority);
 
         //Values
@@ -88,11 +104,23 @@ namespace AST.Visitors
         T Visit(Values.String node);
         T Visit(Values.Unknown node);
 
-        //KeyValuePair
-        T Visit(KeyVal.KeyArithmeticPair node);
-        T Visit(KeyVal.KeyExpressionPair node);
-        T Visit(KeyVal.KeyValuePair node);
+        //Label
+        T Visit(Label.Label node);
 
+        //Computation
+        T Visit(Computation.Id node);
+        T Visit(Computation.Value node);
+        T Visit(Computation.Arithmetic node);
+        T Visit(Computation.Expression node);
 
+        T Visit(Arithmetic.Literal literal);
+
+        T Visit(Arithmetic.Priority priority);
+
+        T Visit(Comparison.Priority priority);
+
+        T Visit(Conditional conditional);
+
+        T Visit(Nodes.TypeName.TypeName typeName);
     }
 }

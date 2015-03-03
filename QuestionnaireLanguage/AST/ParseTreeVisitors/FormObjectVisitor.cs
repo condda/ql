@@ -10,28 +10,26 @@ using AST.Helpers;
 
 namespace AST.ParseTreeVisitors
 {
-    public class FormObjectVisitor : QLMainBaseVisitor<IFormObjectNode>
+    public class FormObjectVisitor : QLMainBaseVisitor<IFormObject>
     {
-        public override IFormObjectNode VisitQuestion(QLMainParser.QuestionContext context)
+        public override IFormObject VisitQuestion(QLMainParser.QuestionContext context)
         {
 
             string identifier = context.id().GetText();
             IType typeName = context.type().Accept(new TypeVisitor());
 
-            List<IKeyValuePairNode> KeyValuePairs = context.keyValuePairs()
-                                                    ._kvp
-                                                    .Select(child => child.Accept(new KeyValuePairVisitor()))
-                                                    .ToList();
+            ILabel label = context.label().Accept(new LabelVisitor());
+            IComputation computation = context.computed() != null ? context.computed().computation().Accept(new ComputationVisitor()) : null;
 
-            return new Question(identifier, typeName, KeyValuePairs,
+            return new Question(identifier, typeName, label, computation,
                                 Position.PositionFormParserRuleContext(context));
         }
 
-        public override IFormObjectNode VisitConditional(QLMainParser.ConditionalContext context)
+        public override IFormObject VisitConditional(QLMainParser.ConditionalContext context)
         {
-            IExpressionNode condition = context.expression().Accept(new ExpressionVisitor());
+            IExpression condition = context.expression().Accept(new ExpressionVisitor());
 
-            List<IFormObjectNode> body = context.formSection()
+            List<IFormObject> body = context.formSection()
                                          .formObject()
                                          .Select(child => child.Accept(new FormObjectVisitor()))
                                          .ToList();

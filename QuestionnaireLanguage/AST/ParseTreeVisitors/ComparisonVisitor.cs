@@ -10,19 +10,19 @@ using AST.Representation;
 
 namespace AST.ParseTreeVisitors
 {
-    public class ComparisonVisitor : QLMainBaseVisitor<IComparisonNode>
+    public class ComparisonVisitor : QLMainBaseVisitor<IComparison>
     {
-        public override IComparisonNode VisitPriorityComparison(QLMainParser.PriorityComparisonContext context)
+        public override IComparison VisitPriorityComparison(QLMainParser.PriorityComparisonContext context)
         {
             return new Priority(context.comparison().Accept(this), 
                                 Position.PositionFormParserRuleContext(context));
         }
 
-        public override IComparisonNode VisitRelationalComparison(QLMainParser.RelationalComparisonContext context)
+        public override IComparison VisitRelationalComparison(QLMainParser.RelationalComparisonContext context)
         {
             var ArithmeticVisitor   = new ArithmeticVisitor();
-            IArithmeticNode left    = context.arithmetic(1).Accept(ArithmeticVisitor);
-            IArithmeticNode right   = context.arithmetic(1).Accept(ArithmeticVisitor);
+            IArithmetic left    = context.arithmetic(1).Accept(ArithmeticVisitor);
+            IArithmetic right   = context.arithmetic(1).Accept(ArithmeticVisitor);
             PositionInText position = Position.PositionFormParserRuleContext(context);
 
             switch (context.op.Type)
