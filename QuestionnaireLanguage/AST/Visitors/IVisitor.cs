@@ -5,9 +5,9 @@ using System.Text;
 using AST.Nodes;
 using AST.Nodes.Interfaces;
 using AST.Nodes.FormObject;
-using Arithmetic = AST.Nodes.Arithmetic;
-using Expression = AST.Nodes.Expression;
-using Comparison = AST.Nodes.Comparison;
+using Binary = AST.Nodes.Expression.Binary;
+using Unary  = AST.Nodes.Expression.Unary;
+using AST.Nodes.Expression;
 using Values     = AST.Nodes.Values;
 using Label      = AST.Nodes.Labels;
 using Computation = AST.Nodes.Computation;
@@ -19,84 +19,86 @@ namespace AST.Visitors
     {
         void Visit(Form node);
         void Visit(Question node);
-        
-        //Arithmetic
-        void Visit(Arithmetic.Add node);
-        void Visit(Arithmetic.Subtract node);
-        void Visit(Arithmetic.Divide node);
-        void Visit(Arithmetic.Multiply node);
-        void Visit(Arithmetic.Container node);
-        void Visit(Arithmetic.Id node);
-        
-        //Comparison
-        void Visit(Comparison.GreaterThan node);
-        void Visit(Comparison.GreaterThanOrEqual node);
-        void Visit(Comparison.LessThan node);
-        void Visit(Comparison.LessThanOrEqual node);
 
-        //Expression
-        void Visit(Expression.And node);
-        void Visit(Expression.Or node);
-        void Visit(Expression.Equal node);
-        void Visit(Expression.NotEqual node);
-        void Visit(Expression.Negate node);
-        void Visit(Expression.Container node);
-        void Visit(Expression.Priority priority);
+
+        void Visit(Binary.And node);
+        void Visit(Binary.Or node);
+        void Visit(Binary.Equal node);
+        void Visit(Binary.NotEqual node);
+        void Visit(Binary.GreaterThan greaterThan);
+
+
+        void Visit(Unary.Negate node);
+        void Visit(Unary.Priority priority);
+
+        
+        void Visit(Container node);
+        void Visit(Id node);
+
 
         //Values
         void Visit(Values.Bool node);
         void Visit(Values.Int node);
         void Visit(Values.String node);
         void Visit(Values.Unknown node);
-        
+
+
         //Label
         void Visit(Label.Label node);
 
-        //Computation
 
+        //Computation
         void Visit(Computation.Id node);
         void Visit(Computation.Value node);
         void Visit(Computation.Expression node);
-        void Visit(Computation.Arithmetic node);
-
-
-        void Visit(Arithmetic.Literal literal);
-
-        void Visit(Arithmetic.Priority priority);
-
-        void Visit(Comparison.Priority priority);
 
         void Visit(Conditional conditional);
 
         void Visit(Nodes.TypeName.TypeName typeName);
+
+        void Visit(Binary.GreaterThanOrEqual greaterThanOrEqual);
+
+        void Visit(Binary.LessThan lessThan);
+
+        void Visit(Binary.LessThanOrEqual lessThanOrEqual);
+
+        void Visit(Binary.Add add);
+
+        void Visit(Binary.Divide divide);
+
+        void Visit(Binary.Multiply multiply);
+
+        void Visit(Binary.Subtract subtract);
     }
     public interface IVisitor<T>
     {
         T Visit(Form node);
         T Visit(Question node);
+        T Visit(Conditional conditional);
 
-        //Arithmetic
-        T Visit(Arithmetic.Add node);
-        T Visit(Arithmetic.Subtract node);
-        T Visit(Arithmetic.Divide node);
-        T Visit(Arithmetic.Multiply node);
-        T Visit(Arithmetic.Container node);
-        T Visit(Arithmetic.Id node);
 
-        //Comparison
-        T Visit(Comparison.GreaterThan node);
-        T Visit(Comparison.GreaterThanOrEqual node);
-        T Visit(Comparison.LessThan node);
-        T Visit(Comparison.LessThanOrEqual node);
+        T Visit(Binary.And node);
+        T Visit(Binary.Or node);
+        T Visit(Binary.Equal node);
+        T Visit(Binary.NotEqual node);
+        T Visit(Binary.GreaterThan greaterThan);
+        T Visit(Binary.GreaterThanOrEqual greaterThanOrEqual);
+        T Visit(Binary.LessThan lessThan);
+        T Visit(Binary.LessThanOrEqual lessThanOrEqual);
+        T Visit(Binary.Add add);
+        T Visit(Binary.Subtract subtract);
+        T Visit(Binary.Multiply multiply);
+        T Visit(Binary.Divide divide);
 
-        //Expression
-        T Visit(Expression.And node);
-        T Visit(Expression.Or node);
-        T Visit(Expression.Equal node);
-        T Visit(Expression.NotEqual node);
-        T Visit(Expression.Negate node);
-        T Visit(Expression.Container node);
-        T Visit(Expression.Priority priority);
+
+
+        T Visit(Unary.Negate node);
+        T Visit(Unary.Priority priority);
+
+
+        T Visit(Container node);
+        T Visit(Id node);
+
 
         //Values
         T Visit(Values.Bool node);
@@ -104,23 +106,22 @@ namespace AST.Visitors
         T Visit(Values.String node);
         T Visit(Values.Unknown node);
 
+
         //Label
         T Visit(Label.Label node);
+
 
         //Computation
         T Visit(Computation.Id node);
         T Visit(Computation.Value node);
-        T Visit(Computation.Arithmetic node);
         T Visit(Computation.Expression node);
 
-        T Visit(Arithmetic.Literal literal);
 
-        T Visit(Arithmetic.Priority priority);
-
-        T Visit(Comparison.Priority priority);
-
-        T Visit(Conditional conditional);
 
         T Visit(Nodes.TypeName.TypeName typeName);
+
+
+
+
     }
 }

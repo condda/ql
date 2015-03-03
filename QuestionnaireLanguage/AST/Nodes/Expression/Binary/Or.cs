@@ -6,19 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AST.Nodes.Comparison
+namespace AST.Nodes.Expression.Binary
 {
-    public class Priority : IComparison
+    public class Or : IExpression
     {
-        PositionInText position;
-        IComparison child;
+        public IExpression Left {get; private set;}
+        public IExpression Right { get; private set; }
+        private PositionInText position;
 
-        public Priority(IComparison child, PositionInText position)
+        public Or(IExpression left, IExpression right, PositionInText position)
         {
+            this.Left = left;
+            this.Right = right;
             this.position = position;
-            this.child = child;
         }
-
 
         public void Accept(Visitors.IVisitor visitor)
         {

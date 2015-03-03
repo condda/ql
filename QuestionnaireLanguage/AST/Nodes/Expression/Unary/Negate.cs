@@ -1,25 +1,24 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AST.Nodes.Comparison
+namespace AST.Nodes.Expression.Unary
 {
-    public class LessThanOrEqual : IComparison
+    public class Negate : IExpression
     {
-        private IArithmetic left;
-        private IArithmetic right;
-        private Representation.PositionInText position;
+        private PositionInText position;
+        private IExpression child;
 
-        public LessThanOrEqual(IArithmetic left, IArithmetic right, Representation.PositionInText position)
+
+        public Negate(IExpression child, PositionInText position)
         {
-            this.left = left;
-            this.right = right;
+            this.child = child;
             this.position = position;
         }
-
 
         public void Accept(Visitors.IVisitor visitor)
         {
@@ -32,3 +31,5 @@ namespace AST.Nodes.Comparison
         }
     }
 }
+
+

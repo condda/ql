@@ -43,10 +43,10 @@ namespace QuestionnaireLanguage.Controller
 
             StackPanel panel = new StackPanel();
 
-            foreach (IFormObject node in ((astTree.) as Form).getChildren())
-            {
-                IFormElement formElement;
-            }
+            //foreach (IFormObject node in ((astTree.) as Form).getChildren())
+            //{
+            //    IFormElement formElement;
+            //}
 
                 /*
                  * Change the if and instead use visitors (ask if they are going to be implemented in the AST layer

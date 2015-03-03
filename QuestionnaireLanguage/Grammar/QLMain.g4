@@ -50,8 +50,7 @@ associative     : associative op= AND associative #AND
                 | associative op= DIV associative #DIV
                 | associative op= SUB associative #SUB
                 | associative op= ADD associative #ADD
-                | unary                           #UnaryAssociative
-                | '(' expression ')'              #PriorityAssociative
+                | unary                           #AssociativeUnary
                 | value                           #AssociativeValue
                 | id                              #AssociativeId
                 ;

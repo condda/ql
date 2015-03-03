@@ -26,13 +26,6 @@ namespace AST.ParseTreeVisitors
                                     Position.PositionFormParserRuleContext(context));
         }
 
-        public override IComputation VisitComputationArithmetic(QLMainParser.ComputationArithmeticContext context)
-        {
-            IArithmetic arithmetic = context.arithmetic().Accept(new ArithmeticVisitor());
-            return new Arithmetic(context.arithmetic().GetText(), arithmetic,
-                                    Position.PositionFormParserRuleContext(context));
-        }
-
         public override IComputation VisitComputationExpression(QLMainParser.ComputationExpressionContext context)
         {
             IExpression expression = context.expression().Accept(new ExpressionVisitor());

@@ -1,22 +1,26 @@
 ﻿using AST.Nodes.Interfaces;
-using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Representation;
 
-namespace AST.Nodes.Arithmetic
+namespace AST.Nodes.Expression.Binary
 {
-    public class Container : ASTNode, IArithmetic
+    public class Add : ASTNode, IExpression
     {
-        public IValue value { get; private set; }
+        public IExpression left { get; private set; }
+        public IExpression right { get; private set; }
         private string parsedString;
 
-        public Container(string parsedString, IValue value, PositionInText position)
-            : base(position)
+        private Representation.PositionInText position;
+
+        public Add(IExpression left, IExpression right, string parsedString, PositionInText position)
+            : base(position) 
         {
-            this.value = value;
+            this.left = left;
+            this.right = right;
             this.parsedString = parsedString;
         }
         public override string GetParsedString()
@@ -24,7 +28,6 @@ namespace AST.Nodes.Arithmetic
             return parsedString;
         }
 
-        //Visitor Methods
         public void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);

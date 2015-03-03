@@ -6,15 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AST.Nodes.Expression
+namespace AST.Nodes.Expression.Binary
 {
-    public class And : IExpression
+    public class NotEqual : IExpression
     {
-        public IExpression Left {get; private set;}
+        public IExpression Left { get; private set; }
         public IExpression Right { get; private set; }
         private PositionInText position;
 
-        public And(IExpression left, IExpression right, PositionInText position)
+        public NotEqual(IExpression left, IExpression right, PositionInText position)
         {
             this.Left = left;
             this.Right = right;

@@ -1,85 +1,161 @@
-﻿using System;
+﻿using AST.Helpers;
+using AST.Nodes.Expression;
+using AST.Nodes.Expression.Binary;
+using AST.Nodes.Interfaces;
+using AST.Representation;
+using Grammar;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Grammar;
-using AST.Nodes;
-using AST.Nodes.Interfaces;
-using AST.Nodes.Expression;
-using AST.Representation;
-using AST.Helpers;
-using AST.Nodes.Values;
+using System.Threading.Tasks;
+
 
 namespace AST.ParseTreeVisitors
 {
     public class ExpressionVisitor : QLMainBaseVisitor<IExpression>
     {
-        public override IExpression VisitPriorityExpression(QLMainParser.PriorityExpressionContext context)
+
+        /*    Associative     */
+        #region Associative
+        public override IExpression VisitAssociativeValue(QLMainParser.AssociativeValueContext context)
         {
-            return new Priority(context.expression().Accept(this),
-                                context.GetText(),
-                                Position.PositionFormParserRuleContext(context));
+            return context.value().Accept(new ValueVisitor());
         }
 
-        public override IExpression VisitBoolExpression(QLMainParser.BoolExpressionContext context)
+        public override IExpression VisitAssociativeId(QLMainParser.AssociativeIdContext context)
         {
-            var boolContext = context.@bool();
-
-            return new Container(boolContext.GetText(), 
-                                       boolContext.Accept(new ValueVisitor()), 
-                                       Position.PositionFormParserRuleContext(context));
+            return context.id().Accept(this);
         }
 
-        public override IExpression VisitIdExpression(QLMainParser.IdExpressionContext context)
-        {
-            var IdContext = context.id();
-            return new Container(IdContext.GetText(), 
-                                         IdContext.Accept(new ValueVisitor()),
-                                         Position.PositionFormParserRuleContext(context));
-        }
 
-        public override IExpression VisitNegate(QLMainParser.NegateContext context)
-        {
-            return new Negate(context.expression().Accept(this),
-                              Position.PositionFormParserRuleContext(context));
-        }
-
-        public override IExpression VisitAnd(QLMainParser.AndContext context)
+        public override IExpression VisitAND(QLMainParser.ANDContext context)
         {
             return new And(
-                    context.expression(0).Accept(this),
-                    context.expression(1).Accept(this),
+                    context.associative(0).Accept(this),
+                    context.associative(1).Accept(this),
                     Position.PositionFormParserRuleContext(context)
                 );
         }
 
-        public override IExpression VisitOr(QLMainParser.OrContext context)
+        public override IExpression VisitOR(QLMainParser.ORContext context)
         {
             return new Or(
-                    context.expression(0).Accept(this),
-                    context.expression(1).Accept(this),
+                    context.associative(0).Accept(this),
+                    context.associative(1).Accept(this),
                     Position.PositionFormParserRuleContext(context)
                 );
         }
 
-        public override IExpression VisitEquality(QLMainParser.EqualityContext context)
+        public override IExpression VisitDIV(QLMainParser.DIVContext context)
         {
-
-            IArithmetic left     = context.arithmetic(0).Accept(new ArithmeticVisitor());
-            IArithmetic right    = context.arithmetic(1).Accept(new ArithmeticVisitor());
-            PositionInText  position = Position.PositionFormParserRuleContext(context);
-
-            switch(context.op.Type)
-            {
-                case QLMainParser.EQ  : return new Equal(left, right, position);
-                case QLMainParser.NEQ : return new NotEqual(left, right, position);
-                default : throw new InvalidOperationException("Token does not match any of the valid token options");
-            }
+            return new Divide(
+                    context.associative(0).Accept(this),
+                    context.associative(1).Accept(this),
+                    context.GetText(),
+                    Position.PositionFormParserRuleContext(context)
+                );
         }
 
-        public override IExpression VisitComparisonExpression(QLMainParser.ComparisonExpressionContext context)
+
+        public override IExpression VisitMUL(QLMainParser.MULContext context)
         {
-            return context.comparison().Accept(new ComparisonVisitor());
+            return new Multiply(
+                    context.associative(0).Accept(this),
+                    context.associative(1).Accept(this),
+                    context.GetText(),
+                    Position.PositionFormParserRuleContext(context)
+                );
         }
+        public override IExpression VisitSUB(QLMainParser.SUBContext context)
+        {
+            return new Subtract(
+                    context.associative(0).Accept(this),
+                    context.associative(1).Accept(this),
+                    context.GetText(),
+                    Position.PositionFormParserRuleContext(context)
+                );
+        }
+
+        public override IExpression VisitADD(QLMainParser.ADDContext context)
+        {
+            return new Add(
+                context.associative(0).Accept(this),
+                context.associative(1).Accept(this),
+                context.GetText(),
+                Position.PositionFormParserRuleContext(context)
+            );
+        }
+        #endregion
+        /*    Non-associative     */
+        #region Non-Associative
+        public override IExpression VisitEQ(QLMainParser.EQContext context)
+        {
+            return new Equal(
+                context.associative(0).Accept(this),
+                context.associative(1).Accept(this),
+                Position.PositionFormParserRuleContext(context)
+            );
+        }
+        public override IExpression VisitNEQ(QLMainParser.NEQContext context)
+        {
+            return new NotEqual(
+                context.associative(0).Accept(this),
+                context.associative(1).Accept(this),
+                Position.PositionFormParserRuleContext(context)
+            );
+        }
+
+        public override IExpression VisitGT(QLMainParser.GTContext context)
+        {
+            return new GreaterThan(
+                context.associative(0).Accept(this),
+                context.associative(1).Accept(this),
+                Position.PositionFormParserRuleContext(context)
+            );
+        }
+
+        public override IExpression VisitGET(QLMainParser.GETContext context)
+        {
+            return new GreaterThanOrEqual(
+                context.associative(0).Accept(this),
+                context.associative(1).Accept(this),
+                Position.PositionFormParserRuleContext(context)
+            );
+        }
+
+        public override IExpression VisitLT(QLMainParser.LTContext context)
+        {
+            return new LessThan(
+                context.associative(0).Accept(this),
+                context.associative(1).Accept(this),
+                Position.PositionFormParserRuleContext(context)
+            );
+        }
+
+        public override IExpression VisitLET(QLMainParser.LETContext context)
+        {
+            return new LessThanOrEqual(
+                context.associative(0).Accept(this),
+                context.associative(1).Accept(this),
+                Position.PositionFormParserRuleContext(context)
+            );
+        }
+
+        public override IExpression VisitNonAssociativePriority(QLMainParser.NonAssociativePriorityContext context)
+        {
+            return context.expression().Accept(new ValueVisitor());
+        }
+
+        public override IExpression VisitNonAssociativeValue(QLMainParser.NonAssociativeValueContext context)
+        {
+            return context.value().Accept(new ValueVisitor());
+        }
+
+        public override IExpression VisitNonAssociativeId(QLMainParser.NonAssociativeIdContext context)
+        {
+            return context.id().Accept(new ValueVisitor());
+        }
+        #endregion
     }
 }

@@ -6,15 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AST.Nodes.Arithmetic
+namespace AST.Nodes.Expression.Binary
 {
-    public class Multiply : ASTNode, IArithmetic
+    public class Divide : ASTNode, IExpression
     {
-        public IArithmetic left { get; private set; }
-        public IArithmetic right { get; private set; }
+        public IExpression left { get; private set; }
+        public IExpression right { get; private set; }
         private string parsedString;
-        
-        public Multiply(IArithmetic left, IArithmetic right, string parsedString, PositionInText position)
+
+        public Divide(IExpression left, IExpression right, string parsedString, PositionInText position)
             : base(position)
         {
             this.left = left;
@@ -31,8 +31,7 @@ namespace AST.Nodes.Arithmetic
         {
             visitor.Visit(this);
         }
-
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public T Accept<T>(Visitors.IVisitor<T> visitor) 
         {
            return visitor.Visit(this);
         }

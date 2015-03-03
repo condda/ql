@@ -1,28 +1,30 @@
-﻿using System;
+﻿using AST.Nodes.Interfaces;
+using AST.Representation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AST.Nodes.Interfaces;
-using AST.Representation;
-using AST.Nodes.Values;
 
 namespace AST.Nodes.Expression
 {
-    public class Container : IExpression
+    public class Container : ASTNode, IExpression
     {
-        private IValue value;
-        private string representation;
-        private PositionInText position;
+        public IValue value { get; private set; }
+        private string parsedString;
 
-        public Container(string representation, IValue value, PositionInText position)
+        public Container(string parsedString, IValue value, PositionInText position)
+            : base(position)
         {
             this.value = value;
-            this.representation = representation;
-            this.position = position;
+            this.parsedString = parsedString;
+        }
+        public override string GetParsedString()
+        {
+            return parsedString;
         }
 
-
+        //Visitor Methods
         public void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);

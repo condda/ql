@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AST.Nodes.Expression
+namespace AST.Nodes.Expression.Unary
 {
     public class Priority : ASTNode, IExpression
     {

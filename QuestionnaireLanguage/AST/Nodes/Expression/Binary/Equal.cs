@@ -1,25 +1,26 @@
 ﻿using AST.Nodes.Interfaces;
+using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AST.Representation;
 
-namespace AST.Nodes.Comparison
+namespace AST.Nodes.Expression.Binary
 {
-    public class LessThan : IComparison
+    public class Equal : IExpression
     {
-        private IArithmetic left;
-        private IArithmetic right;
-        private Representation.PositionInText position;
+        public IExpression Left { get; private set; }
+        public IExpression Right { get; private set; }
+        private PositionInText position;
 
-        public LessThan(IArithmetic left, IArithmetic right, Representation.PositionInText position)
+        public Equal(IExpression left, IExpression right, PositionInText position)
         {
-            this.left = left;
-            this.right = right;
+            this.Left = left;
+            this.Right = right;
             this.position = position;
         }
+
 
         public void Accept(Visitors.IVisitor visitor)
         {
@@ -31,5 +32,4 @@ namespace AST.Nodes.Comparison
             return visitor.Visit(this);
         }
     }
-
 }

@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Expression = AST.Nodes.Expression;
+using AST.Nodes.Expression.Binary;
+using AST.Nodes.Expression.Unary;
+using AST.Nodes.Expression;
 namespace AST.Evaluation
 {
     public class ExpressionVisitor : BaseVisitor<bool>
@@ -17,27 +19,29 @@ namespace AST.Evaluation
             this.identifierLookup = identifierLookup;
         }
 
-        public override bool Visit(Expression.And node)
+        public override bool Visit(And node)
         {
             return node.Left.Accept(this) && node.Right.Accept(this);
         }
-        public bool Visit(Expression.Or node)
+        public bool Visit(Or node)
         {
             return node.Left.Accept(this) || node.Right.Accept(this);
         }
-        public bool Visit(Expression.Equal node)
+        public bool Visit(Equal node)
         {
             return node.Left.Accept(this) == node.Right.Accept(this);
         }
 
-        public bool Visit(Expression.NotEqual node)
+        public bool Visit(NotEqual node)
         {
             return node.Left.Accept(this) != node.Right.Accept(this);
         }
-        public bool Visit(Expression.Negate node)
+        public bool Visit(Negate node)
         {
             return true;
         }
-        public bool Visit(Expression.Container node) { }
+        public bool Visit(Container node) {
+            return true;
+        }
     }
 }

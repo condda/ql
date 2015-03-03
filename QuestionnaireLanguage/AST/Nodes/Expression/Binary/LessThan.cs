@@ -1,23 +1,23 @@
 ﻿using AST.Nodes.Interfaces;
-using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Representation;
 
-namespace AST.Nodes.Expression
+namespace AST.Nodes.Expression.Binary
 {
-    public class Or : IExpression
+    public class LessThan : IExpression
     {
-        public IExpression Left {get; private set;}
-        public IExpression Right { get; private set; }
-        private PositionInText position;
+        private IExpression left;
+        private IExpression right;
+        private Representation.PositionInText position;
 
-        public Or(IExpression left, IExpression right, PositionInText position)
+        public LessThan(IExpression left, IExpression right, Representation.PositionInText position)
         {
-            this.Left = left;
-            this.Right = right;
+            this.left = left;
+            this.right = right;
             this.position = position;
         }
 
@@ -31,4 +31,5 @@ namespace AST.Nodes.Expression
             return visitor.Visit(this);
         }
     }
+
 }

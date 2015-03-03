@@ -9,7 +9,7 @@ using AST.Nodes.Values;
 
 namespace AST.Nodes.Expression
 {
-    public class Id : IArithmetic, IValue
+    public class Id : IExpression, IValue
     {
         public string identifier { get; private set; }
         public PositionInText position {get; private set; }

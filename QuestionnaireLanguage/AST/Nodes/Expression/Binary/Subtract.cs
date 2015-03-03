@@ -1,20 +1,20 @@
 ﻿using AST.Nodes.Interfaces;
-using AST.Representation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AST.Representation;
 
-namespace AST.Nodes.Arithmetic
+namespace AST.Nodes.Expression.Binary
 {
-    public class Divide : ASTNode, IArithmetic
+    public class Subtract : ASTNode, IExpression
     {
-        public IArithmetic left { get; private set; }
-        public IArithmetic right { get; private set; }
+        public IExpression left { get; private set; }
+        public IExpression right { get; private set; }
         private string parsedString;
-        
-        public Divide(IArithmetic left, IArithmetic right, string parsedString, PositionInText position)
+
+        public Subtract(IExpression left, IExpression right, string parsedString, PositionInText position)
             : base(position)
         {
             this.left = left;
@@ -31,7 +31,8 @@ namespace AST.Nodes.Arithmetic
         {
             visitor.Visit(this);
         }
-        public T Accept<T>(Visitors.IVisitor<T> visitor) 
+
+        public T Accept<T>(Visitors.IVisitor<T> visitor)
         {
            return visitor.Visit(this);
         }

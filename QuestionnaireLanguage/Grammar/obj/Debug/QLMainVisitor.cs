@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\QLMain.g4 by ANTLR 4.3
+// Generated from C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\QLMain.g4 by ANTLR 4.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -30,14 +30,6 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.3")]
 [System.CLSCompliant(false)]
 public interface IQLMainVisitor<Result> : IParseTreeVisitor<Result> {
-	/// <summary>
-	/// Visit a parse tree produced by the <c>UnaryAssociative</c>
-	/// labeled alternative in <see cref="QLMainParser.associative"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitUnaryAssociative([NotNull] QLMainParser.UnaryAssociativeContext context);
-
 	/// <summary>
 	/// Visit a parse tree produced by the <c>BoolType</c>
 	/// labeled alternative in <see cref="QLMainParser.type"/>.
@@ -240,6 +232,14 @@ public interface IQLMainVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitMUL([NotNull] QLMainParser.MULContext context);
 
 	/// <summary>
+	/// Visit a parse tree produced by the <c>AssociativeUnary</c>
+	/// labeled alternative in <see cref="QLMainParser.associative"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAssociativeUnary([NotNull] QLMainParser.AssociativeUnaryContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by the <c>NonAssociativeValue</c>
 	/// labeled alternative in <see cref="QLMainParser.nonAssociative"/>.
 	/// </summary>
@@ -330,14 +330,6 @@ public interface IQLMainVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitLET([NotNull] QLMainParser.LETContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>PriorityAssociative</c>
-	/// labeled alternative in <see cref="QLMainParser.associative"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitPriorityAssociative([NotNull] QLMainParser.PriorityAssociativeContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>NEQ</c>
