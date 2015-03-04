@@ -14,42 +14,54 @@ namespace AST.Nodes.Values
     public class Bool : Value
     {
         private readonly bool value;
+        private PositionInText positionInText;
 
         public Bool(bool parsedValue)
         {
             this.value = parsedValue;
         }
 
-        public override bool GetValue()
+        public Bool(bool parsedValue, PositionInText positionInText)
+        {
+            this.value = parsedValue;
+            this.positionInText = positionInText;
+        }
+
+        public bool GetValue()
         {
             return value;
         }
 
+        public override ValueTypes.Types GetType(Storage.ISymbolTable lookup)
+        {
+            return ValueTypes.Types.BOOL;
+        }
+
         // Visitor Methods
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }
 
-        public void Accept(Visitors.IVisitor visitor)
+        public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
         #region And
-        public Value And(Value value)
+        public override Value And(Value value)
         {
             return value.BoolAnd(this);
         }
 
         public  override Value BoolAnd(Bool boolValue)
         {
-            return new Bool(value && boolValue.value);
+            return new Bool(GetValue() && boolValue.value);
         }
         #endregion
 
         #region Or
-        public Value Or(Value value)
+        public override Value Or(Value value)
         {
             return value.BoolOr(this);
         }
@@ -61,7 +73,7 @@ namespace AST.Nodes.Values
         #endregion
 
         #region Equal
-        public Value Equal(Value value)
+        public override Value Equal(Value value)
         {
             return value.BoolEqual(this);
         }
@@ -73,7 +85,7 @@ namespace AST.Nodes.Values
         #endregion
 
         #region NotEqual
-        public Value NotEqual(Value value)
+        public override Value NotEqual(Value value)
         {
             return value.BoolEqual(this);
         }
@@ -87,7 +99,7 @@ namespace AST.Nodes.Values
         #region Negate
         public override Bool Negate()
         {
-            return new Bool(!value);
+            return new Bool(!GetValue());
         }
 
         #endregion

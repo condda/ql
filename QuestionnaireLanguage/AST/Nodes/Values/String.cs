@@ -10,27 +10,71 @@ using ValueTypes = AST.Resources;
 
 namespace AST.Nodes.Values
 {
-    public class String : IValue
+    public class String : Value
     {
         private readonly string value;
         public String(string value)
         {
             this.value = value;
         }
+        public String(string value, PositionInText positionInText)
+            : base(positionInText)
+        {
+            this.value = value;
+        }
+
+        public string GetValue()
+        {
+            return value;
+        }
+
         public override ValueTypes.Types GetType(Storage.ISymbolTable lookup)
         {
             return ValueTypes.Types.STRING;
         }
 
         // Visitor Methods
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }
 
-        public void Accept(Visitors.IVisitor visitor)
+        public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
+
+        #region Equal
+        public override Value Equal(Value value)
+        {
+            return value.StringEqual(this);
+        }
+        public override Value StringEqual(Values.String stringValue)
+        {
+            return new Bool(GetValue().Equals(stringValue.GetValue()));
+        }
+        #endregion
+
+        #region NotEqual
+        public override Value NotEqual(Value value)
+        {
+            return value.StringNotEqual(this);
+        }
+        public override Value StringNotEqual(Values.String stringValue)
+        {
+            return new Bool(!GetValue().Equals(stringValue.GetValue()));
+        }
+        #endregion
+
+        #region Add
+        public override Value Add(Value value)
+        {
+            return value.StringAdd(this);
+        }
+        public override Value StringAdd(Values.String stringValue)
+        {
+            return new String(GetValue() + stringValue.GetValue());
+        }
+        #endregion
     }
 }

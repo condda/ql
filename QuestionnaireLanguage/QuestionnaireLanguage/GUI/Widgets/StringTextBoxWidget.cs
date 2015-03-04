@@ -1,5 +1,4 @@
-﻿using AST.Nodes.Values;
-using QuestionnaireLanguage.GUI.CustomControls;
+﻿using QuestionnaireLanguage.GUI.CustomControls;
 using QuestionnaireLanguage.GUI.Interfaces.Widgets;
 using QuestionnaireLanguage.GUI.Interfaces.CustomControl;
 using System;
@@ -9,19 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using Values = AST.Nodes.Values;
 
 namespace QuestionnaireLanguage.GUI.Widgets
 {
-    public class CheckboxWidget : WidgetBase, ICheckBoxWidget
+    public class StringTextBoxWidget : TextBoxWidget
     {
-        public CheckboxWidget(string id, Bool node)
+        public StringTextBoxWidget()
+        {
+
+        }
+
+        public StringTextBoxWidget(string id, Values.String node)
         {
             Id = id;
         }
 
-        public UIElement CreateUIControl()
+        public override UIElement CreateUIControl()
         {
-            return new CheckBox() { Name = Id };
+            return new CustomTextBox(false) { Name = Id };
         }
     }
 }

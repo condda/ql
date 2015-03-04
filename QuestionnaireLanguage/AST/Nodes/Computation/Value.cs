@@ -6,15 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Values = AST.Nodes.Values;
 
 namespace AST.Nodes.Computation
 {
     public class Value : ASTNode, IComputation
     {
         private string parsedString;
-        public IValue ElementValue { get; private set; }
+        public Values.Value ElementValue { get; private set; }
 
-        public Value(string parsedString, IValue value, PositionInText positionInText)
+        public Value(string parsedString, Values.Value value, PositionInText positionInText)
             : base(positionInText)
         {
             this.parsedString = parsedString;
@@ -25,12 +26,12 @@ namespace AST.Nodes.Computation
             return parsedString;
         }
 
-        public void Accept(IVisitor visitor)
+        public override void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public T Accept<T>(IVisitor<T> visitor)
+        public override T Accept<T>(IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }

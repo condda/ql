@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Values = AST.Nodes.Values;
 
 namespace AST.ParseTreeVisitors
 {
@@ -21,7 +22,7 @@ namespace AST.ParseTreeVisitors
 
         public override IComputation VisitComputationValue(QLMainParser.ComputationValueContext context)
         {
-            IValue value = context.value().Accept(new ValueVisitor());
+            Values.Value value = context.value().Accept(new ValueVisitor());
             return new Value(context.value().GetText(), value,
                                     Position.PositionFormParserRuleContext(context));
         }

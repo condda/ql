@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using AST.Resources;
+using QuestionnaireLanguage.Visitors;
+using QuestionnaireLanguage.GUI.CustomControls;
 
 namespace QuestionnaireLanguage.GUI.FormObject
 {
@@ -29,7 +31,7 @@ namespace QuestionnaireLanguage.GUI.FormObject
         #region Private Methods
         private UIElement CreateQuestionLabel(string content)
         {
-            return new Label() { Content = content };
+            return new CustomLabel() { Content = content };
         }
         #endregion
 
@@ -37,6 +39,14 @@ namespace QuestionnaireLanguage.GUI.FormObject
         public UIElement ProcessFormObject(UIElement form)
         {
             StackPanel uiControlPanel = new StackPanel();
+            
+            ValueVisitor visitor = new ValueVisitor(questionNode.Identifier);
+
+
+            //IWidget labelWidget = visitor.VisitValue(questionNode.Label);
+            IWidget widget = visitor.VisitValue(questionNode.Value);
+
+
             uiControlPanel.Children.Add(CreateQuestionLabel((questionNode.Label as AST.Nodes.Labels.Label).Value));
 
             /*
@@ -46,15 +56,15 @@ namespace QuestionnaireLanguage.GUI.FormObject
              *                     ValidKeyValuePairs.
             */
             
-            int value = 1;
-            IWidget controlElement = WidgetFactory.GetControlElement(
-                this.questionNode.Identifier, new AST.Nodes.Values.Int(value)
+            //int value = 1;
+            //IWidget controlElement = WidgetFactory.GetWidget(
+            //    this.questionNode.Identifier, new AST.Nodes.Values.Int(value)
                 //new AST.Nodes.Values.Bool("", true, new AST.Representation.PositionInText())
                 //new AST.Nodes.Values.String()
-                );
+                //);
 
 
-            uiControlPanel.Children.Add(controlElement.CreateUIControl());
+            uiControlPanel.Children.Add(widget.CreateUIControl());
 
             return AddChildren(uiControlPanel, form);
         }

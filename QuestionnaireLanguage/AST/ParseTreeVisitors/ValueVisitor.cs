@@ -23,7 +23,7 @@ namespace AST.ParseTreeVisitors
             return new Values.Bool(false);
         }
 
-        public override IValue VisitStringValue(QLMainParser.StringValueContext context)
+        public override Value VisitStringValue(QLMainParser.StringValueContext context)
         {
             string stringValue = context.@string().STRINGLITERAL().GetText();
 
@@ -31,7 +31,7 @@ namespace AST.ParseTreeVisitors
                                      ); 
         }
 
-        public override IValue VisitIntValue(QLMainParser.IntValueContext context)
+        public override Value VisitIntValue(QLMainParser.IntValueContext context)
         {
             string intValue = context.@int().INTLITERAL().GetText();
 

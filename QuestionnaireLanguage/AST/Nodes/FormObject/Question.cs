@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AST.Nodes.Labels;
+using Values = AST.Nodes.Values;
 
 namespace AST.Nodes.FormObject
 {
@@ -14,17 +15,17 @@ namespace AST.Nodes.FormObject
         public ILabel Label {get; private set;}
         public IComputation Computation {get; private set;}
         public string Identifier {get; private set;}
-        private IType typeName;
+        public Values.Value Value { get; private set; }
         private PositionInText positionInText;
 
-        public Question(string identifier, 
-                        IType typeName, 
+        public Question(string identifier,
+                        Values.Value value,
                         ILabel label,
                         IComputation computation,
                         PositionInText positionInText)
         {
             this.Identifier = identifier;
-            this.typeName = typeName;
+            this.Value = value;
             this.Label = label;
             this.Computation = computation;
             this.positionInText = positionInText;

@@ -58,13 +58,14 @@
     </ApplicationDefinition>
     <Compile Include="GUI\CustomControls\CustomLabel.cs" />
     <Compile Include="GUI\Widgets\CheckboxWidget.cs" />
+    <Compile Include="GUI\Widgets\LabelWidget.cs" />
     <Compile Include="GUI\Widgets\WidgetBase.cs" />
-    <Compile Include="GUI\Widgets\IntTextBoxWidget.cs" />
-    <Compile Include="GUI\Widgets\TextBoxNode.cs" />
+    <Compile Include="GUI\Widgets\IntegerTextBoxWidget.cs" />
+    <Compile Include="GUI\Widgets\TextBoxWidget.cs" />
     <Compile Include="GUI\CustomControls\CustomCheckBox.cs" />
     <Compile Include="GUI\CustomControls\CustomTextBox.cs" />
     <Compile Include="GUI\Factories\Widgets\WidgetFactory.cs" />
-    <Compile Include="GUI\Widgets\StrTextBoxNode.cs" />
+    <Compile Include="GUI\Widgets\StringTextBoxWidget.cs" />
     <Compile Include="GUI\Factories\FormObjects\FormObjectFactory.cs" />
     <Compile Include="GUI\FormObject\ConditionalObject.cs">
       <SubType>Code</SubType>
@@ -83,6 +84,8 @@
     <Compile Include="Resources\TypeNames.cs" />
     <Compile Include="Visitors\FormObjectVisitor.cs" />
     <Compile Include="Visitors\Interfaces\IFormObjectVisitor.cs" />
+    <Compile Include="Visitors\Interfaces\IValueVisitor.cs" />
+    <Compile Include="Visitors\ValueVisitor.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -8,28 +8,32 @@ using System.Linq;
 using System.Text;
 using AST.Nodes.TypeName;
 using AST.Resources;
+using Values = AST.Nodes.Values;
 
 
 namespace AST.ParseTreeVisitors
 {
-    public class TypeVisitor : QLMainBaseVisitor<IType>
+    public class TypeVisitor : QLMainBaseVisitor<Value>
     {
-        public override IType VisitBoolType(QLMainParser.BoolTypeContext context)
+        public override Value VisitBoolType(QLMainParser.BoolTypeContext context)
         {
-            return new TypeName(context.BOOL().GetText(), Types.BOOL, 
-                                Position.PositionFormParserRuleContext(context)); 
+            //return new TypeName(context.BOOL().GetText(), Types.BOOL,
+            //                    Position.PositionFormParserRuleContext(context));
+            return new Values.Bool(false, Position.PositionFormParserRuleContext(context));
         }
 
-        public override IType VisitStringType(QLMainParser.StringTypeContext context)
+        public override Value VisitStringType(QLMainParser.StringTypeContext context)
         {
-            return new TypeName(context.STRING().GetText(), Types.STRING,
-                                Position.PositionFormParserRuleContext(context));
+            //return new TypeName(context.STRING().GetText(), Types.STRING,
+            //                    Position.PositionFormParserRuleContext(context));
+            return new Values.String(string.Empty, Position.PositionFormParserRuleContext(context));
         }
 
-        public override IType VisitIntType(QLMainParser.IntTypeContext context)
+        public override Value VisitIntType(QLMainParser.IntTypeContext context)
         {
-            return new TypeName(context.INT().GetText(), Types.INT,
-                                Position.PositionFormParserRuleContext(context));
+            //return new TypeName(context.INT().GetText(), Types.INT,
+            //                    Position.PositionFormParserRuleContext(context));
+            return new Values.Int(int.MinValue, Position.PositionFormParserRuleContext(context));
         }
     }
 }

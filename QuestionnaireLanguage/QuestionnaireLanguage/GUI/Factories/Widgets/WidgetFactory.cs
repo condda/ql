@@ -7,23 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Values = AST.Nodes.Values;
+using Labels = AST.Nodes.Labels;
+
 namespace QuestionnaireLanguage.GUI.Factories.Widgets
 {
     internal static class WidgetFactory
     {
-        internal static TextBoxNode GetControlElement(string id, Values.String node)
+        internal static StringTextBoxWidget GetWidget(string id, Values.String node)
         {
-            return new StrTextBoxNode(id, node);
+            return new StringTextBoxWidget(id, node);
         }
 
-        internal static CheckboxNode GetControlElement(string id, Bool node)
+        internal static CheckboxWidget GetWidget(string id, Bool node)
         {
-            return new CheckboxNode(id, node);
+            return new CheckboxWidget(id, node);
         }
 
-        internal static TextBoxNode GetControlElement(string id, Int node)
+        internal static IntegerTextBoxWidget GetWidget(string id, Int node)
         {
-            return new IntTextBoxWidget(id, node);
+            return new IntegerTextBoxWidget(id, node);
+        }
+
+        internal static LabelWidget GetWidget(Labels.Label node)
+        {
+            return new LabelWidget(node);
         }
 
         //internal static DatePickerWidget GetControlElement(string id, Date node)
