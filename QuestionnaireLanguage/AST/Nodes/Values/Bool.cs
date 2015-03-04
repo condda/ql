@@ -11,14 +11,18 @@ using ValueTypes = AST.Resources;
 
 namespace AST.Nodes.Values
 {
-    public class Bool : ValueNode<bool>
+    public class Bool : Value
     {
-        public Bool(string representation, bool parsedValue, PositionInText position)
-            :base(representation, parsedValue, position) { }
+        private readonly bool value;
 
-        public override ValueTypes.Types GetType(Storage.ISymbolTable lookup)
+        public Bool(bool parsedValue)
         {
-            return ValueTypes.Types.STRING;
+            this.value = parsedValue;
+        }
+
+        public override bool GetValue()
+        {
+            return value;
         }
 
         // Visitor Methods
@@ -32,8 +36,60 @@ namespace AST.Nodes.Values
             visitor.Visit(this);
         }
 
+        #region And
+        public Value And(Value value)
+        {
+            return value.BoolAnd(this);
+        }
 
+        public  override Value BoolAnd(Bool boolValue)
+        {
+            return new Bool(value && boolValue.value);
+        }
+        #endregion
 
+        #region Or
+        public Value Or(Value value)
+        {
+            return value.BoolOr(this);
+        }
 
+        public override Value BoolOr(Bool boolValue)
+        {
+            return new Bool(value || boolValue.value);
+        }
+        #endregion
+
+        #region Equal
+        public Value Equal(Value value)
+        {
+            return value.BoolEqual(this);
+        }
+
+        public override Value BoolEqual(Bool boolValue)
+        {
+            return new Bool(value == boolValue.value);
+        }
+        #endregion
+
+        #region NotEqual
+        public Value NotEqual(Value value)
+        {
+            return value.BoolEqual(this);
+        }
+
+        public override Value BoolNotEqual(Bool boolValue)
+        {
+            return new Bool(value != boolValue.value);
+        }
+        #endregion
+
+        #region Negate
+        public override Bool Negate()
+        {
+            return new Bool(!value);
+        }
+
+        #endregion
     }
 }

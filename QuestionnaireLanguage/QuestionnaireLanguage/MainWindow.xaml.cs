@@ -30,7 +30,7 @@ namespace QuestionnaireLanguage
             
 
             string path =  @"C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\many-ql\FelipezConde\testsamples\";
-            string fileName = "test11.txt";
+            string fileName = "test9.txt";
 
             TestClass test = new TestClass();
             ASTResult ast = test.GetAST(path + fileName);

@@ -17,6 +17,7 @@ using QuestionnaireLanguage.GUI.Factories.FormObjects;
 using AST.Nodes.Expression;
 using QuestionnaireLanguage.GUI.CustomControls;
 using AST;
+using QuestionnaireLanguage.Visitors;
 
 namespace QuestionnaireLanguage.Controller
 {
@@ -43,10 +44,12 @@ namespace QuestionnaireLanguage.Controller
 
             StackPanel panel = new StackPanel();
 
-            //foreach (IFormObject node in ((astTree.) as Form).getChildren())
-            //{
-            //    IFormElement formElement;
-            //}
+            foreach (IFormObject node in ((astTree.Ast) as Form).getChildren())
+            {
+                FormObjectVisitor visitor = new FormObjectVisitor();
+                IFormElement formElement = visitor.VisitFormObject(node);
+
+                uiControlElement = formElement.ProcessFormObject(panel);
 
                 /*
                  * Change the if and instead use visitors (ask if they are going to be implemented in the AST layer
@@ -56,18 +59,7 @@ namespace QuestionnaireLanguage.Controller
                  * Refactor in order to allow a call from the Conditional Form Object.
                  *
                  */
-
-            //    if (node.GetType().Name.Equals("Question"))
-            //    {
-            //        formElement = FormObjectFactory.GetFormObject(node as Question);
-            //    }
-            //    else
-            //    {
-            //        formElement = FormObjectFactory.GetFormObject(node as Conditional);
-            //    }
-                
-            //    uiControlElement = formElement.ProcessFormObject(panel);
-            //}
+            }
 
             //Change the object to the specific object from the AST structure
             //IList<IKeyValuePairNode> valPairList = new List<IKeyValuePairNode>();

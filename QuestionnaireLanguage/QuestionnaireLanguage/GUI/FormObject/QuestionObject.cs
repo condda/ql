@@ -37,7 +37,7 @@ namespace QuestionnaireLanguage.GUI.FormObject
         public UIElement ProcessFormObject(UIElement form)
         {
             StackPanel uiControlPanel = new StackPanel();
-            uiControlPanel.Children.Add(CreateQuestionLabel(GetLabelContent()));
+            uiControlPanel.Children.Add(CreateQuestionLabel((questionNode.Label as AST.Nodes.Labels.Label).Value));
 
             /*
              * Node.TypeName: Visit to know the instance.
@@ -46,9 +46,9 @@ namespace QuestionnaireLanguage.GUI.FormObject
              *                     ValidKeyValuePairs.
             */
             
-
+            int value = 1;
             IWidget controlElement = WidgetFactory.GetControlElement(
-                this.questionNode.Identifier, new AST.Nodes.Values.Int("", 1, new AST.Representation.PositionInText())
+                this.questionNode.Identifier, new AST.Nodes.Values.Int(value)
                 //new AST.Nodes.Values.Bool("", true, new AST.Representation.PositionInText())
                 //new AST.Nodes.Values.String()
                 );

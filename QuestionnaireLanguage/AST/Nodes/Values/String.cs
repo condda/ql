@@ -10,10 +10,13 @@ using ValueTypes = AST.Resources;
 
 namespace AST.Nodes.Values
 {
-    public class String : ValueNode<string>
+    public class String : IValue
     {
-        public String(string parsedString, string value, PositionInText position)
-            : base(parsedString, value, position) {}
+        private readonly string value;
+        public String(string value)
+        {
+            this.value = value;
+        }
         public override ValueTypes.Types GetType(Storage.ISymbolTable lookup)
         {
             return ValueTypes.Types.STRING;

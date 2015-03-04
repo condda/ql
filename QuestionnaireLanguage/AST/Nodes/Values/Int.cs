@@ -9,10 +9,11 @@ using ValueTypes = AST.Resources;
 
 namespace AST.Nodes.Values
 {
-    public class Int : ValueNode<int> 
-    {  
-        public Int(string representation, int value, PositionInText position)
-            : base(representation, value, position) { }
+    public class Int : IValue
+    {
+        public Int(int value)
+        {
+        }
   
         public override ValueTypes.Types GetType(Storage.ISymbolTable lookup)
         {

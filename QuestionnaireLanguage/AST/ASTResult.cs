@@ -11,13 +11,13 @@ namespace AST
 {
     public class ASTResult : IASTResult
     {
-        private IASTNode ast;
+        public IASTNode Ast {get; private set;}
         private SymbolTable table;
         private List<INotification> notifications;
 
         public ASTResult(IASTNode tree)
         {
-            this.ast = tree;
+            this.Ast = tree;
             table = new SymbolTable();
             
             //todo: traverse AST and typecheck

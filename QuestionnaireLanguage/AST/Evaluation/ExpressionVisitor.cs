@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 using AST.Nodes.Expression.Binary;
 using AST.Nodes.Expression.Unary;
 using AST.Nodes.Expression;
+using AST.Nodes.Values;
 namespace AST.Evaluation
 {
-    public class ExpressionVisitor : BaseVisitor<bool>
+    public class ExpressionVisitor : BaseVisitor<Value>
     {
          IDictionary<string, IValue> identifierLookup;
 
@@ -19,26 +20,41 @@ namespace AST.Evaluation
             this.identifierLookup = identifierLookup;
         }
 
-        public override bool Visit(And node)
+        public override Value Visit(And node)
         {
-            return node.Left.Accept(this) && node.Right.Accept(this);
+            Value left = node.Left.Accept(this);
+            Value right = node.Right.Accept(this);
+
+            return left.BoolAnd((dynamic)right);
         }
-        public bool Visit(Or node)
+        public override Value Visit(Or node)
         {
-            return node.Left.Accept(this) || node.Right.Accept(this);
+            Value left = node.Left.Accept(this);
+            Value right = node.Right.Accept(this);
+
+            return left.BoolOr((dynamic)right);
+
         }
-        public bool Visit(Equal node)
+        public override Value Visit(Equal node)
         {
-            return node.Left.Accept(this) == node.Right.Accept(this);
+            Value left = node.Left.Accept(this);
+            Value right = node.Right.Accept(this);
+
+            return left.BoolEqual((dynamic)right);
         }
 
-        public bool Visit(NotEqual node)
+        public override Value Visit(NotEqual node)
         {
-            return node.Left.Accept(this) != node.Right.Accept(this);
+            Value left = node.Left.Accept(this);
+            Value right = node.Right.Accept(this);
+
+            return left.BoolNotEqual((dynamic)right);
         }
-        public bool Visit(Negate node)
+        public override Value Visit(Negate node)
         {
-            return true;
+
+            Value value = node.Accept(this);
+            return value.Negate();
         }
         public bool Visit(Container node) {
             return true;

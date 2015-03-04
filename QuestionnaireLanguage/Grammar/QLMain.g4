@@ -26,7 +26,7 @@ grammar QLMain;
 ;id             : ALPHANUMERIC
 
 
-;label : 'label' ':' STRING
+;label : 'label' ':' STRINGLITERAL
 
 ;computed : 'computed' ':' computation
 

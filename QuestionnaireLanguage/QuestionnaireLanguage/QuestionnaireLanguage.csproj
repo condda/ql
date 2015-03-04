@@ -81,6 +81,8 @@
     <Compile Include="GUI\Interfaces\Widgets\ITextBoxWidget.cs" />
     <Compile Include="Controller\Processor.cs" />
     <Compile Include="Resources\TypeNames.cs" />
+    <Compile Include="Visitors\FormObjectVisitor.cs" />
+    <Compile Include="Visitors\Interfaces\IFormObjectVisitor.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

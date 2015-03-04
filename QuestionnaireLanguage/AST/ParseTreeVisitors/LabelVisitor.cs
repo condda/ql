@@ -14,7 +14,7 @@ namespace AST.ParseTreeVisitors
     {
         public override ILabel VisitLabel(QLMainParser.LabelContext context)
         {
-            string show = context.STRING().GetText();
+            string show = context.STRINGLITERAL().GetText();
             return new Label(show, show.Substring(1,show.Length - 2),
                                     Position.PositionFormParserRuleContext(context));
         }

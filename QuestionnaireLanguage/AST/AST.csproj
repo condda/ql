@@ -61,6 +61,7 @@
     <Compile Include="Nodes\Labels\Label.cs" />
     <Compile Include="Nodes\Values\Null.cs" />
     <Compile Include="Nodes\Values\Unknown.cs" />
+    <Compile Include="Nodes\Values\Value.cs" />
     <Compile Include="Nodes\Values\ValueNode.cs" />
     <Compile Include="ParseTreeVisitors\ExpressionVisitor.cs" />
     <Compile Include="ParseTreeVisitors\ComputationVisitor.cs" />
