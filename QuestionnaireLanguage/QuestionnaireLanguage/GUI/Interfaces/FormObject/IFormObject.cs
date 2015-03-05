@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace QuestionnaireLanguage.GUI.Interfaces.Form
+namespace QuestionnaireLanguage.GUI.Interfaces.FormObject
 {
-    public interface IFormElement
+    public interface IFormObject
     {
         UIElement ProcessFormObject(UIElement form);
     }

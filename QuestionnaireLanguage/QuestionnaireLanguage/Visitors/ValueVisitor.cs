@@ -20,7 +20,7 @@ namespace QuestionnaireLanguage.Visitors
         {
             this.id = id;
         }
-        public IWidget VisitValue(IValue value)
+        public Widget VisitValue(IValue value)
         {
             return Visit((dynamic)value);
         }

@@ -1,4 +1,5 @@
-﻿using QuestionnaireLanguage.GUI.Interfaces.Widgets;
+﻿using QuestionnaireLanguage.GUI.CustomUIElements.CustomControls;
+using QuestionnaireLanguage.GUI.Interfaces.Widgets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,8 @@ using System.Windows;
 
 namespace QuestionnaireLanguage.GUI.Widgets
 {
-    public abstract class TextBoxWidget : WidgetBase, ITextBoxWidget
+    public abstract class TextBoxWidget : Widget
     {
-        public abstract UIElement CreateUIControl();
+        public override abstract UIElement CreateUIControl();
     }
 }

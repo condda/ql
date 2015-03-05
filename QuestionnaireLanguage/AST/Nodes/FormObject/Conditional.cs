@@ -10,16 +10,16 @@ namespace AST.Nodes.FormObject
 {
     public class Conditional : IFormObject
     {
-        private IList<IFormObject> body;
-        private IExpression condition;
+        public IList<IFormObject> Body { get; private set; }
+        public IExpression Condition { get; private set; }
         private PositionInText positionInText;
 
         public Conditional(IExpression condition, 
                            IList<IFormObject> body, 
                            PositionInText positionInText)
         {
-            this.condition = condition;
-            this.body = body;
+            this.Condition = condition;
+            this.Body = body;
             this.positionInText = positionInText;
         }
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuestionnaireLanguage.GUI.Interfaces.Widgets
+namespace QuestionnaireLanguage.GUI.Interfaces.CustomPanel
 {
-    public interface ICheckBoxWidget : IWidget
+    public interface ICustomStackPanel
     {
     }
 }

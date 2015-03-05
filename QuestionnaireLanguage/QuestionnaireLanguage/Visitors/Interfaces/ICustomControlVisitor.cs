@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 
-namespace QuestionnaireLanguage.GUI.Interfaces.Widgets
+namespace QuestionnaireLanguage.Visitors.Interfaces
 {
-    public interface IWidget
+    public interface ICustomControlVisitor
     {
-        string Id { get; set; }
+        ICustomControl Visit(TextBox control);
     }
 }

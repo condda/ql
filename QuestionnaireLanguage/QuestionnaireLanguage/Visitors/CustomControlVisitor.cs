@@ -1,16 +1,18 @@
 ﻿using QuestionnaireLanguage.GUI.Interfaces.CustomControl;
+using QuestionnaireLanguage.Visitors.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 
-namespace QuestionnaireLanguage.GUI.Interfaces.Widgets
+namespace QuestionnaireLanguage.Visitors
 {
-    public interface IWidget
+    public class CustomControlVisitor : ICustomControlVisitor
     {
-        string Id { get; set; }
+        public ICustomControl Visit(TextBox control)
+        {
+        }
     }
 }

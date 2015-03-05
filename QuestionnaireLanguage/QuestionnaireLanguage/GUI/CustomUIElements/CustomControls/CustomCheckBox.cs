@@ -8,33 +8,48 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace QuestionnaireLanguage.GUI.CustomControls
+namespace QuestionnaireLanguage.GUI.CustomUIElements.CustomControls
 {
     public class CustomCheckBox : CheckBox, ICustomControl
     {
+        private IList<string> listConditionalId;
+        public IList<string> ListConditionalId
+        {
+            get { return this.listConditionalId; }
+            private set { this.listConditionalId = value; }
+
+        }
+
         #region Constructors
-        public CustomCheckBox() { }
+        public CustomCheckBox()
+        {
+            AddEvents();
+        }
         #endregion
 
         #region ICustomControl
-        public void AddConditionalEvent()
+        public void AddConditionalPanelId(string id)
         {
-            this.Click += CustomCheckBox_Click;
+            ListConditionalId.Add(id);
         }
-
         #endregion
 
         #region Private Methods
-
+        private void AddEvents()
+        {
+            this.Click += CustomCheckBox_Click;
+        }
         #endregion
 
         #region Conditional Events
         void CustomCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            //Evaluate the expression
-            throw new NotImplementedException();
+            //TODO: Implement event
         }
 
         #endregion
+
+
+        
     }
 }

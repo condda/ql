@@ -1,10 +1,10 @@
-﻿using System;
+﻿using QuestionnaireLanguage.GUI.CustomUIElements.CustomPanel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace QuestionnaireLanguage.GUI.FormObject
 {
@@ -17,7 +17,7 @@ namespace QuestionnaireLanguage.GUI.FormObject
         {
             try
             {
-                ((StackPanel)form).Children.Add(element);
+                ((CustomStackPanel)form).Children.Add(element);
             }
             catch (NullReferenceException e)
             {

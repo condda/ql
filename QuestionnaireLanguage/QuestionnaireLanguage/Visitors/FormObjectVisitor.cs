@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using AST.Nodes.FormObject;
 using QuestionnaireLanguage.GUI.FormObject;
 using QuestionnaireLanguage.GUI.Factories.FormObjects;
-using AST.Nodes.Interfaces;
+using ASTIFormObject = AST.Nodes.Interfaces;
 using QuestionnaireLanguage.Visitors.Interfaces;
-using QuestionnaireLanguage.GUI.Interfaces.Form;
+using QuestionnaireLanguage.GUI.Interfaces.FormObject;
 
 namespace QuestionnaireLanguage.Visitors
 {
     public class FormObjectVisitor : IFormObjectVisitor
     {
-        public IFormElement VisitFormObject(IFormObject formObject)
+        public IFormObject VisitFormObject(ASTIFormObject.IFormObject formObject)
         {
             return Visit((dynamic) formObject);
         }

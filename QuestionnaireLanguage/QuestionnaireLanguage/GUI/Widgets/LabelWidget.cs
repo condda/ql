@@ -5,19 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Labels = AST.Nodes.Labels;
+using AST.Nodes.Labels;
+using QuestionnaireLanguage.GUI.CustomUIElements.CustomControls;
 
 namespace QuestionnaireLanguage.GUI.Widgets
 {
-    public class LabelWidget : WidgetBase, IWidget
+    public class LabelWidget : Widget
     {
-        public LabelWidget(Labels.Label node)
+        private Label node;
+        public LabelWidget(Label node)
         {
-
+            this.node = node;
         }
-        public UIElement CreateUIControl()
+        public override UIElement CreateUIControl()
         {
-            throw new NotImplementedException();
+            return new CustomLabel() { Content = node.Value };
         }
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuestionnaireLanguage.GUI.Interfaces.Widgets
+namespace QuestionnaireLanguage.GUI.Widgets
 {
-    interface IDatePickerWidet : IWidget
+    public abstract class BaseWidget<T>
     {
+        public abstract Widget CreateUIControl();
     }
 }

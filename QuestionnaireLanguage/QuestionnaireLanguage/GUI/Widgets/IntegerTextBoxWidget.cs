@@ -1,4 +1,4 @@
-﻿using QuestionnaireLanguage.GUI.CustomControls;
+﻿using QuestionnaireLanguage.GUI.CustomUIElements.CustomControls;
 using QuestionnaireLanguage.GUI.Interfaces.Widgets;
 using QuestionnaireLanguage.GUI.Interfaces.CustomControl;
 using System;

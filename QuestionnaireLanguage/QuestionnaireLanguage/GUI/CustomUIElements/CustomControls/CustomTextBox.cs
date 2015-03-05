@@ -9,36 +9,43 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace QuestionnaireLanguage.GUI.CustomControls
+namespace QuestionnaireLanguage.GUI.CustomUIElements.CustomControls
 {
     public class CustomTextBox : TextBox, ICustomControl
     {
+        private bool isNumeric;
+        private static IList<string> listConditionalId;
+
+        public IList<string> ListConditionalId
+        {
+            get { return listConditionalId; }
+            private set { listConditionalId = value; }
+
+        }
+
         #region Constructors
         public CustomTextBox(bool isNumeric)
         {
+            this.isNumeric = isNumeric;
+            AddEvents();
+        }
+
+        #endregion
+
+        #region Private Methods
+        private void AddEvents()
+        {
             if (isNumeric)
+            {
                 this.PreviewTextInput += new TextCompositionEventHandler(Validate_Numeric);
+            }
+
+            this.LostKeyboardFocus += Lost_Focus;
         }
 
         #endregion
 
-        #region ICustomControl
-
-        public void AddConditionalEvent()
-        {
-            this.LostKeyboardFocus += Lost_Focus;
-        }
-
-        public void AddConditionalEvent(ICustomControlVisitor visitor)
-        {
-            this.LostKeyboardFocus += Lost_Focus;
-            //visitor.Visit(this);
-        }
-
-
-        #endregion
-
-        #region ValidationEvents
+        #region Events
         private void Validate_Numeric(object sender, TextCompositionEventArgs e)
         {
             int result;
@@ -47,15 +54,18 @@ namespace QuestionnaireLanguage.GUI.CustomControls
                 e.Handled = true;
             }
         }
-        #endregion
-
-        #region ConditionalEvents
         private void Lost_Focus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            //TODO: Implement conditional
-            int result;
+            //TODO: Implement event
         }
 
+        #endregion
+
+        #region ICustomControl
+        public void AddConditionalPanelId(string id)
+        {
+            ListConditionalId.Add(id);
+        }
         #endregion
     }
 }

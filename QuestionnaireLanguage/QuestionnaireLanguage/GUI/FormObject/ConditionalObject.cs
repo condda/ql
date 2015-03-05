@@ -1,9 +1,11 @@
 ﻿using AST.Nodes.FormObject;
 using QuestionnaireLanguage.Controller;
-using QuestionnaireLanguage.GUI.CustomControls;
+using QuestionnaireLanguage.GUI.CustomUIElements.CustomControls;
+using QuestionnaireLanguage.GUI.CustomUIElements.CustomPanel;
 using QuestionnaireLanguage.GUI.FormObject;
 using QuestionnaireLanguage.GUI.Interfaces.CustomControl;
-using QuestionnaireLanguage.GUI.Interfaces.Form;
+using QuestionnaireLanguage.GUI.Interfaces.FormObject;
+using QuestionnaireLanguage.GUI.Widgets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,7 @@ using System.Windows.Controls;
 
 namespace QuestionnaireLanguage.GUI.FormObject
 {
-    public class ConditionalObject : ObjectBase, IFormElement
+    public class ConditionalObject : ObjectBase, IFormObject
     {
         private Conditional conditionalNode;
 
@@ -30,58 +32,54 @@ namespace QuestionnaireLanguage.GUI.FormObject
 
         public UIElement ProcessFormObject(UIElement form)
         {
-            StackPanel uiControlPanel = new StackPanel();
+            StackPanelWidget stackPanelWidget = new StackPanelWidget(false);
+            UIElement customStackPanel = stackPanelWidget.CreateUIControl();
+
             
             //Evaluate the expression
-            uiControlPanel.Visibility = Visibility.Hidden;
-
-            Processor proc = new Processor();
+            //customStackPanel.Visibility = Visibility.Hidden;
 
             /*
-             * Make a new call to the processor in order to obtain the elements inside the conditional
              * Add support to the stackpanel visibility (maybe add a new element to the symboltable)
-             *      a way to relate the elements: Key:ConditionalExpression Value:StackPanelId
              *      Create a method that searches and change visibility of stackpanel when needed.
+             *      
+             * Verify the conditional expression to set visibility
+             * 
+             * Get Id of elements from the expression (if exist).
+             * Find elements in the form and assign stack
              */
+            
+            //CreateEvents(form);
 
-            CreateEvents(form);
+            Processor processor = new Processor();
+            Control control = processor.FindControl(((CustomStackPanel)form).Children, "q1"); //Obtain ICustomControl and add idStack. Visitor maybe
 
-            return AddChildren(uiControlPanel, form);
+            AddChildren(processor.ProcessNode(conditionalNode), customStackPanel);
+
+            return AddChildren(customStackPanel, form);
         }
 
         #endregion
 
         #region Private Methods
 
-        private void CreateEvents(UIElement form)
-        {
-            try
-            {
-                Control controlFound = FindElement(((StackPanel)form).Children, "IdTxt"); //Change IdTxt to node.Id
-                (controlFound as ICustomControl).AddConditionalEvent();
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine("Control Id not found: " + e.InnerException);
-            }
+        //private void CreateEvents(UIElement form)
+        //{
+        //    try
+        //    {
+        //        Control controlFound = FindElement(((StackPanel)form).Children, "IdTxt"); //Change IdTxt to the ID of the element in the expression (if exist).
+        //        (controlFound as ICustomControl).AddConditionalEvent();
+        //    }
+        //    catch (NullReferenceException e)
+        //    {
+        //        Console.WriteLine("Control Id not found: " + e.InnerException);
+        //    }
+        //    catch (InvalidCastException e)
+        //    {
+        //        Console.WriteLine("Form is not found StackPanel: " + e.InnerException);
+        //    }
             
-        }
-        
-        private Control FindElement(UIElementCollection controls, string nameControlToFind) 
-        {
-            Control controlFound = null;
-            
-            foreach (Control control in controls.OfType<Control>())
-            {
-                if (control.Name.Equals(nameControlToFind))
-                {
-                    controlFound = control;
-                    break;
-                }
-            }
-
-            return controlFound;
-        }
+        //}
         
         #endregion
     }

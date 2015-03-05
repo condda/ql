@@ -1,5 +1,5 @@
 ﻿using AST.Nodes.Values;
-using QuestionnaireLanguage.GUI.CustomControls;
+using QuestionnaireLanguage.GUI.CustomUIElements.CustomControls;
 using QuestionnaireLanguage.GUI.Interfaces.Widgets;
 using QuestionnaireLanguage.GUI.Interfaces.CustomControl;
 using System;
@@ -12,16 +12,16 @@ using System.Windows.Controls;
 
 namespace QuestionnaireLanguage.GUI.Widgets
 {
-    public class CheckboxWidget : WidgetBase, ICheckBoxWidget
+    public class CheckboxWidget : Widget
     {
         public CheckboxWidget(string id, Bool node)
         {
             Id = id;
         }
 
-        public UIElement CreateUIControl()
+        public override UIElement CreateUIControl()
         {
-            return new CheckBox() { Name = Id };
+            return new CustomCheckBox() { Name = Id };
         }
     }
 }

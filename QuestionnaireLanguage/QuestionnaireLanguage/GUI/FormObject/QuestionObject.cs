@@ -1,9 +1,9 @@
 ﻿using AST.Nodes.FormObject;
-using AST.Nodes.Interfaces;
+using ASTIFormObject = AST.Nodes.Interfaces;
 using QuestionnaireLanguage.GUI.Factories.Widgets;
 using QuestionnaireLanguage.GUI.Interfaces.Widgets;
 using QuestionnaireLanguage.GUI.Interfaces.CustomControl;
-using QuestionnaireLanguage.GUI.Interfaces.Form;
+using QuestionnaireLanguage.GUI.Interfaces.FormObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +13,11 @@ using System.Windows;
 using System.Windows.Controls;
 using AST.Resources;
 using QuestionnaireLanguage.Visitors;
-using QuestionnaireLanguage.GUI.CustomControls;
+using QuestionnaireLanguage.GUI.Widgets;
 
 namespace QuestionnaireLanguage.GUI.FormObject
 {
-    public class QuestionObject : ObjectBase, IFormElement
+    public class QuestionObject : ObjectBase, IFormObject
     {
         private Question questionNode;
 
@@ -29,61 +29,25 @@ namespace QuestionnaireLanguage.GUI.FormObject
         #endregion
 
         #region Private Methods
-        private UIElement CreateQuestionLabel(string content)
-        {
-            return new CustomLabel() { Content = content };
-        }
         #endregion
 
         #region IFormObject
         public UIElement ProcessFormObject(UIElement form)
         {
-            StackPanel uiControlPanel = new StackPanel();
-            
+            //StackPanelWidget stackPanelWidget = new StackPanelWidget(true);
+            //UIElement customStackPanel = stackPanelWidget.CreateUIControl();
+
             ValueVisitor visitor = new ValueVisitor(questionNode.Identifier);
+            Widget widget = visitor.VisitValue(questionNode.Value);
 
+            LabelVisitor labelVisitor = new LabelVisitor();
+            Widget labelWidget = labelVisitor.VisitValue(questionNode.Label);
 
-            //IWidget labelWidget = visitor.VisitValue(questionNode.Label);
-            IWidget widget = visitor.VisitValue(questionNode.Value);
+            AddChildren(labelWidget.CreateUIControl(), form);
+            AddChildren(widget.CreateUIControl(), form);
 
-
-            uiControlPanel.Children.Add(CreateQuestionLabel((questionNode.Label as AST.Nodes.Labels.Label).Value));
-
-            /*
-             * Node.TypeName: Visit to know the instance.
-             * 
-             * Node.GetProperties: Iterate through them to know the properties and create label. 
-             *                     ValidKeyValuePairs.
-            */
-            
-            //int value = 1;
-            //IWidget controlElement = WidgetFactory.GetWidget(
-            //    this.questionNode.Identifier, new AST.Nodes.Values.Int(value)
-                //new AST.Nodes.Values.Bool("", true, new AST.Representation.PositionInText())
-                //new AST.Nodes.Values.String()
-                //);
-
-
-            uiControlPanel.Children.Add(widget.CreateUIControl());
-
-            return AddChildren(uiControlPanel, form);
+            return form;
         }
         #endregion
-
-        private string GetLabelContent()
-        {
-            string label = string.Empty;
-
-            
-            //foreach (IKeyValuePairNode item in questionNode.Label)
-            //{
-                //if (item.Key == "label")
-                //{
-                //    label = (item.Value as AST.Nodes.Values.String).Value.ToString();
-                //}
-            //}
-
-            return label;
-        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using QuestionnaireLanguage.GUI.FormObject;
-using QuestionnaireLanguage.GUI.Interfaces.Form;
+using QuestionnaireLanguage.GUI.Interfaces.FormObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +11,14 @@ using System.Windows;
 using AST.Nodes;
 using AST.Representation;
 using QuestionnaireLanguage.Resources;
-using AST.Nodes.Interfaces;
+using ASTIFormObject = AST.Nodes.Interfaces;
 using AST.Nodes.TypeName;
 using QuestionnaireLanguage.GUI.Factories.FormObjects;
 using AST.Nodes.Expression;
-using QuestionnaireLanguage.GUI.CustomControls;
+using QuestionnaireLanguage.GUI.CustomUIElements.CustomControls;
 using AST;
 using QuestionnaireLanguage.Visitors;
+using QuestionnaireLanguage.GUI.Widgets;
 
 namespace QuestionnaireLanguage.Controller
 {
@@ -40,51 +41,56 @@ namespace QuestionnaireLanguage.Controller
 
         public UIElement ProcessAST()
         {
-            UIElement uiControlElement = null;
-
-            StackPanel panel = new StackPanel();
-
-            foreach (IFormObject node in ((astTree.Ast) as Form).getChildren())
+            Widget panelWidget = new StackPanelWidget(true);
+            UIElement uiPanel = panelWidget.CreateUIControl();
+            
+            foreach (ASTIFormObject.IFormObject node in ((astTree.Ast) as Form).getChildren())
             {
                 FormObjectVisitor visitor = new FormObjectVisitor();
-                IFormElement formElement = visitor.VisitFormObject(node);
+                IFormObject formElement = visitor.VisitFormObject(node);
 
-                uiControlElement = formElement.ProcessFormObject(panel);
+                uiPanel = formElement.ProcessFormObject(uiPanel);
 
                 /*
-                 * Change the if and instead use visitors (ask if they are going to be implemented in the AST layer
-                 *
-                 * Think where to create the evaluator (we have here the AST object with the SymbolTable)
-                 * 
-                 * Refactor in order to allow a call from the Conditional Form Object.
-                 *
+                 * Add a visitor to determine if the node to process is a FORM or is a CONDITIONAL
+                 *      In order to allow this we need to move FORM to FormObject and implement Form : IFormObject
+                 *      -> astTree.Ast.Accept(new FormObjectVisitor());
                  */
             }
+            return uiPanel;
+        }
 
-            //Change the object to the specific object from the AST structure
-            //IList<IKeyValuePairNode> valPairList = new List<IKeyValuePairNode>();
-            //PositionInText position = new PositionInText();
+        public UIElement ProcessNode(Conditional node)
+        {
+            UIElement uiControlElement = null;
 
-            //ITypeName typeName = new PrimitiveTypeName(position);
+            Widget panelWidget = new StackPanelWidget(true);
 
-            //Question node = new Question("Q1",typeName,valPairList,position);
+            foreach (ASTIFormObject.IFormObject bodyElement in node.Body)
+            {
+                FormObjectVisitor visitor = new FormObjectVisitor();
+                IFormObject formElement = visitor.VisitFormObject(bodyElement);
 
-            //Conditional nodeC = new Conditional(
-            //    new And(new Id("IdTxt", position), new Id("Q2", position), position),
-            //    new List<IFormObjectNode>(),
-            //    position);
-
-           // StackPanel mainPanel = new StackPanel();
-            //mainPanel.Children.Add(new CustomTextBox(false) { Name = "IdTxt"});
-
-            //IFormElement formElement = FormObjectFactory.GetFormObject(node);
-            //uiControlElement = formElement.ProcessFormObject(mainPanel);
-
-            //IFormElement formElement = FormObjectFactory.GetFormElement(node);
-            //UIElement uiControlElement = formElement.CreateUIControl();
-
+                uiControlElement = formElement.ProcessFormObject(panelWidget.CreateUIControl());
+            }
 
             return uiControlElement;
+        }
+
+        public Control FindControl(UIElementCollection controls, string nameControlToFind)
+        {
+            Control controlFound = null;
+
+            foreach (Control control in controls.OfType<Control>())
+            {
+                if (control.Name.Equals(nameControlToFind))
+                {
+                    controlFound = control;
+                    break;
+                }
+            }
+
+            return controlFound;
         }
 
         /*TODO

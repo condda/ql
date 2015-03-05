@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace QuestionnaireLanguage.GUI.Widgets
 {
-    class DatePickerWidget : WidgetBase, IDatePickerWidet
+    class DatePickerWidget : Widget<CustomDatePicker>
     {
         public DatePickerWidget(string id, Date node)
         {
