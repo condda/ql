@@ -1,4 +1,5 @@
-﻿using AST.Nodes.Interfaces;
+﻿using AST.Nodes;
+using AST.Nodes.Interfaces;
 using AST.Notification;
 using AST.Representation;
 using AST.Storage;
@@ -11,11 +12,11 @@ namespace AST
 {
     public class ASTResult : IASTResult
     {
-        public IASTNode Ast {get; private set;}
+        public FormElementContainer Ast { get; private set; }
         private SymbolTable table;
         private List<INotification> notifications;
 
-        public ASTResult(IASTNode tree)
+        public ASTResult(FormElementContainer tree)
         {
             this.Ast = tree;
             table = new SymbolTable();

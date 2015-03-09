@@ -9,14 +9,14 @@ namespace AST.Nodes.Expression.Binary
 {
     public class LessThanOrEqual : IExpression
     {
-        private IExpression left;
-        private IExpression right;
+        public IExpression Left { get; private set; }
+        public IExpression Right { get; private set; }
         private Representation.PositionInText position;
 
         public LessThanOrEqual(IExpression left, IExpression right, Representation.PositionInText position)
         {
-            this.left = left;
-            this.right = right;
+            this.Left = left;
+            this.Right = right;
             this.position = position;
         }
 

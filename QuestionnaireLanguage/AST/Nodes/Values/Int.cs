@@ -9,7 +9,7 @@ using ValueTypes = AST.Resources;
 
 namespace AST.Nodes.Values
 {
-    public class Int : Value
+    public class Int : Value, IValue
     {
         private readonly int value;
 
@@ -60,7 +60,7 @@ namespace AST.Nodes.Values
         #region Substract
         public override Value Substract(Value value)
         {
-            return value.Substract(this);
+            return value.IntegerSubstract(this);
         }
         public override Value IntegerSubstract(Values.Int intValue)
         {

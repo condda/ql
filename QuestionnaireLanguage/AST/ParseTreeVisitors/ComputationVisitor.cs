@@ -22,7 +22,7 @@ namespace AST.ParseTreeVisitors
 
         public override IComputation VisitComputationValue(QLMainParser.ComputationValueContext context)
         {
-            Values.Value value = context.value().Accept(new ValueVisitor());
+            IValue value = context.value().Accept(new ValueVisitor());
             return new Value(context.value().GetText(), value,
                                     Position.PositionFormParserRuleContext(context));
         }

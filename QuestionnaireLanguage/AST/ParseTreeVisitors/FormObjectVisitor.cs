@@ -17,7 +17,7 @@ namespace AST.ParseTreeVisitors
         {
 
             string identifier = context.id().GetText();
-            Values.Value typeName = context.type().Accept(new TypeVisitor());
+            IValue typeName = context.type().Accept(new TypeVisitor());
 
             ILabel label = context.label().Accept(new LabelVisitor());
             IComputation computation = context.computed() != null ? context.computed().computation().Accept(new ComputationVisitor()) : null;
@@ -35,7 +35,7 @@ namespace AST.ParseTreeVisitors
                                          .Select(child => child.Accept(new FormObjectVisitor()))
                                          .ToList();
 
-            return new Conditional(condition, body,
+            return new Conditional(condition, body, context.formSection().GetText(),
                                    Position.PositionFormParserRuleContext(context));
 
         }

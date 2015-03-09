@@ -10,15 +10,15 @@ namespace AST.Nodes.Expression.Binary
 {
     public class Multiply : ASTNode, IExpression
     {
-        public IExpression left { get; private set; }
-        public IExpression right { get; private set; }
+        public IExpression Left { get; private set; }
+        public IExpression Right { get; private set; }
         private string parsedString;
 
         public Multiply(IExpression left, IExpression right, string parsedString, PositionInText position)
             : base(position)
         {
-            this.left = left;
-            this.right = right;
+            this.Left = left;
+            this.Right = right;
             this.parsedString = parsedString;
         }
 

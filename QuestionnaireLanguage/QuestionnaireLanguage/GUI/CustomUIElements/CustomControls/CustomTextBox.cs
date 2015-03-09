@@ -1,4 +1,5 @@
-﻿using QuestionnaireLanguage.GUI.Interfaces.CustomControl;
+﻿using QuestionnaireLanguage.Controller;
+using QuestionnaireLanguage.GUI.Interfaces.CustomControl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +57,7 @@ namespace QuestionnaireLanguage.GUI.CustomUIElements.CustomControls
         }
         private void Lost_Focus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            //TODO: Implement event
+            Processor.UpdateChanges();
         }
 
         #endregion

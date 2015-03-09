@@ -11,13 +11,13 @@ namespace AST.Nodes.Expression
 {
     public class Id : IExpression, IValue
     {
-        public string identifier { get; private set; }
-        public PositionInText position {get; private set; }
+        public string Identifier { get; private set; }
+        public PositionInText Position {get; private set; }
 
         public Id(string identifier, PositionInText position)
         {
-            this.identifier = identifier;
-            this.position = position;
+            this.Identifier = identifier;
+            this.Position = position;
         }
 
         public void Accept(Visitors.IVisitor visitor)

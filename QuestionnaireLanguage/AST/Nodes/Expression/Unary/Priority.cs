@@ -10,12 +10,12 @@ namespace AST.Nodes.Expression.Unary
 {
     public class Priority : ASTNode, IExpression
     {
-        private IExpression child;
+        public IExpression Expression { get; private set; }
         string parsedString;
         public Priority(IExpression child, string parsedString, PositionInText position)
             : base(position)
         {
-            this.child = child;
+            this.Expression = child;
             this.parsedString = parsedString;
         }
 

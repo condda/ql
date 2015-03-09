@@ -83,6 +83,7 @@
     <Compile Include="GUI\Interfaces\CustomControl\ICustomControlVisitor.cs" />
     <Compile Include="GUI\Interfaces\FormObject\IFormObject.cs" />
     <Compile Include="Controller\Processor.cs" />
+    <Compile Include="Contracts\IMain.cs" />
     <Compile Include="Resources\TypeNames.cs" />
     <Compile Include="Visitors\FormObjectVisitor.cs" />
     <Compile Include="Visitors\Interfaces\ICustomControlVisitor.cs" />

@@ -13,9 +13,9 @@ namespace AST.Nodes.Computation
     public class Value : ASTNode, IComputation
     {
         private string parsedString;
-        public Values.Value ElementValue { get; private set; }
+        public IValue ElementValue { get; private set; }
 
-        public Value(string parsedString, Values.Value value, PositionInText positionInText)
+        public Value(string parsedString, IValue value, PositionInText positionInText)
             : base(positionInText)
         {
             this.parsedString = parsedString;

@@ -63,3 +63,5 @@ C:\Users\Daniel\Desktop\Backup\OLD\1 - Copy\QuestionnaireLanguage\QuestionnaireL
 C:\Users\Daniel\Desktop\Backup\OLD\1 - Copy\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.g.resources
 C:\Users\Daniel\Desktop\Backup\OLD\1 - Copy\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.Properties.Resources.resources
 C:\Users\Daniel\Desktop\Backup\OLD\1 - Copy\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.csproj.GenerateResource.Cache
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage_MarkupCompile.lref

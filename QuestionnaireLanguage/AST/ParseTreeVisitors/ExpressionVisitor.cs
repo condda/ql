@@ -156,6 +156,11 @@ namespace AST.ParseTreeVisitors
         {
             return context.id().Accept(new ValueVisitor());
         }
+
+        public override IExpression VisitAssociativeUnary(QLMainParser.AssociativeUnaryContext context)
+        {
+            return context.unary().Accept(new UnaryVisitor());
+        }
         #endregion
     }
 }

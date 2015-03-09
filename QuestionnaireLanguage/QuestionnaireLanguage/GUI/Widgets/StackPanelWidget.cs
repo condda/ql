@@ -2,6 +2,7 @@
 using QuestionnaireLanguage.GUI.Interfaces.Widgets;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace QuestionnaireLanguage.GUI.Widgets
 
         public StackPanelWidget(bool visible)
         {
-            Id = "_stack" + conditionalCount.ToString();
+            Id = ConfigurationSettings.AppSettings["stackPanelId"].ToString() + conditionalCount.ToString();
             conditionalCount++;
             this.visible = visible;
 

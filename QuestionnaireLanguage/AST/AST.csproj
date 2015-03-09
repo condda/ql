@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Evaluation\ExpressionVisitor.cs" />
+    <Compile Include="Evaluation\Evaluator.cs" />
     <Compile Include="Helpers\Position.cs" />
     <Compile Include="IAST.cs" />
     <Compile Include="ASTResult.cs" />
@@ -54,6 +54,7 @@
     <Compile Include="Nodes\Computation\Expression.cs" />
     <Compile Include="Nodes\Computation\Id.cs" />
     <Compile Include="Nodes\Computation\Value.cs" />
+    <Compile Include="Nodes\FormElementContainer.cs" />
     <Compile Include="Nodes\Interfaces\IComputation.cs" />
     <Compile Include="Nodes\Interfaces\ILabel.cs" />
     <Compile Include="Nodes\Interfaces\IValue.cs" />

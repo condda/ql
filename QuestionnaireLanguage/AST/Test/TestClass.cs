@@ -1,7 +1,13 @@
 ﻿using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using AST.Evaluation;
+using AST.Nodes;
+using AST.Nodes.Expression;
+using AST.Nodes.Expression.Binary;
 using AST.Nodes.Interfaces;
+using AST.Nodes.Values;
 using AST.ParseTreeVisitors;
+using AST.Representation;
 using Grammar;
 using System;
 using System.Collections.Generic;
@@ -41,9 +47,34 @@ namespace AST.Test
 
             Console.WriteLine(tree.ToStringTree(parser));
             FormVisitor visitor = new FormVisitor();
-            IASTNode ast = visitor.Visit(tree);
+            FormElementContainer ast = visitor.Visit(tree);
+
+            Evaluate();
 
             return new ASTResult(ast);
         }
+
+        public void Evaluate() 
+        {
+            Evaluator evaluator = new Evaluator();
+
+            Bool boo1 = new Bool(true);
+            Bool boo2 = new Bool(false);
+            Int int1 = new Int(1);
+            Int int2 = new Int(2);
+
+            evaluator.AddValue("Q1", boo1);
+            evaluator.AddValue("Q2", boo2);
+
+            evaluator.AddValue("Q3", int1);
+            evaluator.AddValue("Q4", int2);
+
+
+            Value v;
+            v = evaluator.Evaluate(new Add(int1, int2, "1 + 2", new PositionInText(0, 1, 2, 3)));
+            v = evaluator.Evaluate(new Subtract(int2, int1, "2 - 1", new PositionInText(0, 1, 2, 3)));
+            v = evaluator.Evaluate(new And(boo1, boo2, new PositionInText(0, 1, 2, 3)));
+
+	    }
     }
 }

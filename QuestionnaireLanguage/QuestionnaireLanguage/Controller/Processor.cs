@@ -19,84 +19,97 @@ using QuestionnaireLanguage.GUI.CustomUIElements.CustomControls;
 using AST;
 using QuestionnaireLanguage.Visitors;
 using QuestionnaireLanguage.GUI.Widgets;
+using QuestionnaireLanguage.Contracts;
+using QuestionnaireLanguage.GUI.CustomUIElements.CustomPanel;
+using AST.Evaluation;
+using AST.Nodes.Values;
 
 namespace QuestionnaireLanguage.Controller
 {
     public class Processor
     {
-        private static ASTResult astTree;
+        private readonly static ASTResult astTree;
+        
+        private static IMain window;
 
+        public static IMain Window
+        {
+            get { return Processor.window; }
+            set { Processor.window = value; }
+        }
+        
         public static ASTResult AstTree
         {
             get { return astTree; }
-            private set { astTree = value; }
         }
 
-        public Processor() { }
-
-        public Processor(ASTResult astTree)
+        public Processor(IMain window, ASTResult ast)
         {
-            AstTree = astTree;
+            Window = window;
+            //astTree = ast;
         }
 
-        public UIElement ProcessAST()
+        public static UIElement ProcessBody(IList<ASTIFormObject.IFormObject> body, UIElement form)
         {
-            Widget panelWidget = new StackPanelWidget(true);
-            UIElement uiPanel = panelWidget.CreateUIControl();
-            
-            foreach (ASTIFormObject.IFormObject node in ((astTree.Ast) as Form).getChildren())
+            foreach (ASTIFormObject.IFormObject node in body)
             {
-                FormObjectVisitor visitor = new FormObjectVisitor();
-                IFormObject formElement = visitor.VisitFormObject(node);
-
-                uiPanel = formElement.ProcessFormObject(uiPanel);
-
-                /*
-                 * Add a visitor to determine if the node to process is a FORM or is a CONDITIONAL
-                 *      In order to allow this we need to move FORM to FormObject and implement Form : IFormObject
-                 *      -> astTree.Ast.Accept(new FormObjectVisitor());
-                 */
-            }
-            return uiPanel;
-        }
-
-        public UIElement ProcessNode(Conditional node)
-        {
-            UIElement uiControlElement = null;
-
-            Widget panelWidget = new StackPanelWidget(true);
-
-            foreach (ASTIFormObject.IFormObject bodyElement in node.Body)
-            {
-                FormObjectVisitor visitor = new FormObjectVisitor();
-                IFormObject formElement = visitor.VisitFormObject(bodyElement);
-
-                uiControlElement = formElement.ProcessFormObject(panelWidget.CreateUIControl());
+                form = new FormObjectVisitor().VisitFormObject(node).ProcessFormObject(form);
             }
 
-            return uiControlElement;
+            return form;
         }
 
-        public Control FindControl(UIElementCollection controls, string nameControlToFind)
+        public Control FindControl(string nameControlToFind)
         {
-            Control controlFound = null;
+            Control result = null;
 
-            foreach (Control control in controls.OfType<Control>())
+            foreach (Control control in Window.GetControls().OfType<Control>())
             {
                 if (control.Name.Equals(nameControlToFind))
                 {
-                    controlFound = control;
+                    result = control;
                     break;
                 }
             }
 
-            return controlFound;
+            return result;
+        }
+
+        public static ObjectValue GetObjectValue(Identifier id)
+        {
+            return AstTree.GetValue(id);
+        }
+
+        public static void SetObjectValue(Identifier id, ObjectValue value)
+        {
+            AstTree.SetValue(id,value);
+        }
+
+        public static void DeleteAstResult()
+        {
+            //astTree = null;
+        }
+
+        public static void UpdateChanges()
+        {
+            UIElementCollection collection = window.GetControls();
+        }
+
+        public static void SetVisible()
+        {
+        }
+
+        public static bool Evaluate(ASTIFormObject.IExpression expression)
+        {
+            Evaluator evaluator = new Evaluator();
+            evaluator.Evaluate(expression);
+            return false;
         }
 
         /*TODO
-         * - Update SymbolTable
          * - Evaluate inputs
          * - Change visibility
          */
+
     }
 }
