@@ -12,12 +12,12 @@ namespace AST.ParseTreeVisitors
     {
         public override IExpression VisitNegateUnary(QLMainParser.NegateUnaryContext context)
         {
-            return base.VisitNegateUnary(context);
+            return context.expression().Accept(new UnaryVisitor());
         }
 
         public override IExpression VisitPriorityUnary(QLMainParser.PriorityUnaryContext context)
         {
-            return base.VisitPriorityUnary(context);
+            return context.expression().Accept(new ExpressionVisitor());
         }
     }
 }
