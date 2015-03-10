@@ -17,7 +17,7 @@ namespace AST.ParseTreeVisitors
         {
 
             string identifier = context.id().GetText();
-            IValue typeName = context.type().Accept(new TypeVisitor());
+            Values.Value typeName = context.type().Accept(new TypeVisitor());
 
             ILabel label = context.label().Accept(new LabelVisitor());
             IComputation computation = context.computed() != null ? context.computed().computation().Accept(new ComputationVisitor()) : null;

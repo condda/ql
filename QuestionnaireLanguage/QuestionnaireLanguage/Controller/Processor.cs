@@ -28,25 +28,21 @@ namespace QuestionnaireLanguage.Controller
 {
     public class Processor
     {
-        private readonly static ASTResult astTree;
-        
+        private static ASTResult astTree;
+        private static Evaluator evaluator;
         private static IMain window;
 
-        public static IMain Window
-        {
-            get { return Processor.window; }
-            set { Processor.window = value; }
-        }
-        
-        public static ASTResult AstTree
+        public ASTResult AstTree
         {
             get { return astTree; }
         }
 
-        public Processor(IMain window, ASTResult ast)
+        public Processor(IMain mainWindow, ASTResult ast)
         {
-            Window = window;
-            //astTree = ast;
+            window = mainWindow;
+            astTree = ast;
+
+            evaluator = new Evaluator();
         }
 
         public static UIElement ProcessBody(IList<ASTIFormObject.IFormObject> body, UIElement form)
@@ -63,7 +59,7 @@ namespace QuestionnaireLanguage.Controller
         {
             Control result = null;
 
-            foreach (Control control in Window.GetControls().OfType<Control>())
+            foreach (Control control in window.GetControls().OfType<Control>())
             {
                 if (control.Name.Equals(nameControlToFind))
                 {
@@ -77,12 +73,12 @@ namespace QuestionnaireLanguage.Controller
 
         public static ObjectValue GetObjectValue(Identifier id)
         {
-            return AstTree.GetValue(id);
+            return astTree.GetValue(id);
         }
 
         public static void SetObjectValue(Identifier id, ObjectValue value)
         {
-            AstTree.SetValue(id,value);
+            astTree.SetValue(id,value);
         }
 
         public static void DeleteAstResult()
@@ -101,9 +97,13 @@ namespace QuestionnaireLanguage.Controller
 
         public static bool Evaluate(ASTIFormObject.IExpression expression)
         {
-            Evaluator evaluator = new Evaluator();
-            evaluator.Evaluate(expression);
+            Value value = evaluator.Evaluate(expression);
             return false;
+        }
+
+        public static void AddValue(string key, Value value)
+        {
+            evaluator.AddValue(key,value);
         }
 
         /*TODO

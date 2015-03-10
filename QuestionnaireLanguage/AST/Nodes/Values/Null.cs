@@ -5,8 +5,23 @@ using System.Text;
 
 namespace AST.Nodes.Values
 {
-    public class Null
+    public class Null : Value
     {
+        public Null(){}
 
+        public override Resources.Types GetType(Storage.ISymbolTable lookup)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Value Equal(Value value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Value NotEqual(Value value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

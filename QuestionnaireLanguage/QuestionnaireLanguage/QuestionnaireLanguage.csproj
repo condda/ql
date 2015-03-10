@@ -90,8 +90,10 @@
     <Compile Include="Visitors\Interfaces\IFormObjectVisitor.cs" />
     <Compile Include="Visitors\Interfaces\ILabelVisitor.cs" />
     <Compile Include="Visitors\Interfaces\IValueVisitor.cs" />
+    <Compile Include="Visitors\Interfaces\IWidgetVisitor.cs" />
     <Compile Include="Visitors\LabelVisitor.cs" />
     <Compile Include="Visitors\ValueVisitor.cs" />
+    <Compile Include="Visitors\WidgetVisitor.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

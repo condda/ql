@@ -36,8 +36,7 @@ namespace QuestionnaireLanguage
             TestClass test = new TestClass();
             ASTResult ast = test.GetAST(path + fileName);
 
-            Processor.Window = this;
-
+            Processor procesor = new Processor(this, ast);
             UIElement element = Processor.ProcessBody(ast.Ast.GetBody(),this._stack);
         }
 

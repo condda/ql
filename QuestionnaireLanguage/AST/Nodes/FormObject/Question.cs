@@ -15,11 +15,11 @@ namespace AST.Nodes.FormObject
         public ILabel Label {get; private set;}
         public IComputation Computation {get; private set;}
         public string Identifier {get; private set;}
-        public IValue Value { get; private set; }
+        public Values.Value Value { get; private set; }
         private PositionInText positionInText;
 
         public Question(string identifier,
-                        IValue value,
+                        Values.Value value,
                         ILabel label,
                         IComputation computation,
                         PositionInText positionInText)

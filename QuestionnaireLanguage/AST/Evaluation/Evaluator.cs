@@ -13,7 +13,7 @@ namespace AST.Evaluation
 {
     public class Evaluator : BaseVisitor<Value>
     {
-         IDictionary<string, Value> identifierLookup;
+        IDictionary<string, Value> identifierLookup;
 
         public Evaluator(IDictionary<string, Value> identifierLookup)
         {
@@ -33,6 +33,22 @@ namespace AST.Evaluation
         public void AddValue(string key, Value value)
         {
             this.identifierLookup.Add(key, value);
+        }
+
+        public Value GetValue(string key)
+        {
+            Value result = null;
+            try
+            {
+                result = this.identifierLookup[key];
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Key not found");
+                result = new Null();
+            }
+
+            return result;
         }
 
         public override Value Visit(Container node)
@@ -188,7 +204,7 @@ namespace AST.Evaluation
 
         public override Value Visit(Id node)
         {
-            return new Nodes.Values.String(node.Identifier);
+            return this.GetValue(node.Identifier);
         }
 
         public override Value Visit(Nodes.Values.Unknown node)

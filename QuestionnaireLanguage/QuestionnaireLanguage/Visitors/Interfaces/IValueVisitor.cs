@@ -1,5 +1,4 @@
-﻿using QuestionnaireLanguage.GUI.Widgets;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +9,8 @@ namespace QuestionnaireLanguage.Visitors.Interfaces
 {
     public interface IValueVisitor
     {
-        StringTextBoxWidget Visit(Values.String question);
-        IntegerTextBoxWidget Visit(Values.Int conditional);
-        CheckboxWidget Visit(Values.Bool conditional);
+        string Visit(Values.String question);
+        int Visit(Values.Int conditional);
+        bool Visit(Values.Bool conditional);
     }
 }

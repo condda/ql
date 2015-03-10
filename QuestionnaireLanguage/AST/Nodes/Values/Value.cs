@@ -42,8 +42,6 @@ namespace AST.Nodes.Values
         public virtual Value BoolEqual(Bool boolValue) { return null; }
         public virtual Value BoolNotEqual(Bool boolValue) { return null; }
 
-
-        public virtual Value StringAdd(Values.String stringValue) { return null; }
         public virtual Value StringEqual(Values.String stringValue) { return null; }
         public virtual Value StringNotEqual(Values.String stringValue) { return null; }
 
