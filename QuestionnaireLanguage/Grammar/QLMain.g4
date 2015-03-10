@@ -35,14 +35,18 @@ grammar QLMain;
              | expression    #ComputationExpression
              
 /* Expression */
+/*
+expression : id
+           | value
+           | associative
+           | nonAssociative
+ I think this makes it easier, but we would have to label everything. computation would just become an expression though...
+*/
+
 
 ;expression      : associative
                  | nonAssociative
                  ;
-
-unary           : '!' expression      #NegateUnary
-                | '(' expression ')'  #PriorityUnary
-                ;
 
 associative     : associative op= AND associative #AND
                 | associative op= OR associative  #OR
@@ -53,6 +57,10 @@ associative     : associative op= AND associative #AND
                 | unary                           #AssociativeUnary
                 | value                           #AssociativeValue
                 | id                              #AssociativeId
+                ;
+
+unary           : '!' expression      #NegateUnary
+                | '(' expression ')'  #PriorityUnary
                 ;
 
 nonAssociative  : associative EQ associative      #EQ

@@ -13,12 +13,13 @@ namespace AST.Nodes.Values
 {
     public abstract class Value : IValue
     {
-        public PositionInText Position { get; private set; }
+        private readonly PositionInText Position;
         protected Value() { }
         protected Value(PositionInText position)
         {
             Position = position;
         }
+        public virtual PositionInText GetPosition(){ return Position; }
 
         public abstract Types GetType(ISymbolTable lookup);
         public abstract Value Equal(Value value);
@@ -58,9 +59,16 @@ namespace AST.Nodes.Values
         public virtual Value IntegerLess(Values.Int intValue) { return null; }
         public virtual Value IntegerLessEqual(Values.Int intValue) { return null; }
 
-
         public virtual void Accept(Visitors.IVisitor visitor) {}
 
         public virtual T Accept<T>(Visitors.IVisitor<T> visitor) { return default(T); }
-    }
+
+        public abstract string MakeString();
+
+
+        public bool IsOfType(IValue type)
+        {
+            throw new NotImplementedException();
+        }
+    } 
 }

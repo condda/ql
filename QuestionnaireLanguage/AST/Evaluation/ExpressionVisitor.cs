@@ -22,31 +22,31 @@ namespace AST.Evaluation
 
         public override Value Visit(And node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.BoolAnd((dynamic)right);
         }
         public override Value Visit(Or node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.BoolOr((dynamic)right);
 
         }
         public override Value Visit(Equal node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.BoolEqual((dynamic)right);
         }
 
         public override Value Visit(NotEqual node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.BoolNotEqual((dynamic)right);
         }
@@ -56,8 +56,8 @@ namespace AST.Evaluation
             Value value = node.Accept(this);
             return value.Negate();
         }
-        public bool Visit(Container node) {
-            return true;
+        public override Value Visit(Container node) {
+            throw new NotImplementedException();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace AST.Nodes.FormObject
         public ILabel Label {get; private set;}
         public IComputation Computation {get; private set;}
         public string Identifier {get; private set;}
-        public Values.Value Value { get; private set; }
+        public Values.Value Type { get; private set; }
         private PositionInText positionInText;
 
         public Question(string identifier,
@@ -25,23 +25,19 @@ namespace AST.Nodes.FormObject
                         PositionInText positionInText)
         {
             this.Identifier = identifier;
-            this.Value = value;
+            this.Type = value;
             this.Label = label;
             this.Computation = computation;
             this.positionInText = positionInText;
         }
 
-        public PositionInText GetPositionInText()
+        public PositionInText GetPosition()
         { return positionInText; }
 
         public void Accept(Visitors.IVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
+        { visitor.Visit(this); }
 
         public T Accept<T>(Visitors.IVisitor<T> visitor)
-        {
-            return visitor.Visit(this);
-        }
+        { return visitor.Visit(this); }
     }
 }

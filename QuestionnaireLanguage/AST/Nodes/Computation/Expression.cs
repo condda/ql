@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Computation
 {
-    public class Expression : ASTNode, IComputation
+    public class Expression : ASTNode, IComputation, IExpression
     {
         private string parsedString;
         public IExpression ExpressionValue {get; private set;}
@@ -24,12 +24,12 @@ namespace AST.Nodes.Computation
             return parsedString;
         }
 
-        public void Accept(Visitors.IVisitor visitor)
+        public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }

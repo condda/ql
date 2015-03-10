@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace AST.Notification
 {
-    interface INotification
+    public interface INotification
     {
-        int LineNumber();
-        int StartCharacterPosition();
-        int EndCharacterPosition();
         string Message();
     }
 }

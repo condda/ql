@@ -38,7 +38,7 @@ namespace QuestionnaireLanguage.GUI.FormObject
             //UIElement customStackPanel = stackPanelWidget.CreateUIControl();
 
             ValueVisitor visitor = new ValueVisitor(questionNode.Identifier);
-            Widget widget = visitor.VisitValue(questionNode.Value);
+            Widget widget = visitor.VisitValue(questionNode.Type);
 
             LabelVisitor labelVisitor = new LabelVisitor();
             Widget labelWidget = labelVisitor.VisitValue(questionNode.Label);

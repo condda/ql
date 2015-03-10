@@ -22,6 +22,10 @@ namespace AST.Nodes.Values
         {
             this.value = value;
         }
+        public override string MakeString()
+        {
+            return "string";
+        }
 
         public string GetValue()
         {
@@ -76,5 +80,6 @@ namespace AST.Nodes.Values
             return new String(GetValue() + stringValue.GetValue());
         }
         #endregion
+
     }
 }

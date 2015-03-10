@@ -27,5 +27,16 @@ namespace AST.Nodes.Values
         { 
             return parsedString; 
         }
+
+        public string MakeString()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public bool IsOfType(IValue type)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,4 @@
-C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\QLMainLexer.cs
-C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\QLMainParser.cs
-C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\QLMainVisitor.cs
-C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\QLMainBaseVisitor.cs
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\QLMainLexer.cs
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\QLMainParser.cs
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\QLMainVisitor.cs
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\Grammar\obj\Debug\QLMainBaseVisitor.cs

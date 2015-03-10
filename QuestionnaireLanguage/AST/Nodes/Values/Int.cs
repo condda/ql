@@ -34,6 +34,11 @@ namespace AST.Nodes.Values
             return ValueTypes.Types.INT;
         }
 
+        public override string MakeString()
+        {
+            return "int";
+        }
+
         // Visitor Methods
         public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {

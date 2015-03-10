@@ -12,11 +12,12 @@ namespace AST.Nodes
 {
     public abstract class ASTNode : IASTNode
     {
-        public PositionInText Position{ get; private set; }
+        private readonly PositionInText position;
         protected ASTNode(PositionInText position)
         {
-            Position = position;
+            this.position = position;
         }
+
         public abstract string GetParsedString();
 
         public virtual void Accept(IVisitor visitor)
@@ -27,6 +28,11 @@ namespace AST.Nodes
         public virtual T Accept<T>(IVisitor<T> visitor)
         {
             throw new NotImplementedException();
+        }
+
+        public PositionInText GetPosition()
+        {
+            return position;
         }
     }
 }

@@ -23,11 +23,6 @@ namespace AST.Nodes.FormObject
             this.positionInText = positionInText;
         }
 
-        public PositionInText GetPositionInText()
-        {
-            return positionInText;
-        }
-
         public void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
@@ -36,6 +31,11 @@ namespace AST.Nodes.FormObject
         public T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
+        }
+
+        public PositionInText GetPosition()
+        {
+            return positionInText;
         }
     }
 }

@@ -43,6 +43,7 @@ namespace AST.ParseTreeVisitors
             return new Or(
                     context.associative(0).Accept(this),
                     context.associative(1).Accept(this),
+                    context.GetText(),
                     Position.PositionFormParserRuleContext(context)
                 );
         }
@@ -102,6 +103,7 @@ namespace AST.ParseTreeVisitors
             return new NotEqual(
                 context.associative(0).Accept(this),
                 context.associative(1).Accept(this),
+                context.GetText(),
                 Position.PositionFormParserRuleContext(context)
             );
         }

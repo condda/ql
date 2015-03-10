@@ -26,12 +26,12 @@ namespace AST.Nodes
         { return parsedString; }
 
         //Visitor Methods
-        public void Accept(Visitors.IVisitor visitor)
+        public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }

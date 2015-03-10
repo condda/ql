@@ -22,7 +22,7 @@ namespace AST.Nodes.TypeName
             this.type = type;
         }
 
-        public PositionInText GetPositionInText()
+        public PositionInText GetPosition()
         {
             return position;
         }

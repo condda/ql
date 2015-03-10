@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Expression.Binary
 {
-    public class Multiply : ASTNode, IExpression
+    public class Multiply : ASTNode, IExpression, IBinary
     {
-        public IExpression left { get; private set; }
-        public IExpression right { get; private set; }
+        private readonly IExpression left;
+        private readonly IExpression right;
         private string parsedString;
 
         public Multiply(IExpression left, IExpression right, string parsedString, PositionInText position)
@@ -22,19 +22,42 @@ namespace AST.Nodes.Expression.Binary
             this.parsedString = parsedString;
         }
 
+         public IExpression Left()
+        { return left; }
+
+        public IExpression Right()
+        { return right; }
+
         public override string GetParsedString()
         {
             return parsedString;
         }
 
-        public void Accept(Visitors.IVisitor visitor)
+        public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
            return visitor.Visit(this);
         }
+
+        public string MakeString()
+        {
+            return "*";
+        }
+
+        public IValue GetCompatibleType(Values.Int leftType, Values.Int rightType)
+        {
+            return new Values.Int(0);
+        }
+
+        public IValue GetCompatibleType(IValue leftType, IValue rightType)
+        {
+            return new Values.Undefined();
+        }
+
+
     }
 }
