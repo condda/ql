@@ -18,7 +18,7 @@ namespace AST.Visitors
     public interface IVisitor
     {
         void Visit(Form node);
-        void Visit(Question node);
+        void Visit(IASTNode node);
 
 
         void Visit(Binary.And node);
@@ -51,29 +51,25 @@ namespace AST.Visitors
         void Visit(Computation.Id node);
         void Visit(Computation.Value node);
         void Visit(Computation.Expression node);
-
         void Visit(Conditional conditional);
-
         void Visit(Nodes.TypeName.TypeName typeName);
-
         void Visit(Binary.GreaterThanOrEqual greaterThanOrEqual);
-
         void Visit(Binary.LessThan lessThan);
-
         void Visit(Binary.LessThanOrEqual lessThanOrEqual);
-
         void Visit(Binary.Add add);
-
         void Visit(Binary.Divide divide);
-
         void Visit(Binary.Multiply multiply);
-
         void Visit(Binary.Subtract subtract);
+        void Visit(Nodes.Interfaces.IBinary binaryExpression);
+        void Visit(Nodes.Interfaces.IUnary unaryExpression);
+
+
+        void Visit(Values.Undefined undefined);
     }
     public interface IVisitor<T>
     {
         T Visit(Form node);
-        T Visit(Question node);
+        T Visit(IASTNode node);
         T Visit(Conditional conditional);
 
 
@@ -120,8 +116,10 @@ namespace AST.Visitors
 
         T Visit(Nodes.TypeName.TypeName typeName);
 
+        T Visit(Nodes.Interfaces.IBinary binaryExpression);
+        T Visit(Nodes.Interfaces.IUnary unaryExpression);
 
-
+        T Visit(Values.Undefined undefined);
 
     }
 }

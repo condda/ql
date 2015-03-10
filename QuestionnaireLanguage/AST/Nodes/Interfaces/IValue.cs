@@ -8,5 +8,8 @@ namespace AST.Nodes.Interfaces
 {
     public interface IValue : IExpression
     {
+        string MakeString();
+
+        bool IsOfType(IValue type);
     }
 }

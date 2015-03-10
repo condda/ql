@@ -59,58 +59,58 @@ namespace AST.Evaluation
         #region Comparison
         public override Value Visit(And node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.BoolAnd((dynamic)right);
         }
         public override Value Visit(Or node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.BoolOr((dynamic)right);
 
         }
         public override Value Visit(Equal node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.BoolEqual((dynamic)right);
         }
         public override Value Visit(NotEqual node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.BoolNotEqual((dynamic)right);
         }
         public override Value Visit(GreaterThan node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.Greater((dynamic)right);
         }
         public override Value Visit(GreaterThanOrEqual node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.GreaterEqual((dynamic)right);
         }
         public override Value Visit(LessThan node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.Less((dynamic)right);
         }
         public override Value Visit(LessThanOrEqual node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.LessEqual((dynamic)right);
         }
@@ -125,7 +125,7 @@ namespace AST.Evaluation
         }
         public override Value Visit(Priority node)
         {
-            return node.Expression.Accept(this);
+            return node.GetChildExpression().Accept(this);
         }
         #endregion
 
@@ -133,32 +133,32 @@ namespace AST.Evaluation
 
         public override Value Visit(Add node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.Add((dynamic)right);
         }
 
         public override Value Visit(Subtract node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.Substract((dynamic)right);
         }
 
         public override Value Visit(Multiply node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.Multiply((dynamic)right);
         }
 
         public override Value Visit(Divide node)
         {
-            Value left = node.Left.Accept(this);
-            Value right = node.Right.Accept(this);
+            Value left = node.Left().Accept(this);
+            Value right = node.Right().Accept(this);
 
             return left.Divide((dynamic)right);
         }

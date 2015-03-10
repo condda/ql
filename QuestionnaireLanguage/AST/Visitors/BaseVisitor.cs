@@ -8,143 +8,163 @@ namespace AST.Visitors
 {
     public abstract class BaseVisitor<T> : IVisitor<T>
     {
-
-        public virtual  T Visit(Nodes.Form node)
+        public virtual T Visit(Nodes.Form node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.FormObject.Question node)
+        public virtual T Visit(Nodes.FormObject.Question node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.FormObject.Conditional conditional)
+        public virtual T Visit(Nodes.FormObject.Conditional conditional)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.And node)
+        public virtual T Visit(Nodes.Expression.Binary.And node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.Or node)
+        public virtual T Visit(Nodes.Expression.Binary.Or node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.Equal node)
+        public virtual T Visit(Nodes.Expression.Binary.Equal node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.NotEqual node)
+        public virtual T Visit(Nodes.Expression.Binary.NotEqual node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.GreaterThan greaterThan)
+        public virtual T Visit(Nodes.Expression.Binary.GreaterThan greaterThan)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.GreaterThanOrEqual greaterThanOrEqual)
+        public virtual T Visit(Nodes.Expression.Binary.GreaterThanOrEqual greaterThanOrEqual)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.LessThan lessThan)
+        public virtual T Visit(Nodes.Expression.Binary.LessThan lessThan)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.LessThanOrEqual lessThanOrEqual)
+        public virtual T Visit(Nodes.Expression.Binary.LessThanOrEqual lessThanOrEqual)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.Add add)
+        public virtual T Visit(Nodes.Expression.Binary.Add add)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.Subtract subtract)
+        public virtual T Visit(Nodes.Expression.Binary.Subtract subtract)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.Multiply multiply)
+        public virtual T Visit(Nodes.Expression.Binary.Multiply multiply)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Binary.Divide divide)
+        public virtual T Visit(Nodes.Expression.Binary.Divide divide)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Unary.Negate node)
+        public virtual T Visit(Nodes.Expression.Unary.Negate node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Unary.Priority priority)
+        public virtual T Visit(Nodes.Expression.Unary.Priority priority)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Container node)
+        public virtual T Visit(Nodes.Expression.Container node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Expression.Id node)
+        public virtual T Visit(Nodes.Expression.Id node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Values.Bool node)
+        public virtual T Visit(Nodes.Values.Bool node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Values.Int node)
+        public virtual T Visit(Nodes.Values.Int node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Values.String node)
+        public virtual T Visit(Nodes.Values.String node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Values.Unknown node)
+        public virtual T Visit(Nodes.Values.Unknown node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Labels.Label node)
+        public virtual T Visit(Nodes.Labels.Label node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Computation.Id node)
+        public virtual T Visit(Nodes.Computation.Id node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Computation.Value node)
+        public virtual T Visit(Nodes.Computation.Value node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.Computation.Expression node)
+        public virtual T Visit(Nodes.Computation.Expression node)
         {
             throw new NotImplementedException();
         }
 
-        public virtual  T Visit(Nodes.TypeName.TypeName typeName)
+        public virtual T Visit(Nodes.TypeName.TypeName typeName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual T Visit(Nodes.Interfaces.IBinary binaryExpression)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual T Visit(Nodes.Interfaces.IUnary unaryExpression)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T Visit(Nodes.Values.Undefined undefined)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public T Visit(Nodes.Interfaces.IASTNode node)
         {
             throw new NotImplementedException();
         }

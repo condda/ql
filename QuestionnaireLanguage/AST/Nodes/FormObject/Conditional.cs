@@ -12,7 +12,6 @@ namespace AST.Nodes.FormObject
     {
         public IList<IFormObject> Body { get; private set; }
         public IExpression Condition { get; private set; }
-        private PositionInText positionInText;
         public string parsedString;
 
         public Conditional(IExpression condition, 
@@ -22,21 +21,15 @@ namespace AST.Nodes.FormObject
         {
             this.Condition = condition;
             this.Body = body;
-            this.positionInText = positionInText;
             this.parsedString = parsedString;
         }
 
-        public PositionInText GetPositionInText()
-        {
-            return positionInText;
-        }
-
-        public void Accept(Visitors.IVisitor visitor)
+        public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }

@@ -25,3 +25,6 @@ C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\AST\bin\Debug\Antlr4.Runtim
 C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\AST\obj\Debug\AST.csprojResolveAssemblyReference.cache
 C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\AST\obj\Debug\AST.dll
 C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\AST\obj\Debug\AST.pdb
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\AST\obj\Debug\AST.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\AST\obj\Debug\AST.dll
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\AST\obj\Debug\AST.pdb

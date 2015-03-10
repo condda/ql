@@ -22,6 +22,10 @@ namespace AST.Nodes.Values
         {
             this.value = value;
         }
+        public override string MakeString()
+        {
+            return "string";
+        }
 
         public string GetValue()
         {

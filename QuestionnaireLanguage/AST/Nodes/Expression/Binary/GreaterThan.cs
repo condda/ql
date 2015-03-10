@@ -7,27 +7,51 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Expression.Binary
 {
-    public class GreaterThan : IExpression
+    public class GreaterThan : ASTNode, IExpression, IBinary
     {
-        public IExpression Left { get; private set; }
-        public IExpression Right { get; private set; }
-        private Representation.PositionInText position;
-
+        private readonly IExpression left;
+        private readonly IExpression right;
+        
         public GreaterThan(IExpression left, IExpression right, Representation.PositionInText position)
+            : base(position)
         {
-            this.Left = left;
-            this.Right = right;
-            this.position = position;
+            this.left = left;
+            this.right = right;
         }
+        public IExpression Left()
+        { return left; }
 
-        public void Accept(Visitors.IVisitor visitor)
+        public IExpression Right()
+        { return right; }
+        public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }
+
+        public override string GetParsedString()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string MakeString()
+        {
+            return ">";
+        }
+
+        public IValue GetCompatibleType(Values.Int leftType, Values.Int rightType)
+        {
+            return new Values.Bool(true);
+        }
+
+        public IValue GetCompatibleType(IValue leftType, IValue rightType)
+        {
+            return new Values.Undefined();
+        }
+
     }
 }

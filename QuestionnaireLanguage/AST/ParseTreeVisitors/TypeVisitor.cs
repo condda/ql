@@ -17,22 +17,16 @@ namespace AST.ParseTreeVisitors
     {
         public override Value VisitBoolType(QLMainParser.BoolTypeContext context)
         {
-            //return new TypeName(context.BOOL().GetText(), Types.BOOL,
-            //                    Position.PositionFormParserRuleContext(context));
             return new Values.Bool(false, Position.PositionFormParserRuleContext(context));
         }
 
         public override Value VisitStringType(QLMainParser.StringTypeContext context)
         {
-            //return new TypeName(context.STRING().GetText(), Types.STRING,
-            //                    Position.PositionFormParserRuleContext(context));
             return new Values.String(string.Empty, Position.PositionFormParserRuleContext(context));
         }
 
         public override Value VisitIntType(QLMainParser.IntTypeContext context)
         {
-            //return new TypeName(context.INT().GetText(), Types.INT,
-            //                    Position.PositionFormParserRuleContext(context));
             return new Values.Int(int.MinValue, Position.PositionFormParserRuleContext(context));
         }
     }

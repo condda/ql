@@ -63,5 +63,31 @@ C:\Users\Daniel\Desktop\Backup\OLD\1 - Copy\QuestionnaireLanguage\QuestionnaireL
 C:\Users\Daniel\Desktop\Backup\OLD\1 - Copy\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.g.resources
 C:\Users\Daniel\Desktop\Backup\OLD\1 - Copy\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.Properties.Resources.resources
 C:\Users\Daniel\Desktop\Backup\OLD\1 - Copy\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.csproj.GenerateResource.Cache
-C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage_MarkupCompile.lref
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\QuestionnaireLanguage.exe.config
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.exe
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.pdb
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\QuestionnaireLanguage.exe
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\QuestionnaireLanguage.pdb
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\AST.dll
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\Grammar.dll
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\Antlr4.Runtime.net45.dll
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\AST.pdb
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\Grammar.pdb
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\Antlr4.Runtime.net45.xml
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.csprojResolveAssemblyReference.cache
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\MainWindow.baml
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\MainWindow.g.cs
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\App.g.cs
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage_MarkupCompile.cache
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.g.resources
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.Properties.Resources.resources
+C:\Users\Jonatan\Desktop\QL Github\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.csproj.GenerateResource.Cache
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\QuestionnaireLanguage\bin\Debug\QuestionnaireLanguage.exe.config
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.exe
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.pdb
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\MainWindow.g.cs
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\App.g.cs
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage_MarkupCompile.cache
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\QuestionnaireLanguage\obj\Debug\QuestionnaireLanguage_MarkupCompile.lref

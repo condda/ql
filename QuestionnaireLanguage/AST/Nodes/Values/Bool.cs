@@ -32,6 +32,11 @@ namespace AST.Nodes.Values
             return value;
         }
 
+        public override string MakeString()
+        {
+            return "bool";
+        }
+
         public override ValueTypes.Types GetType(Storage.ISymbolTable lookup)
         {
             return ValueTypes.Types.BOOL;
@@ -103,5 +108,7 @@ namespace AST.Nodes.Values
         }
 
         #endregion
+
+
     }
 }

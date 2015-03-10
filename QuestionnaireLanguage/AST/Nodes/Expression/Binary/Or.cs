@@ -8,27 +8,53 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Expression.Binary
 {
-    public class Or : IExpression
+    public class Or : ASTNode, IExpression, IBinary
     {
-        public IExpression Left {get; private set;}
-        public IExpression Right { get; private set; }
-        private PositionInText position;
+        private readonly IExpression left;
+        private readonly IExpression right;
+        private string parsedString;
 
-        public Or(IExpression left, IExpression right, PositionInText position)
+        public Or(IExpression left, IExpression right, string parsedString, PositionInText position)
+         : base(position)
         {
-            this.Left = left;
-            this.Right = right;
-            this.position = position;
+            this.left = left;
+            this.right = right;
+            this.parsedString = parsedString;
+        }
+        public override string GetParsedString()
+        {
+            return parsedString;
         }
 
-        public void Accept(Visitors.IVisitor visitor)
+        public IExpression Left()
+        { return left; }
+        public IExpression Right()
+        { return right; }
+
+        public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
         }
+
+        public string MakeString()
+        {
+            return "||";
+        }
+
+        public IValue GetCompatibleType(Values.Bool leftType, Values.Bool rightType)
+        {
+            return new Values.Bool(true);
+        }
+
+        public IValue GetCompatibleType(IValue leftType, IValue rightType)
+        {
+            return new Values.Undefined();
+        }
+
     }
 }

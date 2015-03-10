@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace AST.Nodes.Expression.Unary
 {
-    public class Priority : ASTNode, IExpression
+    public class Priority : ASTNode, IExpression, IUnary
     {
-        public IExpression Expression { get; private set; }
+        private IExpression expression;
         string parsedString;
         public Priority(IExpression child, string parsedString, PositionInText position)
             : base(position)
         {
-            this.Expression = child;
+            this.expression = child;
             this.parsedString = parsedString;
         }
 
@@ -23,12 +23,38 @@ namespace AST.Nodes.Expression.Unary
         { return parsedString; }
 
         //Visitor methods
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         { return visitor.Visit(this); }
 
-        public void Accept(Visitors.IVisitor visitor)
+        public override void Accept(Visitors.IVisitor visitor)
         { visitor.Visit(this); }
 
+        public IExpression GetChildExpression()
+        {
+            return expression;
+        }
+
+        public string MakeString()
+        {
+            return "()";
+        }
+
+        //TypeCheck
+
+        public IValue GetCompatibleType(Values.Bool ChildType)
+        {
+            return new Values.Bool(true);
+        }
+
+        public IValue GetCompatibleType(Values.Int ChildType)
+        {
+            return new Values.Int(0);
+        }
+
+        public IValue GetCompatibleType(IValue rightType)
+        {
+            return new Values.Undefined();
+        }
 
     }
 }

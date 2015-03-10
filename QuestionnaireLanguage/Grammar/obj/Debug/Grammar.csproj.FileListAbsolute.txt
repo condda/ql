@@ -34,3 +34,6 @@ C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\QLMainBas
 C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
 C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.dll
 C:\Users\Daniel\Desktop\Backup\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.pdb
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.dll
+C:\Users\Daniel\Documents\UVA\Software Construction\Assignments\project\own-ql\ql\QuestionnaireLanguage\Grammar\obj\Debug\Grammar.pdb

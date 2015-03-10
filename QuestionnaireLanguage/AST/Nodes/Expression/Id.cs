@@ -9,25 +9,29 @@ using AST.Nodes.Values;
 
 namespace AST.Nodes.Expression
 {
-    public class Id : IExpression, IValue
+    public class Id : ASTNode, IExpression
     {
         public string Identifier { get; private set; }
-        public PositionInText Position {get; private set; }
-
+        
         public Id(string identifier, PositionInText position)
+            : base(position)
         {
             this.Identifier = identifier;
-            this.Position = position;
         }
 
-        public void Accept(Visitors.IVisitor visitor)
+        public override void Accept(Visitors.IVisitor visitor)
         {
             visitor.Visit(this);
         }
 
-        public T Accept<T>(Visitors.IVisitor<T> visitor)
+        public override T Accept<T>(Visitors.IVisitor<T> visitor)
         {
             return visitor.Visit(this);
+        }
+
+        public override string GetParsedString()
+        {
+            throw new NotImplementedException();
         }
     }
 }

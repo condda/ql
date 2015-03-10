@@ -20,5 +20,26 @@ namespace AST.Helpers
                 );
         }
 
+        public static string PrettyPrint(PositionInText position)
+        {
+                return "lines [" +
+                        position.StartLine +
+                        " (character position: " +
+                        position.StartColumn + ")," +
+                        position.EndLine +
+                        " (character position: " +
+                        position.EndColumn + ")]"; 
+        }
+
+        public static string PrettyPrint(IEnumerable<PositionInText> positions)
+        {
+            return positions.Aggregate(
+                                "positions: ",
+                                (res, next) => res  + 
+                                               ", " + 
+                                               PrettyPrint(next)
+                             );
+        }
+
     }
 }
