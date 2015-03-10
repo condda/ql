@@ -28,6 +28,11 @@ namespace AST.ParseTreeVisitors
             return context.id().Accept(this);
         }
 
+        public override IExpression VisitId(QLMainParser.IdContext context)
+        {
+            string id = context.ALPHANUMERIC().GetText();
+            return new Id(id, Position.PositionFormParserRuleContext(context));
+        }
 
         public override IExpression VisitAND(QLMainParser.ANDContext context)
         {
@@ -157,6 +162,11 @@ namespace AST.ParseTreeVisitors
         public override IExpression VisitNonAssociativeId(QLMainParser.NonAssociativeIdContext context)
         {
             return context.id().Accept(new ValueVisitor());
+        }
+
+        public override IExpression VisitAssociativeUnary(QLMainParser.AssociativeUnaryContext context)
+        {
+            return context.unary().Accept(new UnaryVisitor());
         }
         #endregion
     }

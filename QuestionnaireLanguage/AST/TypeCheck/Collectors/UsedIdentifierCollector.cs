@@ -18,7 +18,7 @@ namespace AST.TypeCheck.Collectors
         //selectmany flattens lists of lists.
         public override IList<Identifier> Visit(Nodes.Form node)
         {
-            return node.getChildren()
+            return node.GetBody()
                        .SelectMany(x => x.Accept(this))
                        .ToList();
         }
@@ -66,7 +66,7 @@ namespace AST.TypeCheck.Collectors
 
         public override IList<Identifier> Visit(IUnary node) //Is this a hack?
         {
-            return node.ChildExpression().Accept(this);
+            return node.GetChildExpression().Accept(this);
         }
 
         public override IList<Identifier> Visit(Container node)
@@ -76,7 +76,7 @@ namespace AST.TypeCheck.Collectors
 
         public override IList<Identifier> Visit(Id node)
         {
-            return new List<Identifier> { new Identifier(node, node.identifier) };
+            return new List<Identifier> { new Identifier(node, node.Identifier) };
         }
         
 

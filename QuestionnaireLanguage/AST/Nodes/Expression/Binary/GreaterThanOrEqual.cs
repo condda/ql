@@ -11,12 +11,14 @@ namespace AST.Nodes.Expression.Binary
     {
         private readonly IExpression left;
         private readonly IExpression right;
+        private Representation.PositionInText position;
 
         public GreaterThanOrEqual(IExpression left, IExpression right, Representation.PositionInText position)
             : base(position)
         {
             this.left = left;
             this.right = right;
+            this.position = position;
         }
         public IExpression Left()
         { return left; }

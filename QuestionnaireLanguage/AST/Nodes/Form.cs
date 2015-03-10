@@ -9,18 +9,19 @@ using AST.Representation;
 
 namespace AST.Nodes
 {
-    public class Form : ASTNode
+    public class Form : FormElementContainer
     {
-        private List<IFormObject> body;
+        public List<IFormObject> Body { get; private set; }
         public string parsedString;
 
         public Form(List<IFormObject> body, string parsedString , PositionInText position)
             : base(position)
         {
-            this.body = body;
+            this.Body = body;
             this.parsedString = parsedString;
         }
-        public List<IFormObject> getChildren() { return body; }
+        
+        public override IList<IFormObject> GetBody() { return Body; }
 
         public override string GetParsedString()
         { return parsedString; }

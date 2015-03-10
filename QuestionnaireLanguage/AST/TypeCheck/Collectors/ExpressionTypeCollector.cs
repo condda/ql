@@ -34,7 +34,7 @@ namespace AST.TypeCheck.Collectors
 
         public override IValue Visit(IUnary node)
         {
-            IValue childType = node.ChildExpression().Accept(this);
+            IValue childType = node.GetChildExpression().Accept(this);
             IValue expressionType = node.GetCompatibleType((dynamic)childType);
 
             if (IsUndefined(expressionType) && !IsUndefined(childType))
@@ -67,12 +67,14 @@ namespace AST.TypeCheck.Collectors
         //Containers
         public override IValue Visit(Container node)
         {
-            return node.value;
+            //this can be bad!
+            throw new NotImplementedException();
+            //return ((Value)node.Value);
         }
 
         public override IValue Visit(Id node)
         {
-            return idToType[node.identifier];
+            return idToType[node.Identifier];
         }
 
     }

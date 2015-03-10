@@ -11,13 +11,13 @@ namespace AST.Nodes.TypeName
 {
     public class TypeName : IType
     {
-        private string representation;
+        public string Representation { get; private set; }
         private PositionInText position;
         private Types type;
 
         public TypeName(string representation, Types type, PositionInText position )
         {
-            this.representation = representation;
+            this.Representation = representation;
             this.position = position;
             this.type = type;
         }

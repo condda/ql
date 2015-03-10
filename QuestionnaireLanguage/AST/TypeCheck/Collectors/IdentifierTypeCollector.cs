@@ -14,13 +14,13 @@ namespace AST.TypeCheck.Collectors
     {
         public override IList<NameToType> Visit(Form node)
         {
-            return node.getChildren()
+            return node.GetBody()
                        .SelectMany(x => x.Accept(this))
                        .ToList();
         }
         public override IList<NameToType> Visit(Question node)
         {
-            return new List<NameToType> { new NameToType(node.Identifier, node.Type) };
+            return new List<NameToType> { new NameToType(node.Identifier, node.Value) };
         }
 
         public override IList<NameToType> Visit(Conditional node)

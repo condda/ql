@@ -10,13 +10,13 @@ namespace AST.Nodes.Expression
 {
     public class Container : ASTNode, IExpression
     {
-        public IValue value { get; private set; }
+        public IValue Value { get; private set; }
         private string parsedString;
 
         public Container(string parsedString, IValue value, PositionInText position)
             : base(position)
         {
-            this.value = value;
+            this.Value = value;
             this.parsedString = parsedString;
         }
         public override string GetParsedString()

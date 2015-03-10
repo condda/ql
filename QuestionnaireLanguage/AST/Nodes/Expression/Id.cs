@@ -11,12 +11,12 @@ namespace AST.Nodes.Expression
 {
     public class Id : ASTNode, IExpression
     {
-        public string identifier { get; private set; }
+        public string Identifier { get; private set; }
         
         public Id(string identifier, PositionInText position)
             : base(position)
         {
-            this.identifier = identifier;
+            this.Identifier = identifier;
         }
 
         public override void Accept(Visitors.IVisitor visitor)

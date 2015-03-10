@@ -27,5 +27,24 @@ namespace QuestionnaireLanguage.GUI.FormObject
 
             return form;
         }
+
+        public UIElement AddChildren(IList<UIElement> widgets, UIElement form)
+        {
+            try
+            {
+                foreach (UIElement customControl in widgets)
+                {
+                    ((CustomStackPanel)form).Children.Add(customControl);
+                }
+
+            }
+            catch (NullReferenceException e)
+            {
+
+                Console.WriteLine(e.InnerException);
+            }
+
+            return form;
+        }
     }
 }

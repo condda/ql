@@ -12,6 +12,7 @@ namespace AST.Nodes.Expression.Binary
     {
         private readonly IExpression left;
         private readonly IExpression right;
+
         private string parsedString;
 
         public Add(IExpression left, IExpression right, string parsedString, PositionInText position)

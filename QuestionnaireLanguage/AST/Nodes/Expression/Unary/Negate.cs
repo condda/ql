@@ -33,7 +33,7 @@ namespace AST.Nodes.Expression.Unary
             throw new NotImplementedException();
         }
 
-        public IExpression ChildExpression()
+        public IExpression GetChildExpression()
         {
             return child;
         }

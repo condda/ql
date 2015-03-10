@@ -18,7 +18,7 @@ namespace AST.TypeCheck.Collectors
         //selectmany flattens lists of lists.
         public override IList<IExpression> Visit(Nodes.Form node)
         {
-            return node.getChildren()
+            return node.GetBody()
                        .SelectMany(x => x.Accept(this))
                        .ToList();
         }

@@ -34,14 +34,19 @@ namespace QuestionnaireLanguage.GUI.FormObject
         #region IFormObject
         public UIElement ProcessFormObject(UIElement form)
         {
+<<<<<<< HEAD
             //StackPanelWidget stackPanelWidget = new StackPanelWidget(true);
             //UIElement customStackPanel = stackPanelWidget.CreateUIControl();
 
             ValueVisitor visitor = new ValueVisitor(questionNode.Identifier);
-            Widget widget = visitor.VisitValue(questionNode.Type);
+            Widget widget = visitor.VisitValue(questionNode.Value);
 
             LabelVisitor labelVisitor = new LabelVisitor();
             Widget labelWidget = labelVisitor.VisitValue(questionNode.Label);
+=======
+            Widget widget = new ValueVisitor(questionNode.Identifier).VisitValue(questionNode.Value);
+            Widget labelWidget = new LabelVisitor().VisitValue(questionNode.Label);
+>>>>>>> origin/master
 
             AddChildren(labelWidget.CreateUIControl(), form);
             AddChildren(widget.CreateUIControl(), form);

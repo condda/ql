@@ -16,7 +16,7 @@ namespace AST.TypeCheck.Collectors
 
         public override IList<Conditional> Visit(Nodes.Form node)
         {
-            return node.getChildren()
+            return node.GetBody()
                        .SelectMany(x => x.Accept(this))
                        .ToList();
         }

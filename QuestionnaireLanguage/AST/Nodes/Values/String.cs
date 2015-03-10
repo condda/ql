@@ -10,7 +10,7 @@ using ValueTypes = AST.Resources;
 
 namespace AST.Nodes.Values
 {
-    public class String : Value
+    public class String : Value, IValue
     {
         private readonly string value;
         public String(string value)
@@ -69,17 +69,5 @@ namespace AST.Nodes.Values
             return new Bool(!GetValue().Equals(stringValue.GetValue()));
         }
         #endregion
-
-        #region Add
-        public override Value Add(Value value)
-        {
-            return value.StringAdd(this);
-        }
-        public override Value StringAdd(Values.String stringValue)
-        {
-            return new String(GetValue() + stringValue.GetValue());
-        }
-        #endregion
-
     }
 }
